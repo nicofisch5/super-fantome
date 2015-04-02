@@ -5,6 +5,7 @@
  */
 
 var menuState = {
+
     create: function() {
         // Defining variables
         var copyright = '@nicofisch5 / tfisch - phaser.io';
@@ -57,4 +58,5 @@ var menuState = {
     start: function() {
         this.game.state.start('play');
     }
+
 };
