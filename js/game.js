@@ -12,6 +12,8 @@ var game = new Phaser.Game(
     'phaser-example'
 );
 
+game.name = 'Super fantôme';
+
 /** Define all the states */
 // State 1 - Game initialisation
 game.state.add('load', loadState);
