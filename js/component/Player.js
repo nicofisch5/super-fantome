@@ -33,10 +33,11 @@ Player.prototype = {
          * Y position of the new sprite.
          * key This is the image or texture used by the Sprite during rendering
          */
-        this.sprite = this.game.add.sprite(65, this.game.world.height - 180, 'player');
+        //this.sprite = this.game.add.sprite(65, this.game.world.height - 180, 'player');
+        this.sprite = this.game.add.sprite(this.game.world.width - 75, 180, 'player');
 
         // this.player size
-        this.sprite.scale.setTo(0.5, 0.5);
+        this.sprite.scale.setTo(0.38, 0.38);
 
         // We need to enable physics
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
@@ -112,10 +113,10 @@ Player.prototype = {
 
     },
 
-    render: function() {
+    render: function () {
 
         this.game.debug.spriteCoords(this.sprite, 32, 500);
 
-    }
+    },
 
 }

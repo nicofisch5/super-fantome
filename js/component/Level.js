@@ -7,19 +7,19 @@ Level = function(game, id) {
     this.currentTilemapLevelParam;
     this.layer;
 
-    this.tilemapFilename = 'assets/tilemaps/tiles/tiles_spritesheet.png';
+    this.tilemapFilename = 'assets/tilemaps/tiles/tiles_spritesheet_small.png';
 
     this.params = [
         {
             "id": 1,
             "key": 'tilemap-level-1',
-            "dataFile": "assets/tilemaps/maps/sf-level1.json",
+            "dataFile": "assets/tilemaps/maps/sf-level-1.json",
             "tilesetName": "sprite-level-1"
         },
         {
             "id": 2,
             "key": 'tilemap-level-2',
-            "dataFile": "assets/tilemaps/maps/sf-level2.json",
+            "dataFile": "assets/tilemaps/maps/sf-level-2.json",
             "tilesetName": "sprite-level-2"
         }
     ];
@@ -70,7 +70,7 @@ Level.prototype = {
         );
 
         // Sets collision the given tile
-        this.tilemapLevel1.setCollision([10]);
+        this.tilemapLevel1.setCollisionByExclusion([0]);
         /*this.tilemapLevel1.setTileIndexCallback(
             3,// indexes
             this.collideTest,// callback

@@ -46,7 +46,7 @@ Enemy.prototype = {
 
         //  Create a enemie inside of the 'enemies' group
         var enemy = this.enemies.create(positionX, 0, 'enemy1');
-        //enemy.scale.setTo(2, 2);
+        enemy.scale.setTo(0.5, 0.5);
 
         // Set the anchor point centered at the bottom
         enemy.anchor.setTo(0.5, 1);
@@ -64,6 +64,7 @@ Enemy.prototype = {
         // bounce, 1 means a perfect bounce. So this will make the enemy change direction when hitting a wall
         // horizontally:
         enemy.body.bounce.x = 1;
+        enemy.body.bounce.y = 1;
 
         // And finally, these 2 lines will automatically kill the sprite when it’s no longer in the world (when it
         // falls into the bottom hole). This way we should never run out of dead enemies for getFirstDead .
@@ -77,8 +78,14 @@ Enemy.prototype = {
         //this.sprite.body.velocity.x = 0;
 
         // Move to the right
-        this.sprite.body.velocity.x = 100;
-        this.sprite.animations.play('right');
+        //this.sprite.body.velocity.x = 100;
+        //this.sprite.animations.play('right');
+
+    },
+
+    getGroup: function () {
+
+        return this.enemies;
 
     }
 
