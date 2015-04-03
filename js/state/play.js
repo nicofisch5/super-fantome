@@ -10,10 +10,11 @@ var playState = {
 
         this.player = new Player(game);
         this.level = new Level(game);
+        this.enemy = new Enemy(game);
 
     },
 
-    createEnemiesSerie: function() {
+    /*createEnemiesSerie: function() {
 
         this.enemies = game.add.group();
         this.enemies.enableBody = true;
@@ -32,42 +33,53 @@ var playState = {
             var enemie = new Enemy(game);
             enemie.setProperties(positionX, positionY);
 
-            /*this.game.physics.arcade.enable(enemie);
+            this.game.physics.arcade.enable(enemie);
              enemie.body.bounce.y = 0.2;
-             enemie.body.collideWorldBounds = true;*/
+             enemie.body.collideWorldBounds = true;
 
             //  This just gives each enemie a slightly random bounce value
             //enemie.body.bounce.y = 0.7 + Math.random() * 0.2;
         }
 
-    },
+    },*/
 
     create: function() {
 
-        //game.physics.arcade.gravity.y = 250;
-
-        // Updates the size of this world. Note that this doesn't modify the world x/y coordinates, just the width and height.
-        //game.world.setBounds(0, 0, 256, 2848);
-
-        //game.physics.startSystem(Phaser.Physics.P2JS);
-
-
         this.level.create();
-
         this.player.create();
+        this.enemy.create(4);
 
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+        //game.physics.startSystem(Phaser.Physics.ARCADE);
 
     },
 
     update: function() {
 
+        // Collision beetween player and world
         game.physics.arcade.collide(this.player.sprite, this.level.layer);
 
+        // Collision beetween enemies and world
+        game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer);
+
+        // // Collision beetween player and enemies - call the kill function when the player and an enemy overlap
+        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this.playerDie, null, this);
+
         this.player.update();
+        this.enemy.update();
 
         //this.layer.enableBody = true;
         //this.layer.immovable = true;
+
+    },
+
+    playerDie: function () {
+
+        console.log('I die ...');
+        this.player.sprite.kill();
+
+        game.time.events.add(1500, function() {
+            game.state.start('menu');
+        }, this);
 
     },
 
