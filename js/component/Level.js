@@ -3,6 +3,8 @@ Level = function(game, id) {
     this.game = game;
     this.id = id ? id : 1;
 
+    console.log(this.id);
+
     this.currentTilemapLevel;
     this.currentTilemapLevelParam;
     this.layer;
@@ -12,15 +14,28 @@ Level = function(game, id) {
     this.params = [
         {
             "id": 1,
-            "key": 'tilemap-level-1',
+            "index": 'tilemap-level-1',
             "dataFile": "assets/tilemaps/maps/sf-level-1.json",
             "tilesetName": "sprite-level-1"
         },
         {
             "id": 2,
-            "key": 'tilemap-level-2',
+            "index": 'tilemap-level-2',
             "dataFile": "assets/tilemaps/maps/sf-level-2.json",
             "tilesetName": "sprite-level-2"
+        },
+        {
+            "id": 3,
+            "index": 'tilemap-level-3',
+            "dataFile": "assets/tilemaps/maps/sf-level-3.json",
+            "tilesetName": "sprite-level-3"
+        },
+        {
+            "id": 4,
+            "index": 'tilemap-level-4',
+            "dataFile": "assets/tilemaps/maps/sf-level-4.json",
+            "tilesetName": "sprite-level-4",
+            "keyFile": "assets/key_yellow.png"
         }
     ];
 
@@ -35,7 +50,7 @@ Level.prototype = {
 
         // Tilemap for Level1
         this.game.load.tilemap(
-            this.currentTilemapLevelParam.key, // Unique asset key of the tilemap data
+            this.currentTilemapLevelParam.index, // Unique asset index of the tilemap data
             this.currentTilemapLevelParam.dataFile, // The url of the map data file (csv/json)
             null, // Optional JSON data object, used for map data instead
             Phaser.Tilemap.TILED_JSON // The format of the map data. CSV or TILED_JSON
@@ -43,6 +58,10 @@ Level.prototype = {
 
         // Image used by tilemap
         this.game.load.image('tiles', this.tilemapFilename);
+
+        // Key image
+        this.game.load.image('key', this.currentTilemapLevelParam.keyFile);
+
     },
 
     getCurrentLevel: function () {
@@ -61,12 +80,12 @@ Level.prototype = {
         this.getCurrentLevel();
 
         // New Phaser.Tilemap. Map populated with data from a Tiled JSON file
-        this.tilemapLevel1 = this.game.add.tilemap(this.currentTilemapLevelParam.key);
+        this.tilemapLevel1 = this.game.add.tilemap(this.currentTilemapLevelParam.index);
 
         // Tileset image
         this.tilemapLevel1.addTilesetImage(
             this.currentTilemapLevelParam.tilesetName, // The name of the tileset as specified in the map data
-            'tiles' // The key of the Phaser.Cache image used for this tileset
+            'tiles' // The index of the Phaser.Cache image used for this tileset
         );
 
         // Sets collision the given tile
@@ -88,6 +107,13 @@ Level.prototype = {
 
         // This resizes the game world to match the layer dimensions
         this.layer.resizeWorld();
+
+        //
+        this.keySprite = this.game.add.sprite(680, 180, 'key');
+        game.physics.arcade.enable(this.keySprite);
+
+        // Lock
+        // this.tilemapLevel1.setTileIndexCallback
 
         // Add debug information
         //this.layer.debug = true;
