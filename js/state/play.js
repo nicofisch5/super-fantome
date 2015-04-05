@@ -9,7 +9,7 @@ var playState = {
     preload: function() {
 
         this.player = new Player(game);
-        this.level = new Level(game);
+        this.level = new Level(game, 4);
         this.enemy = new Enemy(game);
 
     },
@@ -61,8 +61,11 @@ var playState = {
         // Collision beetween enemies and world
         game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer);
 
-        // // Collision beetween player and enemies - call the kill function when the player and an enemy overlap
+        // Collision beetween player and enemies - call the kill function when the player and an enemy overlap
         game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this.playerDie, null, this);
+
+        // Collision beetween player and key
+        game.physics.arcade.overlap(this.player.sprite, this.level.keySprite, this.playerCatchKey, null, this);
 
         this.player.update();
         this.enemy.update();
@@ -80,6 +83,13 @@ var playState = {
         game.time.events.add(1500, function() {
             game.state.start('menu');
         }, this);
+
+    },
+
+    playerCatchKey: function () {
+
+        console.log('Player catches the key');
+        this.level.keySprite.kill();
 
     },
 
