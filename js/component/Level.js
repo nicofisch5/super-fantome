@@ -37,8 +37,8 @@ Level = function(game, id) {
             "keyParams":
                 {
                     "color": "yellow",
-                    positionX: 10,
-                    positionY: 10
+                    positionX: 100,
+                    positionY: 500
                 }
         }
     ];
@@ -63,6 +63,10 @@ Level.prototype = {
         // Image used by tilemap
         this.game.load.image('tiles', this.tilemapFilename);
 
+        // Key
+        this.key = new Key(this.game, this.currentTilemapLevelParam.keyParams);
+        this.key.preload();
+
     },
 
     getCurrentLevel: function () {
@@ -78,7 +82,7 @@ Level.prototype = {
 
     create: function () {
 
-        this.getCurrentLevel();
+        //this.getCurrentLevel();
 
         // New Phaser.Tilemap. Map populated with data from a Tiled JSON file
         this.tilemapLevel1 = this.game.add.tilemap(this.currentTilemapLevelParam.index);
@@ -110,17 +114,13 @@ Level.prototype = {
         this.layer.resizeWorld();
 
         // Key
-        this.key = new Key(this.game, this.currentTilemapLevelParam.keyParams);
+        this.key.create();
 
         // Lock
         // this.tilemapLevel1.setTileIndexCallback
 
         // Add debug information
         //this.layer.debug = true;
-
-    },
-
-    update: function () {
 
     }
 

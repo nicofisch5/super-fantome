@@ -24,8 +24,8 @@ game.state.add('play', playState);
 
 // Game components
 game.player = new Player(game);
-game.level = new Level(game, 4);
 game.enemy = new Enemy(game);
+game.level = new Level(game, 4);
 
 // Start with the 'load' state
 game.state.start('load');
