@@ -51,27 +51,40 @@ var playState = {
 
     update: function() {
 
-        // Collision beetween player and world
+        // Collision between player and lock
+        if (true === game.player.hasKey()) {
+            game.level.tilemapLevel1.setTileIndexCallback(
+                55, // indexes
+                this._playerTouchLock, // callback
+                this // callbackContext
+            );
+        }
+
+        // Collision between player and world
         game.physics.arcade.collide(game.player.sprite, game.level.layer);
 
-        // Collision beetween enemies and world
+        // Collision between enemies and world
         game.physics.arcade.collide(game.enemy.getGroup(), game.level.layer);
 
-        // Collision beetween player and enemies - call the kill function when the player and an enemy overlap
-        game.physics.arcade.overlap(game.player.sprite, game.enemy.getGroup(), game.playerDie, null, this);
+        // Collision between player and enemies - call the kill function when the player and an enemy overlap
+        game.physics.arcade.overlap(game.player.sprite, game.enemy.getGroup(), this._playerDie, null, this);
 
-        // Collision beetween player and key
-        game.physics.arcade.overlap(game.player.sprite, game.level.keySprite, game.playerCatchKey, null, this);
+        // Collision between player and key
+        game.physics.arcade.collide(game.player.sprite, game.level.key.sprite, this._playerCatchKey, null, this);
 
         game.player.update();
         game.enemy.update();
+
+
+
+
 
         //this.layer.enableBody = true;
         //this.layer.immovable = true;
 
     },
 
-    playerDie: function () {
+    _playerDie: function () {
 
         console.log('I die ...');
         game.player.sprite.kill();
@@ -82,10 +95,21 @@ var playState = {
 
     },
 
-    playerCatchKey: function () {
+    _playerCatchKey: function () {
 
-        console.log('Player catches the key');
-        game.level.keySprite.kill();
+        game.player.hasKey(true);
+        game.level.key.sprite.kill();
+
+    },
+
+    _playerTouchLock: function () {
+
+        if (true === game.player.hasKey()) {
+            console.log('You win !!')
+        } else {
+            console.log('stop');
+            game.player.stop();
+        }
 
     },
 

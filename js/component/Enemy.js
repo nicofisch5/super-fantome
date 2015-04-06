@@ -46,7 +46,7 @@ Enemy.prototype = {
 
         //  Create a enemie inside of the 'enemies' group
         var enemy = this.enemies.create(positionX, 0, 'enemy1');
-        enemy.scale.setTo(0.5, 0.5);
+        enemy.scale.setTo(0.38, 0.38);
 
         // Set the anchor point centered at the bottom
         enemy.anchor.setTo(0.5, 1);

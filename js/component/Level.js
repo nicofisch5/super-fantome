@@ -95,13 +95,6 @@ Level.prototype = {
 
         // Sets collision the given tile
         this.tilemapLevel1.setCollisionByExclusion([0]);
-        /*this.tilemapLevel1.setTileIndexCallback(
-            3,// indexes
-            this.collideTest,// callback
-            this // callbackContext
-        );*/
-        //var tile = this.tilemapLevel1.getTile(1, 1);
-        //tile.collideDown = false;
 
         // New TilemapLayer. It is a set of map data combined with a Tileset in order to render that data to the game.
         // A Layer is effectively like a Phaser.Sprite, so is added to the display list.

@@ -5,6 +5,7 @@ Player = function(game) {
     this.cursors = null;
     this.lastYPosition;
     this.velocity = 150;
+    this.key = false;
 
 };
 
@@ -107,9 +108,25 @@ Player.prototype = {
         // If no one is pressed
         else {
             // Stop the player
-            this.sprite.body.velocity.x = 0;
-            this.sprite.body.velocity.y = 0;
+            this.stop();
         }
+
+    },
+
+    stop: function () {
+
+        this.sprite.body.velocity.x = 0;
+        this.sprite.body.velocity.y = 0;
+
+    },
+
+    hasKey: function (key) {
+
+        if (typeof key !== 'undefined') {
+            this.key = key;
+        }
+
+        return this.key;
 
     },
 
@@ -117,6 +134,6 @@ Player.prototype = {
 
         this.game.debug.spriteCoords(this.sprite, 32, 500);
 
-    },
+    }
 
 }
