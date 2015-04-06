@@ -81,26 +81,34 @@ Enemy.prototype = {
 
     update: function() {
 
-        this.enemies.forEach(function(item) {
-            if (item.x < game.player.sprite.x) {
-                item.body.velocity.x = this.velocity;
-            } else if (item.x > game.player.sprite.x) {
-                item.body.velocity.x = this.velocity * -1;
-            }
+        if (this.enemies) {
+            this.enemies.forEach(function(item) {
+                if (item.x < game.player.sprite.x) {
+                    item.body.velocity.x = this.velocity;
+                } else if (item.x > game.player.sprite.x) {
+                    item.body.velocity.x = this.velocity * -1;
+                }
 
-            if (item.y < game.player.sprite.y) {
-                item.body.velocity.y = this.velocity;
-            } else if (item.y > game.player.sprite.y) {
-                item.body.velocity.y = this.velocity * -1;
-            }
+                if (item.y < game.player.sprite.y) {
+                    item.body.velocity.y = this.velocity;
+                } else if (item.y > game.player.sprite.y) {
+                    item.body.velocity.y = this.velocity * -1;
+                }
 
-        }, this);
+            }, this);
+        }
 
     },
 
     getGroup: function () {
 
         return this.enemies;
+
+    },
+
+    endGame: function () {
+
+        this.enemies = null;
 
     }
 

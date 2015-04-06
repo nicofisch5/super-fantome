@@ -9,10 +9,12 @@ var menuState = {
     create: function() {
         // Defining variables
         var copyright = '@nicofisch5 / tfisch - phaser.io';
-        var startText = '>>> Press space to start <<<';
+        var startText = '>>> Espace pour démarrer <<<';
+        var levelText = 'Niveau ' + game.currentLevel;
+        var goText = 'GAME OVER';
         var style = { font: "30px Sawasdee", fill: "#55ffff" };
         var x = game.world.width/2;
-        var y = game.world.height/3;
+        var y = game.world.height/4;
 
         // Call the 'start' function when pressing the spacebar
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -26,10 +28,24 @@ var menuState = {
         title.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
-        y = game.world.height/2;
+        y += 100;
         startText = this.game.add.text(x, y, startText, style);
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
+
+        // Game over
+        if (game.gameOver === true) {
+            y += 100;
+            goText = this.game.add.text(x, y, goText, style);
+            goText.align = 'center';
+            goText.anchor.setTo(0.5, 0.5);
+        }
+
+        // Level
+        y += 100;
+        levelText = this.game.add.text(x, y, levelText, style);
+        levelText.align = 'center';
+        levelText.anchor.setTo(0.5, 0.5);
 
         // If the user already played
         /*if (score > 0) {

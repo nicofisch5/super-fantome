@@ -13,6 +13,7 @@ var game = new Phaser.Game(
 );
 
 game.name = 'Super fantôme';
+game.currentLevel = 1;
 
 /** Define all the states */
 // State 1 - Game initialisation
@@ -25,7 +26,7 @@ game.state.add('play', playState);
 // Game components
 game.player = new Player(game);
 game.enemy = new Enemy(game);
-game.level = new Level(game, 4);
+game.level = new Level(game);
 
 // Start with the 'load' state
 game.state.start('load');

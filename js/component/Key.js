@@ -29,14 +29,13 @@ Key.prototype = {
 
     create: function () {
 
-console.log(this.params);
         this.sprite = this.game.add.sprite(
             this.params.positionX,
             this.params.positionY,
             'key',
             this.colors.indexOf(this.params.color)
         );
-console.log(this.params);
+
         game.physics.arcade.enable(this.sprite);
 
     },

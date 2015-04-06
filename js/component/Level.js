@@ -1,7 +1,7 @@
-Level = function(game, id) {
+Level = function(game) {
 
     this.game = game;
-    this.id = id ? id : 1;
+    this.id = game.currentLevel;
 
     this.currentTilemapLevel;
     this.currentTilemapLevelParam;
@@ -15,7 +15,13 @@ Level = function(game, id) {
             "id": 1,
             "index": 'tilemap-level-1',
             "dataFile": "assets/tilemaps/maps/sf-level-1.json",
-            "tilesetName": "sprite-level-1"
+            "tilesetName": "sprite-level-1",
+            "keyParams":
+            {
+                "color": "yellow",
+                positionX: 100,
+                positionY: 500
+            }
         },
         {
             "id": 2,
@@ -33,13 +39,7 @@ Level = function(game, id) {
             "id": 4,
             "index": 'tilemap-level-4',
             "dataFile": "assets/tilemaps/maps/sf-level-4.json",
-            "tilesetName": "sprite-level-4",
-            "keyParams":
-                {
-                    "color": "yellow",
-                    positionX: 100,
-                    positionY: 500
-                }
+            "tilesetName": "sprite-level-4"
         }
     ];
 

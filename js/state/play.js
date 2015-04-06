@@ -67,7 +67,7 @@ var playState = {
         game.physics.arcade.collide(game.enemy.getGroup(), game.level.layer);
 
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
-        game.physics.arcade.overlap(game.player.sprite, game.enemy.getGroup(), this._playerDie, null, this);
+        game.physics.arcade.overlap(game.player.sprite, game.enemy.getGroup(), this._endGame, null, this);
 
         // Collision between player and key
         game.physics.arcade.collide(game.player.sprite, game.level.key.sprite, this._playerCatchKey, null, this);
@@ -84,14 +84,23 @@ var playState = {
 
     },
 
-    _playerDie: function () {
+    _endGame: function () {
 
-        console.log('I die ...');
-        game.player.sprite.kill();
+        this._playerDie();
+
+        game.enemy.endGame();
+        game.gameOver = true;
 
         game.time.events.add(1500, function() {
             game.state.start('menu');
         }, this);
+
+    },
+
+    _playerDie: function () {
+
+        console.log('I die ...');
+        game.player.sprite.kill();
 
     },
 
@@ -108,7 +117,7 @@ var playState = {
             console.log('You win !!')
         } else {
             console.log('stop');
-            game.player.stop();
+            //game.player.stop();
         }
 
     },
