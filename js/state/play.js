@@ -41,9 +41,13 @@ var playState = {
 
     create: function() {
 
+        console.log('playState - create');
+
         game.level.create();
         game.player.create();
         game.enemy.create(4);
+
+
 
         //game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -70,7 +74,9 @@ var playState = {
         game.physics.arcade.overlap(game.player.sprite, game.enemy.getGroup(), this._endGame, null, this);
 
         // Collision between player and key
-        game.physics.arcade.collide(game.player.sprite, game.level.key.sprite, this._playerCatchKey, null, this);
+        if (typeof game.level.key !== 'undefined') {
+            game.physics.arcade.collide(game.player.sprite, game.level.key.sprite, this._playerCatchKey, null, this);
+        }
 
         game.player.update();
         game.enemy.update();
@@ -99,7 +105,6 @@ var playState = {
 
     _playerDie: function () {
 
-        console.log('I die ...');
         game.player.sprite.kill();
 
     },
@@ -114,7 +119,13 @@ var playState = {
     _playerTouchLock: function () {
 
         if (true === game.player.hasKey()) {
-            console.log('You win !!')
+            console.log('You win !!');
+
+            game.currentLevel++;
+            game.level = new Level(game);
+            game.level.preload();
+
+            game.state.start('menu');
         } else {
             console.log('stop');
             //game.player.stop();

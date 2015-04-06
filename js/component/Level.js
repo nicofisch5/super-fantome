@@ -27,7 +27,13 @@ Level = function(game) {
             "id": 2,
             "index": 'tilemap-level-2',
             "dataFile": "assets/tilemaps/maps/sf-level-2.json",
-            "tilesetName": "sprite-level-2"
+            "tilesetName": "sprite-level-2",
+            "keyParams":
+            {
+                "color": "yellow",
+                positionX: 100,
+                positionY: 500
+            }
         },
         {
             "id": 3,
@@ -77,6 +83,8 @@ Level.prototype = {
                 this.currentTilemapLevelParam = this.params[prop];
             }
         }
+
+        console.log(this.currentTilemapLevelParam);
 
     },
 

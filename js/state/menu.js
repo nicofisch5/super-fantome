@@ -36,6 +36,7 @@ var menuState = {
 
         // Game over
         if (game.gameOver === true) {
+            game.gameOver = false;
             y += 100;
             goText = this.game.add.text(x, y, goText, style);
             goText.align = 'center';
@@ -73,7 +74,7 @@ var menuState = {
 
     // Start the actual game
     start: function() {
-        this.game.state.start('play');
+        this.game.state.start('play', true, false);
     }
 
 };
