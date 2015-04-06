@@ -12,6 +12,7 @@ var menuState = {
         var startText = '>>> Espace pour démarrer <<<';
         var levelText = 'Niveau ' + game.currentLevel;
         var goText = 'GAME OVER';
+        var styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
         var style = { font: "30px Sawasdee", fill: "#55ffff" };
         var x = game.world.width/2;
         var y = game.world.height/4;
@@ -23,7 +24,7 @@ var menuState = {
 
         // Name of the game
         //this.game.add.sprite(x - 250, 0, 'menu');
-        var title = this.game.add.text(x, y, game.name, style);
+        var title = this.game.add.text(x, y, game.name, styleTitle);
         title.align = 'center';
         title.anchor.setTo(0.5, 0.5);
 
