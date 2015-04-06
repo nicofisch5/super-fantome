@@ -8,14 +8,9 @@ var loadState = {
 
     preload: function() {
 
-        this.player = new Player(game);
-        this.player.preload();
-
-        this.level = new Level(game, 4);
-        this.level.preload();
-
-        this.enemy = new Enemy(game);
-        this.enemy.preload();
+        game.player.preload();
+        game.level.preload();
+        game.enemy.preload();
 
     },
 

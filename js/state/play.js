@@ -8,10 +8,6 @@ var playState = {
 
     preload: function() {
 
-        this.player = new Player(game);
-        this.level = new Level(game, 4);
-        this.enemy = new Enemy(game);
-
     },
 
     /*createEnemiesSerie: function() {
@@ -45,9 +41,9 @@ var playState = {
 
     create: function() {
 
-        this.level.create();
-        this.player.create();
-        this.enemy.create(4);
+        game.level.create();
+        game.player.create();
+        game.enemy.create(4);
 
         //game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -56,19 +52,19 @@ var playState = {
     update: function() {
 
         // Collision beetween player and world
-        game.physics.arcade.collide(this.player.sprite, this.level.layer);
+        game.physics.arcade.collide(game.player.sprite, game.level.layer);
 
         // Collision beetween enemies and world
-        game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer);
+        game.physics.arcade.collide(game.enemy.getGroup(), game.level.layer);
 
         // Collision beetween player and enemies - call the kill function when the player and an enemy overlap
-        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this.playerDie, null, this);
+        game.physics.arcade.overlap(game.player.sprite, game.enemy.getGroup(), game.playerDie, null, this);
 
         // Collision beetween player and key
-        game.physics.arcade.overlap(this.player.sprite, this.level.keySprite, this.playerCatchKey, null, this);
+        game.physics.arcade.overlap(game.player.sprite, game.level.keySprite, game.playerCatchKey, null, this);
 
-        this.player.update();
-        this.enemy.update();
+        game.player.update();
+        game.enemy.update();
 
         //this.layer.enableBody = true;
         //this.layer.immovable = true;
@@ -78,7 +74,7 @@ var playState = {
     playerDie: function () {
 
         console.log('I die ...');
-        this.player.sprite.kill();
+        game.player.sprite.kill();
 
         game.time.events.add(1500, function() {
             game.state.start('menu');
@@ -89,14 +85,14 @@ var playState = {
     playerCatchKey: function () {
 
         console.log('Player catches the key');
-        this.level.keySprite.kill();
+        game.level.keySprite.kill();
 
     },
 
     render: function() {
 
         game.debug.cameraInfo(game.camera, 32, 32);
-        this.player.render();
+        game.player.render();
 
     }
 

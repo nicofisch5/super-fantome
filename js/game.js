@@ -22,5 +22,10 @@ game.state.add('menu', menuState);
 // State 3 - Let's play !
 game.state.add('play', playState);
 
+// Game components
+game.player = new Player(game);
+game.level = new Level(game, 4);
+game.enemy = new Enemy(game);
+
 // Start with the 'load' state
 game.state.start('load');
