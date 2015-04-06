@@ -3,11 +3,10 @@ Level = function(game, id) {
     this.game = game;
     this.id = id ? id : 1;
 
-    console.log(this.id);
-
     this.currentTilemapLevel;
     this.currentTilemapLevelParam;
     this.layer;
+    this.key;
 
     this.tilemapFilename = 'assets/tilemaps/tiles/tiles_spritesheet_small.png';
 
@@ -35,7 +34,12 @@ Level = function(game, id) {
             "index": 'tilemap-level-4',
             "dataFile": "assets/tilemaps/maps/sf-level-4.json",
             "tilesetName": "sprite-level-4",
-            "keyFile": "assets/key_yellow.png"
+            "keyParams":
+                {
+                    "color": "yellow",
+                    positionX: 10,
+                    positionY: 10
+                }
         }
     ];
 
@@ -46,7 +50,7 @@ Level.prototype = {
     preload: function () {
 
         this.getCurrentLevel();
-        console.log(this.currentTilemapLevelParam);
+        //console.log(this.currentTilemapLevelParam);
 
         // Tilemap for Level1
         this.game.load.tilemap(
@@ -59,14 +63,11 @@ Level.prototype = {
         // Image used by tilemap
         this.game.load.image('tiles', this.tilemapFilename);
 
-        // Key image
-        this.game.load.image('key', this.currentTilemapLevelParam.keyFile);
-
     },
 
     getCurrentLevel: function () {
 
-        console.log(this.params);
+        //console.log(this.params);
         for (var prop in this.params) {
             if (this.params[prop].id == this.id) {
                 this.currentTilemapLevelParam = this.params[prop];
@@ -108,9 +109,8 @@ Level.prototype = {
         // This resizes the game world to match the layer dimensions
         this.layer.resizeWorld();
 
-        //
-        this.keySprite = this.game.add.sprite(680, 180, 'key');
-        game.physics.arcade.enable(this.keySprite);
+        // Key
+        this.key = new Key(this.game, this.currentTilemapLevelParam.keyParams);
 
         // Lock
         // this.tilemapLevel1.setTileIndexCallback
