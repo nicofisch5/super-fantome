@@ -19,8 +19,8 @@ Level = function(game) {
             "keyParams":
             {
                 "color": "yellow",
-                positionX: 100,
-                positionY: 500
+                positionX: 500,// 100,
+                positionY: 100// 500
             }
         },
         {
@@ -56,7 +56,7 @@ Level.prototype = {
     preload: function () {
 
         this.getCurrentLevel();
-        //console.log(this.currentTilemapLevelParam);
+        console.log('current Index : '+this.currentTilemapLevelParam.index);
 
         // Tilemap for Level1
         this.game.load.tilemap(
@@ -77,6 +77,7 @@ Level.prototype = {
 
     getCurrentLevel: function () {
 
+        console.log('current Level = ' + this.id);
         //console.log(this.params);
         for (var prop in this.params) {
             if (this.params[prop].id == this.id) {
@@ -89,8 +90,6 @@ Level.prototype = {
     },
 
     create: function () {
-
-        //this.getCurrentLevel();
 
         // New Phaser.Tilemap. Map populated with data from a Tiled JSON file
         this.tilemapLevel1 = this.game.add.tilemap(this.currentTilemapLevelParam.index);
@@ -116,7 +115,7 @@ Level.prototype = {
 
         // Key
         this.key.create();
-
+        console.log('Level - END create');
         // Lock
         // this.tilemapLevel1.setTileIndexCallback
 

@@ -43,10 +43,12 @@ var playState = {
 
         console.log('playState - create');
 
+        console.log('call level.create');
         game.level.create();
+        console.log('call player.create');
         game.player.create();
         game.enemy.create(4);
-
+        console.log('end enemy.create');
 
 
         //game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -120,16 +122,21 @@ var playState = {
 
         if (true === game.player.hasKey()) {
             console.log('You win !!');
-
-            game.currentLevel++;
-            game.level = new Level(game);
-            game.level.preload();
-
-            game.state.start('menu');
+            this._goToNextLevel()
         } else {
             console.log('stop');
             //game.player.stop();
         }
+
+    },
+
+    _goToNextLevel: function () {
+
+        game.currentLevel++;
+        game.level = new Level(game);
+        //game.level.preload();
+
+        game.state.start('load');
 
     },
 
