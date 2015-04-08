@@ -10,7 +10,6 @@ var menuState = {
         // Defining variables
         var copyright = '@nicofisch5 / tfisch - phaser.io';
         var startText = '>>> Espace pour démarrer <<<';
-        var levelText = 'Niveau ' + game.currentLevel;
         var goText = 'GAME OVER';
         var styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
         var style = { font: "30px Sawasdee", fill: "#55ffff" };
@@ -37,17 +36,13 @@ var menuState = {
         // Game over
         if (game.gameOver === true) {
             game.gameOver = false;
+            game.levelNumber = 0;
+            
             y += 100;
             goText = this.game.add.text(x, y, goText, style);
             goText.align = 'center';
             goText.anchor.setTo(0.5, 0.5);
         }
-
-        // Level
-        y += 100;
-        levelText = this.game.add.text(x, y, levelText, style);
-        levelText.align = 'center';
-        levelText.anchor.setTo(0.5, 0.5);
 
         // If the user already played
         /*if (score > 0) {
@@ -74,7 +69,9 @@ var menuState = {
 
     // Start the actual game
     start: function() {
-        this.game.state.start('play', true, false);
+
+        this.game.state.start('levelManager', true, false);
+
     }
 
 };

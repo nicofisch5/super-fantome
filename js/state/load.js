@@ -8,9 +8,10 @@ var loadState = {
 
     preload: function() {
 
-        game.player.preload();
-        game.level.preload();
-        game.enemy.preload();
+        // Image used by tilemap
+        this.game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
+
+
 
     },
 

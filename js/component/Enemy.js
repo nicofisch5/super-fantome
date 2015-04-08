@@ -79,19 +79,19 @@ Enemy.prototype = {
         enemy.outOfBoundsKill = true;
     },
 
-    update: function() {
+    update: function(player) {
 
         if (this.enemies) {
             this.enemies.forEach(function(item) {
-                if (item.x < game.player.sprite.x) {
+                if (item.x < player.sprite.x) {
                     item.body.velocity.x = this.velocity;
-                } else if (item.x > game.player.sprite.x) {
+                } else if (item.x > player.sprite.x) {
                     item.body.velocity.x = this.velocity * -1;
                 }
 
-                if (item.y < game.player.sprite.y) {
+                if (item.y < player.sprite.y) {
                     item.body.velocity.y = this.velocity;
-                } else if (item.y > game.player.sprite.y) {
+                } else if (item.y > player.sprite.y) {
                     item.body.velocity.y = this.velocity * -1;
                 }
 
