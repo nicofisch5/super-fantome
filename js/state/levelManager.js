@@ -85,8 +85,8 @@ var levelManagerState = {
         levelText.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
-        y += 100;
-        startText = this.game.add.text(x, y, startText, { font: "20px Sawasdee", fill: "#55ffff" });
+        y += 130;
+        startText = this.game.add.text(x, y, startText, { font: "30px Sawasdee", fill: "#55ffff" });
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
 

@@ -9,7 +9,7 @@ var menuState = {
     create: function() {
         // Defining variables
         var copyright = '@nicofisch5 / tfisch - phaser.io';
-        var startText = '>>> Espace pour démarrer <<<';
+        var startText = '>>> Espace pour continuer <<<';
         var goText = 'GAME OVER';
         var styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
         var style = { font: "30px Sawasdee", fill: "#55ffff" };
@@ -28,7 +28,7 @@ var menuState = {
         title.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
-        y += 100;
+        y += 130;
         startText = this.game.add.text(x, y, startText, style);
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
@@ -37,8 +37,8 @@ var menuState = {
         if (game.gameOver === true) {
             game.gameOver = false;
             game.levelNumber = 0;
-            
-            y += 100;
+
+            y += 130;
             goText = this.game.add.text(x, y, goText, style);
             goText.align = 'center';
             goText.anchor.setTo(0.5, 0.5);
