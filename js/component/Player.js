@@ -88,27 +88,32 @@ Player.prototype = {
             // Move the player to the left
             this.sprite.animations.play('left');
             this.sprite.body.velocity.x = this.velocity * -1;
+            this.sprite.angle = 0;
         }
         // If the right arrow key is pressed
         else if (this.cursor.right.isDown) {
             // Move the player to the right
             this.sprite.animations.play('right');
             this.sprite.body.velocity.x = this.velocity;
+            this.sprite.angle = 0;
         }
         // If the top arrow key is pressed
         else if (this.cursor.up.isDown) {
             // Move the player to the right
             this.sprite.body.velocity.y = this.velocity * -1;
+            this.sprite.angle = 15;
         }
         // If the bottom arrow key is pressed
         else if (this.cursor.down.isDown) {
             // Move the player to the right
             this.sprite.body.velocity.y = this.velocity;
+            this.sprite.angle = -15;
         }
         // If no one is pressed
         else {
             // Stop the player
             this.stop();
+            this.sprite.angle = 0;
         }
 
     },
