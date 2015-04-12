@@ -19,6 +19,8 @@ var playState = {
         this.player.preload();
         this.enemy.preload();
 
+        this.game.load.image('pixel', 'assets/pixel.png');
+
     },
 
     create: function() {
@@ -26,6 +28,12 @@ var playState = {
         this.level.create();
         this.player.create();
         this.enemy.create(4);
+
+        this.emitter = this.game.add.emitter(0, 0, 15);
+        this.emitter.makeParticles('pixel');
+        this.emitter.setYSpeed(-150, 150);
+        this.emitter.setXSpeed(-150, 150);
+        this.emitter.gravity = 0;
 
     },
 
@@ -78,6 +86,9 @@ var playState = {
     _playerDie: function () {
 
         this.player.sprite.kill();
+        this.emitter.x = this.player.sprite.x;
+        this.emitter.y = this.player.sprite.y;
+        this.emitter.start(true, 600, null, 15);
 
     },
 
@@ -85,6 +96,7 @@ var playState = {
 
         this.player.hasKey(true);
         this.level.key.sprite.kill();
+        this.game.add.tween(this.player.sprite.scale).to({x: 0.6, y:0.6}, 50).to({x: 0.38, y:0.38}, 150).start()
 
     },
 
