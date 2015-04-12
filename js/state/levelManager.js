@@ -29,11 +29,18 @@ var levelManagerState = {
                 "dataFile": "assets/tilemaps/maps/sf-level-2.json",
                 "tilesetName": "sprite-level-2",
                 "keyParams":
-                {
-                    "color": "yellow",
-                    positionX: 100,
-                    positionY: 500
-                }
+                [
+                    {
+                        "color": "orange",
+                        positionX: 100,
+                        positionY: 500
+                    },
+                    {
+                        "color": "green",
+                        positionX: 100,
+                        positionY: 400
+                    }
+                ]
             },
             {
                 "id": 3,
