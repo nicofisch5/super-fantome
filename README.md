@@ -14,7 +14,10 @@ Vous devez récupérer une clé de couleur puis l'insérer dans une serrure, san
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
-- Changement de niveau
+- Plusieurs clés
+- Score
+- Vies
 - Définir taille du canvas, pour affichage score et clé
-- Fin de la partie
-
+- Intelligence déplacement patates
+- Amélioration menu
+- Ajout bonus
