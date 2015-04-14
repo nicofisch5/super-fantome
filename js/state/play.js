@@ -94,7 +94,7 @@ var playState = {
 
     _playerCatchKey: function () {
 
-        this.player.hasKey(true);
+        this.player.setKey(this.level.key);
         this.level.key.sprite.kill();
         this.game.add.tween(this.player.sprite.scale).to({x: 0.6, y:0.6}, 50).to({x: 0.38, y:0.38}, 150).start()
 

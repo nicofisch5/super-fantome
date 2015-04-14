@@ -4,7 +4,7 @@ Level = function(game, params) {
     this.params = params;
 
     this.layer;
-    this.key;
+    this.keys = new Array();
 
 };
 
@@ -21,8 +21,15 @@ Level.prototype = {
         );
 
         // Key
-        this.key = new Key(this.game, this.params.keyParams);
-        this.key.preload();
+        if (isNaN(this.params.keyParams.length)) {
+            this.params.keyParams = [this.params.keyParams];
+        }
+
+        this.params.keyParams.forEach(function (keyParam) {
+            var key = new Key(this.game, keyParam);
+            key.preload();
+            this.keys.push(key);
+        }, this);
 
     },
 
@@ -51,8 +58,11 @@ Level.prototype = {
         this.layer.resizeWorld();
 
         // Key
-        this.key.create();
-        console.log('Level - END create');
+        //this.key.create();
+        this.keys.forEach(function (key) {
+            key.create();
+        });
+
         // Lock
         // this.tilemap.setTileIndexCallback
 

@@ -21,6 +21,12 @@ var levelManagerState = {
                     "color": "yellow",
                     positionX: 500,// 100,
                     positionY: 100// 500
+                },
+                "lockParams":
+                {
+                    "color": "yellow",
+                    positionX: 500,// 100,
+                    positionY: 100// 500
                 }
             },
             {

@@ -5,6 +5,7 @@ Key = function(game, params) {
     this.sprite = null;
     this.params = params;
     this.colors = ["yellow", "orange", "blue", "green"];
+    this.currentColor;
 
 };
 
@@ -29,11 +30,13 @@ Key.prototype = {
 
     create: function () {
 
+        this.currentColor = this.params.color;
+
         this.sprite = this.game.add.sprite(
             this.params.positionX,
             this.params.positionY,
             'key',
-            this.colors.indexOf(this.params.color)
+            this.colors.indexOf(this.currentColor)
         );
 
         game.physics.arcade.enable(this.sprite);

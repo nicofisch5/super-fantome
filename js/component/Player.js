@@ -5,7 +5,6 @@ Player = function(game) {
     this.cursors = null;
     this.lastYPosition;
     this.velocity = 150;
-    this.key = false;
 
 };
 
@@ -122,6 +121,14 @@ Player.prototype = {
 
         this.sprite.body.velocity.x = 0;
         this.sprite.body.velocity.y = 0;
+
+    },
+
+    setKey: function (key) {
+
+        if (typeof key !== 'undefined') {
+            this.key = key;
+        }
 
     },
 
