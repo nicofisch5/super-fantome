@@ -25,8 +25,7 @@ var levelManagerState = {
                 "lockParams":
                 {
                     "color": "yellow",
-                    positionX: 500,// 100,
-                    positionY: 100// 500
+                    "action": "endLevel"
                 }
             },
             {
@@ -76,8 +75,6 @@ var levelManagerState = {
                 break;
             }
         }
-
-        console.log(this.currentLevelParam);
 
     },
 

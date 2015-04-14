@@ -5,6 +5,8 @@ Level = function(game, params) {
 
     this.layer;
     this.keys = new Array();
+    this.keysSprite;
+    this.locks = new Array();
 
 };
 
@@ -20,7 +22,7 @@ Level.prototype = {
             Phaser.Tilemap.TILED_JSON // The format of the map data. CSV or TILED_JSON
         );
 
-        // Key
+        // Keys
         if (isNaN(this.params.keyParams.length)) {
             this.params.keyParams = [this.params.keyParams];
         }
@@ -29,6 +31,17 @@ Level.prototype = {
             var key = new Key(this.game, keyParam);
             key.preload();
             this.keys.push(key);
+        }, this);
+
+        // Locks
+        if (isNaN(this.params.lockParams.length)) {
+            this.params.lockParams = [this.params.lockParams];
+        }
+
+        this.params.lockParams.forEach(function (lockParam) {
+            var lock = new Lock(this.game, lockParam);
+            lock.preload();
+            this.locks.push(lock);
         }, this);
 
     },
@@ -58,12 +71,17 @@ Level.prototype = {
         this.layer.resizeWorld();
 
         // Key
-        //this.key.create();
+        this.keysSprite = game.add.group();
+        //this.keysSprite.enableBody = true;
         this.keys.forEach(function (key) {
             key.create();
-        });
+            this.keysSprite.add(key.sprite);
+        }, this);
 
         // Lock
+        this.locks.forEach(function (lock) {
+            lock.create();
+        });
         // this.tilemap.setTileIndexCallback
 
         // Add debug information

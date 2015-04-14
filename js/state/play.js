@@ -58,9 +58,10 @@ var playState = {
         game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this._endGame, null, this);
 
         // Collision between player and key
-        if (typeof this.level.key !== 'undefined') {
+        /*if (typeof this.level.key !== 'undefined') {
             game.physics.arcade.collide(this.player.sprite, this.level.key.sprite, this._playerCatchKey, null, this);
-        }
+        }*/
+        game.physics.arcade.collide(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
 
         this.player.update();
         this.enemy.update(this.player);

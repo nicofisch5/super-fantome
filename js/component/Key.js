@@ -24,10 +24,6 @@ Key.prototype = {
 
     },
 
-    init: function () {
-
-    },
-
     create: function () {
 
         this.currentColor = this.params.color;
