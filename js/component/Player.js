@@ -132,11 +132,7 @@ Player.prototype = {
 
     },
 
-    hasKey: function (key) {
-
-        if (typeof key !== 'undefined') {
-            this.key = key;
-        }
+    getKey: function () {
 
         return this.key;
 

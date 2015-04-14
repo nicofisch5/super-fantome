@@ -75,6 +75,7 @@ Level.prototype = {
         //this.keysSprite.enableBody = true;
         this.keys.forEach(function (key) {
             key.create();
+            key.sprite.creator = key;
             this.keysSprite.add(key.sprite);
         }, this);
 

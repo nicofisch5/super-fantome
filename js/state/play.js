@@ -40,13 +40,21 @@ var playState = {
     update: function() {
 
         // Collision between player and lock
-        if (true === this.player.hasKey()) {
+        /*if (true === this.player.hasKey()) {
             this.level.tilemap.setTileIndexCallback(
                 55, // indexes
                 this._playerTouchLock, // callback
                 this // callbackContext
             );
-        }
+        }*/
+
+        this.level.locks.forEach(function (lock) {
+            this.level.tilemap.setTileIndexCallback(
+                lock.currentIndex, // indexes
+                this._playerTouchLock, // callback
+                this // callbackContext
+            );
+        }, this);
 
         // Collision between player and world
         game.physics.arcade.collide(this.player.sprite, this.level.layer);
@@ -93,23 +101,42 @@ var playState = {
 
     },
 
-    _playerCatchKey: function () {
+    _playerCatchKey: function (playerSprite, keysSprite) {
 
-        this.player.setKey(this.level.key);
-        this.level.key.sprite.kill();
-        this.game.add.tween(this.player.sprite.scale).to({x: 0.6, y:0.6}, 50).to({x: 0.38, y:0.38}, 150).start()
+        this.player.setKey(keysSprite.creator);
+        keysSprite.kill();
+        this.game.add.tween(playerSprite.scale)
+            .to({x: 0.6, y:0.6}, 50)
+            .to({x: 0.38, y:0.38}, 150)
+            .start();
 
     },
 
-    _playerTouchLock: function () {
+    _playerTouchLock: function (playerSprite, tile) {
 
-        if (true === this.player.hasKey()) {
+        // Get lock by index
+        var currentLock;
+        this.level.locks.forEach(function (lock) {
+            if (tile.index === lock.currentIndex) {
+                currentLock = lock;
+            }
+        }, this);
+
+        // Check if key matches with lock
+        var currenKey = this.player.getKey();
+        if (currenKey.currentColor === currentLock.currentColor) {
+            if (currentLock.currentAction == 'goToNextLevel') {
+                this._goToNextLevel();
+            }
+        }
+
+        /*if (true === this.player.hasKey()) {
             console.log('You win !!');
             this._goToNextLevel()
         } else {
             console.log('stop');
             //this.player.stop();
-        }
+        }*/
 
     },
 

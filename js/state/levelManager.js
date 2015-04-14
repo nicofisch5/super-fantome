@@ -25,7 +25,7 @@ var levelManagerState = {
                 "lockParams":
                 {
                     "color": "yellow",
-                    "action": "endLevel"
+                    "action": "goToNextLevel"
                 }
             },
             {

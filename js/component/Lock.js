@@ -21,6 +21,8 @@ Lock = function(game, params) {
         }
     ];
     this.currentColor;
+    this.currentAction;
+    this.currentIndex;
 
 };
 
@@ -33,15 +35,12 @@ Lock.prototype = {
     create: function () {
 
         this.currentColor = this.params.color;
-
-        this.sprite = this.game.add.sprite(
-            this.params.positionX,
-            this.params.positionY,
-            'Lock',
-            this.colors.indexOf(this.currentColor)
-        );
-
-        game.physics.arcade.enable(this.sprite);
+        this.currentAction = this.params.action;
+        this.colors.forEach(function (obj) {
+            if (obj.color == this.currentColor) {
+                this.currentIndex = obj.index;
+            }
+        }, this);
 
     },
 
