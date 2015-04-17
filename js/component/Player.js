@@ -129,11 +129,20 @@ Player.prototype = {
 
     },
 
+    /**
+     * Set key to player
+     *
+     * @param Key key
+     * @returns {boolean}
+     */
     setKey: function (key) {
 
-        if (typeof key !== 'undefined') {
+        if (typeof this.getKey() == 'undefined' && typeof key !== 'undefined') {
             this.key = key;
+            return true;
         }
+
+        return false;
 
     },
 
