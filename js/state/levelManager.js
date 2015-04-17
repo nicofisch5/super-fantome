@@ -45,7 +45,12 @@ var levelManagerState = {
                         positionX: 100,
                         positionY: 400
                     }
-                ]
+                ],
+                "lockParams":
+                {
+                    "color": "orange",
+                    "action": "goToNextLevel"
+                }
             },
             {
                 "id": 3,
