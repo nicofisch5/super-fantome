@@ -35,6 +35,8 @@ Key.prototype = {
             this.colors.indexOf(this.currentColor)
         );
 
+        this.sprite.immovable = true;
+
         game.physics.arcade.enable(this.sprite);
 
     },
