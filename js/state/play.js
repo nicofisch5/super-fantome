@@ -68,6 +68,9 @@ var playState = {
         // Collision between player and key
         game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
 
+        // Player out of bounds
+        this.player.sprite.events.onOutOfBounds.add(this._endGame, this);
+
         this.player.update();
         this.enemy.update(this.player);
 
@@ -117,6 +120,13 @@ var playState = {
 
     },
 
+    /**
+     * Event when player touch a lock
+     *
+     * @param Sprite playerSprite
+     * @param Tile tile
+     * @private
+     */
     _playerTouchLock: function (playerSprite, tile) {
 
         // Get lock by index
@@ -132,29 +142,41 @@ var playState = {
         if (currenKey && currenKey.currentColor === currentLock.currentColor) {
             if (currentLock.currentAction == 'goToNextLevel') {
                 this._goToNextLevel();
+            } else if (currentLock.currentAction == 'tileDisappear') {
+                this.player.setKey(null);
+                this._tileDisappear(tile);
             }
         }
 
-        /*if (true === this.player.hasKey()) {
-            console.log('You win !!');
-            this._goToNextLevel()
-        } else {
-            console.log('stop');
-            //this.player.stop();
-        }*/
-
     },
 
+    /**
+     * Go to next level
+     *
+     * @private
+     */
     _goToNextLevel: function () {
 
         this.game.state.start('levelManager');
 
     },
 
+    /**
+     * Tile disappear
+     *
+     * @param Tile tile
+     * @private
+     */
+    _tileDisappear: function (tile) {
+
+        this.level.tilemap.removeTile(tile.x, tile.y);
+
+    },
+
     render: function() {
 
-        game.debug.cameraInfo(game.camera, 32, 32);
-        this.player.render();
+        /*game.debug.cameraInfo(game.camera, 32, 32);
+        this.player.render();*/
 
     }
 
