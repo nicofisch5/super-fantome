@@ -62,7 +62,7 @@ Player.prototype = {
          * Checks if sprite is still within the world each frame
          * when it leaves the world it dispatches Sprite.events.onOutOfBounds and optionally kills the sprite (if Sprite.outOfBoundsKill is true).
          */
-        this.sprite.checkWorldBounds = true;
+        this.sprite.checkWorldBounds = true;;
 
         // Pass to the other side
         /*this.sprite.events.onOutOfBounds.add(
@@ -137,7 +137,7 @@ Player.prototype = {
      */
     setKey: function (key) {
 
-        if (typeof this.getKey() == 'undefined' && typeof key !== 'undefined') {
+        if (typeof this.getKey() == 'undefined' || this.getKey() == null || key == null) {
             this.key = key;
             return true;
         }
