@@ -19,8 +19,8 @@ var levelManagerState = {
                 "keyParams":
                 {
                     "color": "yellow",
-                    positionX: 500,// 100,
-                    positionY: 100// 500
+                    positionX: 500,
+                    positionY: 100
                 },
                 "lockParams":
                 {
@@ -42,15 +42,21 @@ var levelManagerState = {
                     },
                     {
                         "color": "green",
-                        positionX: 100,
-                        positionY: 400
+                        positionX: 455,
+                        positionY: 30
                     }
                 ],
                 "lockParams":
-                {
-                    "color": "orange",
-                    "action": "goToNextLevel"
-                }
+                [
+                    {
+                        "color": "orange",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "green",
+                        "action": "goToNextLevel"
+                    }
+                ]
             },
             {
                 "id": 3,
