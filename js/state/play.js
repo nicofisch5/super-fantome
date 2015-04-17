@@ -66,10 +66,7 @@ var playState = {
         game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this._endGame, null, this);
 
         // Collision between player and key
-        /*if (typeof this.level.key !== 'undefined') {
-            game.physics.arcade.collide(this.player.sprite, this.level.key.sprite, this._playerCatchKey, null, this);
-        }*/
-        game.physics.arcade.collide(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
+        game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
 
         this.player.update();
         this.enemy.update(this.player);
@@ -101,14 +98,22 @@ var playState = {
 
     },
 
+    /**
+     * Event when player catch a key
+     *
+     * @param Sprite playerSprite
+     * @param Sprite keysSprite
+     * @private
+     */
     _playerCatchKey: function (playerSprite, keysSprite) {
 
-        this.player.setKey(keysSprite.creator);
-        keysSprite.kill();
-        this.game.add.tween(playerSprite.scale)
-            .to({x: 0.6, y:0.6}, 50)
-            .to({x: 0.38, y:0.38}, 150)
-            .start();
+        if (true === this.player.setKey(keysSprite.creator)) {
+            keysSprite.kill();
+            this.game.add.tween(playerSprite.scale)
+                .to({x: 0.6, y: 0.6}, 50)
+                .to({x: 0.38, y: 0.38}, 150)
+                .start();
+        }
 
     },
 
@@ -124,7 +129,7 @@ var playState = {
 
         // Check if key matches with lock
         var currenKey = this.player.getKey();
-        if (currenKey.currentColor === currentLock.currentColor) {
+        if (currenKey && currenKey.currentColor === currentLock.currentColor) {
             if (currentLock.currentAction == 'goToNextLevel') {
                 this._goToNextLevel();
             }
