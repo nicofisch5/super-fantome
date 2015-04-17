@@ -58,7 +58,7 @@ Enemy.prototype = {
         enemy.scale.setTo(0.38, 0.38);
 
         // Set the anchor point centered at the bottom
-        enemy.anchor.setTo(0.5, 1);
+        //enemy.anchor.setTo(0.5, 1);
         // Add gravity to see it fall
         //enemy.body.gravity.y = 500;
 
