@@ -82,31 +82,36 @@ Player.prototype = {
 
     update: function() {
 
-        // If the left arrow key is pressed
-        if (this.cursor.left.isDown) {
-            // Move the player to the left
-            this.sprite.animations.play('left');
-            this.sprite.body.velocity.x = this.velocity * -1;
-            this.sprite.angle = 0;
-        }
-        // If the right arrow key is pressed
-        else if (this.cursor.right.isDown) {
-            // Move the player to the right
-            this.sprite.animations.play('right');
-            this.sprite.body.velocity.x = this.velocity;
-            this.sprite.angle = 0;
-        }
-        // If the top arrow key is pressed
-        else if (this.cursor.up.isDown) {
-            // Move the player to the right
-            this.sprite.body.velocity.y = this.velocity * -1;
-            this.sprite.angle = 15;
-        }
-        // If the bottom arrow key is pressed
-        else if (this.cursor.down.isDown) {
-            // Move the player to the right
-            this.sprite.body.velocity.y = this.velocity;
-            this.sprite.angle = -15;
+        if (this.cursor.left.isDown || this.cursor.right.isDown || this.cursor.up.isDown || this.cursor.down.isDown) {
+            // If the left arrow key is pressed
+            if (this.cursor.left.isDown) {
+                // Move the player to the left
+                this.sprite.animations.play('left');
+                this.sprite.body.velocity.x = this.velocity * -1;
+                //this.sprite.angle = 0;
+            }
+            // If the right arrow key is pressed
+            else if (this.cursor.right.isDown) {
+                // Move the player to the right
+                this.sprite.animations.play('right');
+                this.sprite.body.velocity.x = this.velocity;
+                //this.sprite.angle = 0;
+            }
+
+            // If the top arrow key is pressed
+            if (this.cursor.up.isDown) {
+                // Move the player to the right
+                this.sprite.body.velocity.y = this.velocity * -1;
+                this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name  == 'right' ? 1 : -1);
+            }
+            // If the bottom arrow key is pressed
+            else if (this.cursor.down.isDown) {
+                // Move the player to the right
+                this.sprite.body.velocity.y = this.velocity;
+                this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name == 'right' ? 1 : -1);
+            } else {
+                this.sprite.angle = 0;
+            }
         }
         // If no one is pressed
         else {
