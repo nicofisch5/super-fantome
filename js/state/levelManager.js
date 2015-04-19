@@ -16,6 +16,7 @@ var levelManagerState = {
                 "index": 'tilemap-level-1',
                 "dataFile": "assets/tilemaps/maps/sf-level-1.json",
                 "tilesetName": "sprite-level-1",
+                "timer": 60,
                 "keyParams":
                 {
                     "color": "yellow",

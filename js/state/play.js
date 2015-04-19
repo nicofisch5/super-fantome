@@ -35,6 +35,12 @@ var playState = {
         this.emitter.setXSpeed(-150, 150);
         this.emitter.gravity = 0;
 
+        // Timer
+        this.countdownText = 'Temps ' + this.level.timer;
+        this.countdownText = this.game.add.text(1100, 50, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
+        game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
+
+
     },
 
     update: function() {
@@ -73,6 +79,8 @@ var playState = {
 
         this.player.update();
         this.enemy.update(this.player);
+
+        this.countdownText.text = 'Temps ' + this.level.timer;
 
         //this.layer.enableBody = true;
         //this.layer.immovable = true;
@@ -170,6 +178,17 @@ var playState = {
     _tileDisappear: function (tile) {
 
         this.level.tilemap.removeTile(tile.x, tile.y);
+
+    },
+
+    /**
+     * Countdown
+     *
+     * @private
+     */
+    _updateTimer: function () {
+
+        this.level.timer -= 1;
 
     },
 

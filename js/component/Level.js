@@ -7,6 +7,7 @@ Level = function(game, params) {
     this.keys = new Array();
     this.keysSprite;
     this.locks = new Array();
+    this.timer = 120;
 
 };
 
@@ -43,6 +44,11 @@ Level.prototype = {
             lock.preload();
             this.locks.push(lock);
         }, this);
+
+        // Timer
+        if (typeof this.params.timer != 'undefined') {
+            this.timer = this.params.timer;
+        }
 
     },
 
@@ -83,6 +89,7 @@ Level.prototype = {
         this.locks.forEach(function (lock) {
             lock.create();
         });
+
         // this.tilemap.setTileIndexCallback
 
         // Add debug information
