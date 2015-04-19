@@ -62,14 +62,110 @@ var levelManagerState = {
                 "id": 3,
                 "index": 'tilemap-level-3',
                 "dataFile": "assets/tilemaps/maps/sf-level-3.json",
-                "tilesetName": "sprite-level-3"
+                "tilesetName": "sprite-level-3",
+                "keyParams":
+                    [
+                        {
+                            "color": "blue",
+                            positionX: 555,
+                            positionY: 125
+                        },
+                        {
+                            "color": "green",
+                            positionX: 255,
+                            positionY: 640
+                        }
+                    ],
+                "lockParams":
+                    [
+                        {
+                            "color": "blue",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "green",
+                            "action": "goToNextLevel"
+                        }
+                    ]
             },
             {
                 "id": 4,
                 "index": 'tilemap-level-4',
                 "dataFile": "assets/tilemaps/maps/sf-level-4.json",
-                "tilesetName": "sprite-level-4"
-            }
+                "tilesetName": "sprite-level-4",
+                "keyParams":
+                    [
+                        {
+                            "color": "green",
+                            positionX: 500,
+                            positionY: 125
+                        },
+                        {
+                            "color": "orange",
+                            positionX: 500,
+                            positionY: 405
+                        },
+                        {
+                            "color": "yellow",
+                            positionX: 550,
+                            positionY: 445
+                        },
+                        {
+                            "color": "blue",
+                            positionX: 135,
+                            positionY: 460
+                        }
+                    ],
+                "lockParams":
+                    [
+                        {
+                            "color": "green",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "orange",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "yellow",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "blue",
+                            "action": "goToNextLevel"
+                        }
+                    ]
+            },
+            {
+                "id": 5,
+                "index": 'tilemap-level-5',
+                "dataFile": "assets/tilemaps/maps/sf-level-5.json",
+                "tilesetName": "sprite-level-5",
+                "keyParams":
+                    [
+                        {
+                            "color": "orange",
+                            positionX: 100,
+                            positionY: 500
+                        },
+                        {
+                            "color": "green",
+                            positionX: 455,
+                            positionY: 30
+                        }
+                    ],
+                "lockParams":
+                    [
+                        {
+                            "color": "orange",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "green",
+                            "action": "goToNextLevel"
+                        }
+                    ]
+            },
         ];
 
         this._getCurrentLevelParam();

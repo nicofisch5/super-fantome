@@ -15,8 +15,6 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
-- Gestion de la disparition des tiles
-- Passage d'un coté à l'autre de l'espace
 - Score
 - Vies
 - Définir taille du canvas, pour affichage score et clé
@@ -24,3 +22,4 @@ Simple ? A vous de voir ...
 - Amélioration menu
 - Ajout bonus
 - Pouvoir se libérer d'une clé
+- Passage d'un coté à l'autre de l'espace
