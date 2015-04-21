@@ -1,4 +1,20 @@
-==== 1.0 ====
+==== 0.2 ====
+4 premiers niveaux jouables
+
+=== Evolutions ===
+Refactorisation du code
+Ajout de 2 niveaux réalisés par Alice et Théo
+Ajout d'un compte à rebours
+Restriction à une seule clé à la fois
+Niveau avec multi-clés et multi-serrure
+Mort du fantôme lors de sa sortie hors des limites du niveaux
+
+=== Corrections ===
+Ancre des patates
+Orientation de l'angle du fantôme lors de son déplacement
+
+
+==== 0.1 ====
 2 premiers niveaux jouables
 
 === Evolutions ===

@@ -15,11 +15,14 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
+- Compte à rebours
 - Score
 - Vies
+- Fin du jeu
+- Nombre d'ennemies comme paramètre des niveaux
 - Définir taille du canvas, pour affichage score et clé
-- Intelligence déplacement patates
-- Amélioration menu
 - Ajout bonus
 - Pouvoir se libérer d'une clé
+- Intelligence déplacement patates
+- Amélioration menu
 - Passage d'un coté à l'autre de l'espace
