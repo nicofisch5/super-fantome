@@ -12,6 +12,8 @@ var game = new Phaser.Game(
     'phaser-example'
 );
 
+game.version = '0.2'
+
 /** Define all the states */
 game.state.add('boot', bootState);
 game.state.add('load', loadState);
