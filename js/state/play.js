@@ -38,7 +38,7 @@ var playState = {
         // Timer
         this.countdownText = 'Temps ' + this.level.timer;
         this.countdownText = this.game.add.text(1100, 50, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
-        game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
+        this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
 
 
     },
@@ -189,6 +189,10 @@ var playState = {
     _updateTimer: function () {
 
         this.level.timer -= 1;
+        if (this.level.timer == 0) {
+            game.time.events.remove(this.countdown);
+            this._endGame();
+        }
 
     },
 
