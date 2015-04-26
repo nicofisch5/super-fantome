@@ -15,7 +15,6 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
-- Compte à rebours
 - Score
 - Vies
 - Fin du jeu
