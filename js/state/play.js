@@ -35,11 +35,18 @@ var playState = {
         this.emitter.setXSpeed(-150, 150);
         this.emitter.gravity = 0;
 
+        var x = 1100;
+        var y = 50;
+
         // Timer
         this.countdownText = 'Temps ' + this.level.timer;
-        this.countdownText = this.game.add.text(1100, 50, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.countdownText = this.game.add.text(x, y, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
         this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
 
+        // Lives
+        y += 40;
+        var livesText = 'Vies ' + this.game.lives;
+        this.game.add.text(x, y, livesText, { font: "18px Sawasdee", fill: "#55ffff" });
 
     },
 
@@ -92,10 +99,16 @@ var playState = {
         this._playerDie();
 
         this.enemy.endGame();
-        game.gameOver = true;
+
+        var goToState = 'levelManager';
+        game.lives--;
+        if (game.lives == 0) {
+            game.gameOver = true;
+            goToState = 'boot';
+        }
 
         game.time.events.add(1500, function() {
-            game.state.start('menu');
+            game.state.start(goToState);
         }, this);
 
     },
@@ -165,6 +178,7 @@ var playState = {
      */
     _goToNextLevel: function () {
 
+        this.game.levelNumber++;
         this.game.state.start('levelManager');
 
     },

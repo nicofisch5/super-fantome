@@ -14,7 +14,8 @@ var bootState = {
 
         // Game environment
         this.game.name = 'Super fantôme';
-        this.game.levelNumber = 0;
+        this.game.levelNumber = 1;
+        this.game.lives = 2;
 
         // When all assets are loaded, go to the 'menu' state
         this.game.state.start('load');

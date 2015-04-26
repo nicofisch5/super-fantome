@@ -8,8 +8,6 @@ var levelManagerState = {
 
     preload: function() {
 
-        this.game.levelNumber++;
-
         this.params = [
             {
                 "id": 1,
@@ -191,6 +189,7 @@ var levelManagerState = {
 
         var startText = '>>> Espace pour démarrer <<<';
         var levelText = 'Niveau ' + game.levelNumber;
+        var livesText = 'Vies : ' + game.lives;
         var x = game.world.width/2;
         var y = game.world.height/4;
 
@@ -208,6 +207,12 @@ var levelManagerState = {
         startText = this.game.add.text(x, y, startText, { font: "30px Sawasdee", fill: "#55ffff" });
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
+
+        // Adding a text centered on the screen
+        y += 130;
+        livesText = this.game.add.text(x, y, livesText, { font: "24px Sawasdee", fill: "#55ffff" });
+        livesText.align = 'center';
+        livesText.anchor.setTo(0.5, 0.5);
 
     },
 

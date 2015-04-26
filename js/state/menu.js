@@ -36,7 +36,6 @@ var menuState = {
         // Game over
         if (game.gameOver === true) {
             game.gameOver = false;
-            game.levelNumber = 0;
 
             y += 130;
             goText = this.game.add.text(x, y, goText, style);
