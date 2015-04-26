@@ -16,7 +16,6 @@ Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
 - Score
-- Vies
 - Fin du jeu
 - Nombre d'ennemies comme paramètre des niveaux
 - Définir taille du canvas, pour affichage score et clé
