@@ -43,7 +43,7 @@ Enemy.prototype = {
     _createEnemy: function () {
 
         // Random position
-        positionX = Math.floor(Math.random() * (gameWidth));
+        positionX = Math.floor(Math.random() * (gameWidth - gameInfoSpaceWidth));
         positionY = Math.floor(Math.random() * (gameHeight));
 
         positionX = (positionX < 80) ? 80 : positionX;

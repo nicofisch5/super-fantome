@@ -2,7 +2,8 @@
  * Game launcher
  */
 
-var gameWidth = 70 * 15 + 180; // 1150
+var gameInfoSpaceWidth = 180;
+var gameWidth = 70 * 15 + gameInfoSpaceWidth; // 1150
 var gameHeight = 70 * 10; // 700
 
 var game = new Phaser.Game(
