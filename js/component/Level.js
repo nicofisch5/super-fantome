@@ -7,7 +7,7 @@ Level = function(game, params) {
     this.keys = new Array();
     this.keysSprite;
     this.locks = new Array();
-    this.timer = 120;
+    this.timer = 90;
 
 };
 

@@ -14,7 +14,7 @@ var levelManagerState = {
                 "index": 'tilemap-level-1',
                 "dataFile": "assets/tilemaps/maps/sf-level-1.json",
                 "tilesetName": "sprite-level-1",
-                "timer": 60,
+                "timer": 45,
                 "keyParams":
                 {
                     "color": "yellow",
@@ -111,41 +111,12 @@ var levelManagerState = {
                 "index": 'tilemap-level-4',
                 "dataFile": "assets/tilemaps/maps/sf-level-4.json",
                 "tilesetName": "sprite-level-4",
+                "timer": 120,
                 "keyParams":
                     [
                         {
                             "color": "orange",
                             positionX: 110,
-                            positionY: 500
-                        },
-                        {
-                            "color": "green",
-                            positionX: 455,
-                            positionY: 30
-                        }
-                    ],
-                "lockParams":
-                    [
-                        {
-                            "color": "orange",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "green",
-                            "action": "goToNextLevel"
-                        }
-                    ]
-            },
-            {
-                "id": 5,
-                "index": 'tilemap-level-5',
-                "dataFile": "assets/tilemaps/maps/sf-level-5.json",
-                "tilesetName": "sprite-level-5",
-                "keyParams":
-                    [
-                        {
-                            "color": "orange",
-                            positionX: 100,
                             positionY: 500
                         },
                         {
