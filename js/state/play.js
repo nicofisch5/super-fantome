@@ -37,6 +37,11 @@ var playState = {
         this.emitter.setXSpeed(-150, 150);
         this.emitter.gravity = 0;
 
+        // Lives
+        this.scoreText = 'Score ' + this.game.score;
+        this.scoreText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.scoreText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.infoSpace.y += this.infoSpace.gap;
+
         // Timer
         this.countdownText = 'Temps ' + this.level.timer;
         this.countdownText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
@@ -80,6 +85,7 @@ var playState = {
         this.enemy.update(this.player);
 
         this.countdownText.text = 'Temps ' + this.level.timer;
+        this.scoreText.text = 'Score ' + this.game.score;
 
         //this.layer.enableBody = true;
         //this.layer.immovable = true;
@@ -128,6 +134,8 @@ var playState = {
             keysSprite.x = this.infoSpace.x;
             keysSprite.y = this.infoSpace.y;
             this.infoSpace.y += this.infoSpace.gap;
+
+            this.game.score += 10;
 
             this.game.add.tween(playerSprite.scale)
                 .to({x: 0.6, y: 0.6}, 50)
@@ -181,6 +189,8 @@ var playState = {
      * @private
      */
     _goToNextLevel: function () {
+
+        this.game.score += this.level.timer;
 
         this.game.levelNumber++;
         this.game.state.start('levelManager');
