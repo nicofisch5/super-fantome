@@ -8,7 +8,7 @@ var menuState = {
 
     create: function() {
         // Defining variables
-        var copyright = 'v' + game.version + ' - @nicofisch5 / tfisch - phaser.io';
+        var copyright = 'v' + game.version + ' - @nicofisch5 / @pouscaille - phaser.io';
         var startText = '>>> Espace pour continuer <<<';
         var goText = 'GAME OVER';
         var styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
