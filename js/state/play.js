@@ -12,6 +12,8 @@ var playState = {
         this.player = new Player(this.game);
         this.enemy = new Enemy(this.game);
 
+        this.infoSpace = {"x": 1100, "y": 50, "gap": 40};
+
     },
 
     preload: function() {
@@ -35,18 +37,16 @@ var playState = {
         this.emitter.setXSpeed(-150, 150);
         this.emitter.gravity = 0;
 
-        var x = 1100;
-        var y = 50;
-
         // Timer
         this.countdownText = 'Temps ' + this.level.timer;
-        this.countdownText = this.game.add.text(x, y, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.countdownText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
         this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
+        this.infoSpace.y += this.infoSpace.gap;
 
         // Lives
-        y += 40;
         var livesText = 'Vies ' + this.game.lives;
-        this.game.add.text(x, y, livesText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.game.add.text(this.infoSpace.x, this.infoSpace.y, livesText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.infoSpace.y += this.infoSpace.gap;
 
     },
 
@@ -124,7 +124,11 @@ var playState = {
     _playerCatchKey: function (playerSprite, keysSprite) {
 
         if (true === this.player.setKey(keysSprite.creator)) {
-            keysSprite.kill();
+            //keysSprite.kill();
+            keysSprite.x = this.infoSpace.x;
+            keysSprite.y = this.infoSpace.y;
+            this.infoSpace.y += this.infoSpace.gap;
+
             this.game.add.tween(playerSprite.scale)
                 .to({x: 0.6, y: 0.6}, 50)
                 .to({x: 0.38, y: 0.38}, 150)
