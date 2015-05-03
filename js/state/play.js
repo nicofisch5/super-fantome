@@ -177,12 +177,6 @@ var playState = {
 
     },
 
-    _collideTest: function (playerSprite, levelTile) {
-
-
-
-    },
-
     /**
      * Go to next level
      *
