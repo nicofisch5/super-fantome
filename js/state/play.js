@@ -53,24 +53,16 @@ var playState = {
     update: function() {
 
         // Collision between player and lock
-        /*if (true === this.player.hasKey()) {
-            this.level.tilemap.setTileIndexCallback(
-                55, // indexes
-                this._playerTouchLock, // callback
-                this // callbackContext
-            );
-        }*/
-
-        this.level.locks.forEach(function (lock) {
+        /*this.level.locks.forEach(function (lock) {
             this.level.tilemap.setTileIndexCallback(
                 lock.currentIndex, // indexes
                 this._playerTouchLock, // callback
                 this // callbackContext
             );
-        }, this);
+        }, this);*/
 
         // Collision between player and world
-        game.physics.arcade.collide(this.player.sprite, this.level.layer);
+        game.physics.arcade.collide(this.player.sprite, this.level.layer, this._playerTouchLock, null, this);
 
         // Collision between enemies and world
         game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer);
@@ -148,26 +140,34 @@ var playState = {
      * @param Tile tile
      * @private
      */
-    _playerTouchLock: function (playerSprite, tile) {
+    _playerTouchLock: function (playerSprite, levelTile) {
 
         // Get lock by index
         var currentLock;
         this.level.locks.forEach(function (lock) {
-            if (tile.index === lock.currentIndex) {
+            if (levelTile.index === lock.currentIndex) {
                 currentLock = lock;
             }
         }, this);
 
         // Check if key matches with lock
         var currenKey = this.player.getKey();
-        if (currenKey && currenKey.currentColor === currentLock.currentColor) {
+        if (currenKey && currentLock && currenKey.currentColor === currentLock.currentColor) {
             if (currentLock.currentAction == 'goToNextLevel') {
                 this._goToNextLevel();
+                return;
             } else if (currentLock.currentAction == 'tileDisappear') {
                 this.player.setKey(null);
-                this._tileDisappear(tile);
+                this._tileDisappear(levelTile);
+                return;
             }
         }
+
+    },
+
+    _collideTest: function (playerSprite, levelTile) {
+
+
 
     },
 
