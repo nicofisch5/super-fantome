@@ -11,6 +11,7 @@ var menuState = {
         var copyright = 'v' + game.version + ' - @nicofisch5 / @pouscaille - phaser.io';
         var startText = '>>> Espace pour continuer <<<';
         var goText = 'GAME OVER';
+        var scoreText = 'Score : ' + game.finalScore;
         var styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
         var style = { font: "30px Sawasdee", fill: "#55ffff" };
         var x = game.world.width/2;
@@ -41,6 +42,11 @@ var menuState = {
             goText = this.game.add.text(x, y, goText, style);
             goText.align = 'center';
             goText.anchor.setTo(0.5, 0.5);
+
+            y += 75;
+            scoreText = this.game.add.text(x, y, scoreText, style);
+            scoreText.align = 'center';
+            scoreText.anchor.setTo(0.5, 0.5);
         }
 
         // If the user already played

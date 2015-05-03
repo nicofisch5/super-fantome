@@ -102,6 +102,7 @@ var playState = {
         game.lives--;
         if (game.lives == 0) {
             game.gameOver = true;
+            this.game.finalScore = this.game.score;
             goToState = 'boot';
         }
 
