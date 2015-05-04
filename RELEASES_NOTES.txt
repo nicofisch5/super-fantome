@@ -1,3 +1,13 @@
+==== 0.4 ====
+Adaptation mobile/tablette
+
+=== Evolutions ===
+Adaptation mobile/tablette
+
+=== Corrections ===
+
+
+
 ==== 0.3 ====
 Temps, vies et score
 

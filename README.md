@@ -15,6 +15,7 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
+- Adaptation mobile/tablette
 - Fin du jeu
 - Nombre d'ennemies comme paramètre des niveaux
 - Ajout bonus
