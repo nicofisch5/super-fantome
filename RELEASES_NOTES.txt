@@ -1,12 +1,14 @@
 ==== 0.3 ====
-
+Temps, vies et score
 
 === Evolutions ===
 Compte à rebours
 Notion de vies
+Score
+5 niveaux jouables
 
 === Corrections ===
-N/A
+Correction erreurs sur tile lock
 
 
 
