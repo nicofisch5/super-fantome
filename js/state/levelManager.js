@@ -116,18 +116,18 @@ var levelManagerState = {
                     [
                         {
                             "color": "green",
-                            positionX: 455,
-                            positionY: 30
+                            positionX: 715,
+                            positionY: 462
                         },
                         {
                             "color": "blue",
-                            positionX: 455,
-                            positionY: 30
+                            positionX: 35,
+                            positionY: 562
                         },
                         {
                             "color": "orange",
-                            positionX: 110,
-                            positionY: 500
+                            positionX: 500,
+                            positionY: 550
                         }
                     ],
                 "lockParams":
@@ -146,7 +146,7 @@ var levelManagerState = {
                         }
                     ]
             },
-            /*{
+            {
                 "id": 5,
                 "index": 'tilemap-level-5',
                 "dataFile": "assets/tilemaps/maps/sf-level-5.json",
@@ -176,7 +176,7 @@ var levelManagerState = {
                             "action": "goToNextLevel"
                         }
                     ]
-            },*/
+            }
         ];
 
         this._getCurrentLevelParam();
