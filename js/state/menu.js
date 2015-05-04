@@ -9,7 +9,15 @@ var menuState = {
     create: function() {
         // Defining variables
         var copyright = 'v' + game.version + ' - @nicofisch5 / @pouscaille - phaser.io';
-        var startText = '>>> Espace pour continuer <<<';
+
+        // Store the relevant text based on the device used
+        if (game.device.desktop) {
+            var startText = '>>> Espace pour continuer <<<';
+        }
+        else {
+            var startText = '>>> Toucher l\'écran pour continuer <<<';
+        }
+
         var goText = 'GAME OVER';
         var scoreText = 'Score : ' + game.finalScore;
         var styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
