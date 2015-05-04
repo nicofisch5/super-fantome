@@ -205,7 +205,7 @@ var levelManagerState = {
         else {
             var startText = '>>> Toucher l\'écran pour démarrer <<<';
         }
-        
+
         var levelText = 'Niveau ' + game.levelNumber;
         var scoreText = 'Score : ' + game.score;
         var livesText = 'Vies : ' + game.lives;
