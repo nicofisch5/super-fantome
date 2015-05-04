@@ -29,7 +29,7 @@ var playState = {
 
         this.level.create();
         this.player.create();
-        this.enemy.create(4);
+        //this.enemy.create(4);
 
         this.emitter = this.game.add.emitter(0, 0, 15);
         this.emitter.makeParticles('pixel');

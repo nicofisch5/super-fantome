@@ -5,6 +5,7 @@ Player = function(game) {
     this.cursors = null;
     this.lastYPosition;
     this.velocity = 150;
+    this.pointerDelta = 10;
 
 };
 
@@ -89,25 +90,29 @@ Player.prototype = {
             // Return the y position of the pointer
             var pointerY = this.game.input.activePointer.y;
 
-            if (pointerX < this.sprite.x) {
+            if (pointerX < this.sprite.x - this.pointerDelta) {
                 // Move the player to the left
                 this.sprite.animations.play('left');
                 this.sprite.body.velocity.x = this.velocity * -1;
-            } else if (pointerX > this.sprite.x) {
+            } else if (pointerX > this.sprite.x + this.pointerDelta) {
                 // Move the player to the right
                 this.sprite.animations.play('right');
                 this.sprite.body.velocity.x = this.velocity;
+            } else {
+                this.sprite.body.velocity.x = 0;
+                this.sprite.angle = 0;
             }
 
-            if (pointerY < this.sprite.y) {
+            if (pointerY < this.sprite.y - this.pointerDelta) {
                 // Move the player up
                 this.sprite.body.velocity.y = this.velocity * -1;
                 this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name  == 'right' ? 1 : -1);
-            } else if (pointerY > this.sprite.y) {
+            } else if (pointerY > this.sprite.y + this.pointerDelta) {
                 // Move the player down
                 this.sprite.body.velocity.y = this.velocity;
                 this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name == 'right' ? 1 : -1);
             } else {
+                this.sprite.body.velocity.y = 0;
                 this.sprite.angle = 0;
             }
 
