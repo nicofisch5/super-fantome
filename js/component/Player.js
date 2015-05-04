@@ -83,7 +83,7 @@ Player.prototype = {
     update: function() {
 
         // If the input is pressed
-        if (this.game.device.desktop && this.game.input.activePointer.isDown) {
+        if (! this.game.device.desktop && this.game.input.activePointer.isDown) {
             // Return the x position of the pointer
             var pointerX = this.game.input.activePointer.x;
             // Return the y position of the pointer
