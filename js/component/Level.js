@@ -55,6 +55,9 @@ Level.prototype = {
         if (typeof this.params.nbEnemies != 'undefined') {
             this.nbEnemies = this.params.nbEnemies;
         }
+        if (! this.game.device.desktop) {
+            this.nbEnemies--;
+        }
 
     },
 
