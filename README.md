@@ -16,10 +16,9 @@ Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
 - Adaptation mobile/tablette
-- Fin du jeu
-- Nombre d'ennemies comme paramètre des niveaux
+- Intelligence déplacement patates
 - Ajout bonus
 - Pouvoir se libérer d'une clé
-- Intelligence déplacement patates
 - Amélioration menu
+- Amélioration fin du jeu
 - Passage d'un coté à l'autre de l'espace

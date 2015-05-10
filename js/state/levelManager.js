@@ -176,6 +176,106 @@ var levelManagerState = {
                             "action": "goToNextLevel"
                         }
                     ]
+            },
+            {
+                "id": 6,
+                "index": "tilemap-level-6",
+                "dataFile": "assets/tilemaps/maps/sf-level-6.json",
+                "tilesetName": "sprite-level-6",
+                "timer": 100,
+                "nbEnemies": 3,
+                "keyParams":
+                    [
+                        {
+                            "color": "orange",
+                            positionX: 35,
+                            positionY: 62
+                        },
+                        {
+                            "color": "blue",
+                            positionX: 350,
+                            positionY: 300
+                        },
+                        {
+                            "color": "green",
+                            positionX: 735,
+                            positionY: 362
+                        },
+                        {
+                            "color": "yellow",
+                            positionX: 560,
+                            positionY: 362
+                        }
+                    ],
+                "lockParams":
+                    [
+                        {
+                            "color": "green",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "blue",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "orange",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "yellow",
+                            "action": "goToNextLevel"
+                        }
+                    ]
+            },
+            {
+                "id": 7,
+                "index": "tilemap-level-7",
+                "dataFile": "assets/tilemaps/maps/sf-level-7.json",
+                "tilesetName": "sprite-level-7",
+                "timer": 100,
+                "keyParams":
+                    [
+                        {
+                            "color": "orange",
+                            positionX: 560,
+                            positionY: 600
+                        },
+                        {
+                            "color": "yellow",
+                            positionX: 610,
+                            positionY: 605
+                        },
+                        {
+                            "color": "blue",
+                            positionX: 660,
+                            positionY: 610
+                        },
+                        {
+                            "color": "green",
+                            positionX: 710,
+                            positionY: 615
+                        },
+
+                    ],
+                "lockParams":
+                    [
+                        {
+                            "color": "orange",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "yellow",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "blue",
+                            "action": "tileDisappear"
+                        },
+                        {
+                            "color": "green",
+                            "action": "goToNextLevel"
+                        }
+                    ]
             }
         ];
 

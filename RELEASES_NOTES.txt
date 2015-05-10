@@ -3,6 +3,8 @@ Adaptation mobile/tablette
 
 === Evolutions ===
 Adaptation mobile/tablette
+Nombre d'ennemies comme paramètre des niveaux
+7 niveaux jouables
 
 === Corrections ===
 

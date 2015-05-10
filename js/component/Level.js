@@ -8,6 +8,7 @@ Level = function(game, params) {
     this.keysSprite;
     this.locks = new Array();
     this.timer = 90;
+    this.nbEnemies = 4;
 
 };
 
@@ -48,6 +49,11 @@ Level.prototype = {
         // Timer
         if (typeof this.params.timer != 'undefined') {
             this.timer = this.params.timer;
+        }
+
+        // Number of enemies
+        if (typeof this.params.nbEnemies != 'undefined') {
+            this.nbEnemies = this.params.nbEnemies;
         }
 
     },
