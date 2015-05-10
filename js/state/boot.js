@@ -16,7 +16,12 @@ var bootState = {
         this.game.name = 'Super fantôme';
         this.game.levelNumber = 1;
         this.game.score = 0;
-        this.game.lives = 2;
+
+        if (game.device.desktop) {
+            this.game.lives = 3;
+        } else {
+            this.game.lives = 4;
+        }
 
         // If the device is not a desktop, so it's a mobile device
         if (! this.game.device.desktop) {
