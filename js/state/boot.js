@@ -11,17 +11,17 @@ var bootState = function(game) {
     game.levelNumber = 1;
     game.score = 0;
 
-    if (game.device.desktop) {
-        game.lives = 3;
-    } else {
-        game.lives = 4;
-    }
-
 };
 
 bootState.prototype = {
 
     create: function() {
+
+        if (game.device.desktop) {
+            game.lives = 3;
+        } else {
+            game.lives = 4;
+        }
 
         // If the device is not a desktop, so it's a mobile device
         if (! game.device.desktop) {

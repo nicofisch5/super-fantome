@@ -4,35 +4,34 @@
  * @type {{preload: preload, create: create}}
  */
 
-var levelManagerState = {
 
-    preload: function() {
+var levelManagerState = function(game) {
 
-        this.params = [
+    this.params = [
+        {
+            "id": 1,
+            "index": "tilemap-level-1",
+            "dataFile": "assets/tilemaps/maps/sf-level-1.json",
+            "tilesetName": "sprite-level-1",
+            "timer": 45,
+            "keyParams":
             {
-                "id": 1,
-                "index": "tilemap-level-1",
-                "dataFile": "assets/tilemaps/maps/sf-level-1.json",
-                "tilesetName": "sprite-level-1",
-                "timer": 45,
-                "keyParams":
-                {
-                    "color": "yellow",
-                    positionX: 500,
-                    positionY: 100
-                },
-                "lockParams":
-                {
-                    "color": "yellow",
-                    "action": "goToNextLevel"
-                }
+                "color": "yellow",
+                positionX: 500,
+                positionY: 100
             },
+            "lockParams":
             {
-                "id": 2,
-                "index": "tilemap-level-2",
-                "dataFile": "assets/tilemaps/maps/sf-level-2.json",
-                "tilesetName": "sprite-level-2",
-                "keyParams":
+                "color": "yellow",
+                "action": "goToNextLevel"
+            }
+        },
+        {
+            "id": 2,
+            "index": "tilemap-level-2",
+            "dataFile": "assets/tilemaps/maps/sf-level-2.json",
+            "tilesetName": "sprite-level-2",
+            "keyParams":
                 [
                     {
                         "color": "blue",
@@ -45,7 +44,7 @@ var levelManagerState = {
                         positionY: 500
                     }
                 ],
-                "lockParams":
+            "lockParams":
                 [
                     {
                         "color": "blue",
@@ -56,228 +55,236 @@ var levelManagerState = {
                         "action": "goToNextLevel"
                     }
                 ]
-            },
-            {
-                "id": 3,
-                "index": "tilemap-level-3",
-                "dataFile": "assets/tilemaps/maps/sf-level-3.json",
-                "tilesetName": "sprite-level-3",
-                "keyParams":
-                    [
-                        {
-                            "color": "green",
-                            positionX: 500,
-                            positionY: 125
-                        },
-                        {
-                            "color": "orange",
-                            positionX: 500,
-                            positionY: 405
-                        },
-                        {
-                            "color": "yellow",
-                            positionX: 550,
-                            positionY: 445
-                        },
-                        {
-                            "color": "blue",
-                            positionX: 135,
-                            positionY: 460
-                        }
-                    ],
-                "lockParams":
-                    [
-                        {
-                            "color": "green",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "orange",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "yellow",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "blue",
-                            "action": "goToNextLevel"
-                        }
-                    ]
+        },
+        {
+            "id": 3,
+            "index": "tilemap-level-3",
+            "dataFile": "assets/tilemaps/maps/sf-level-3.json",
+            "tilesetName": "sprite-level-3",
+            "keyParams":
+                [
+                    {
+                        "color": "green",
+                        positionX: 500,
+                        positionY: 125
+                    },
+                    {
+                        "color": "orange",
+                        positionX: 500,
+                        positionY: 405
+                    },
+                    {
+                        "color": "yellow",
+                        positionX: 550,
+                        positionY: 445
+                    },
+                    {
+                        "color": "blue",
+                        positionX: 135,
+                        positionY: 460
+                    }
+                ],
+            "lockParams":
+                [
+                    {
+                        "color": "green",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "orange",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "yellow",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "blue",
+                        "action": "goToNextLevel"
+                    }
+                ]
 
-            },
-            {
-                "id": 4,
-                "index": "tilemap-level-4",
-                "dataFile": "assets/tilemaps/maps/sf-level-4.json",
-                "tilesetName": "sprite-level-4",
-                "timer": 100,
-                "keyParams":
-                    [
-                        {
-                            "color": "green",
-                            positionX: 715,
-                            positionY: 462
-                        },
-                        {
-                            "color": "blue",
-                            positionX: 35,
-                            positionY: 562
-                        },
-                        {
-                            "color": "orange",
-                            positionX: 500,
-                            positionY: 550
-                        }
-                    ],
-                "lockParams":
-                    [
-                        {
-                            "color": "green",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "blue",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "orange",
-                            "action": "goToNextLevel"
-                        }
-                    ]
-            },
-            {
-                "id": 5,
-                "index": 'tilemap-level-5',
-                "dataFile": "assets/tilemaps/maps/sf-level-5.json",
-                "tilesetName": "sprite-level-5",
-                "timer": 120,
-                "keyParams":
-                    [
-                        {
-                            "color": "orange",
-                            positionX: 110,
-                            positionY: 500
-                        },
-                        {
-                            "color": "green",
-                            positionX: 455,
-                            positionY: 30
-                        }
-                    ],
-                "lockParams":
-                    [
-                        {
-                            "color": "orange",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "green",
-                            "action": "goToNextLevel"
-                        }
-                    ]
-            },
-            {
-                "id": 6,
-                "index": "tilemap-level-6",
-                "dataFile": "assets/tilemaps/maps/sf-level-6.json",
-                "tilesetName": "sprite-level-6",
-                "timer": 100,
-                "nbEnemies": 3,
-                "keyParams":
-                    [
-                        {
-                            "color": "orange",
-                            positionX: 35,
-                            positionY: 62
-                        },
-                        {
-                            "color": "blue",
-                            positionX: 350,
-                            positionY: 300
-                        },
-                        {
-                            "color": "green",
-                            positionX: 735,
-                            positionY: 362
-                        },
-                        {
-                            "color": "yellow",
-                            positionX: 560,
-                            positionY: 362
-                        }
-                    ],
-                "lockParams":
-                    [
-                        {
-                            "color": "green",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "blue",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "orange",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "yellow",
-                            "action": "goToNextLevel"
-                        }
-                    ]
-            },
-            {
-                "id": 7,
-                "index": "tilemap-level-7",
-                "dataFile": "assets/tilemaps/maps/sf-level-7.json",
-                "tilesetName": "sprite-level-7",
-                "timer": 100,
-                "keyParams":
-                    [
-                        {
-                            "color": "orange",
-                            positionX: 560,
-                            positionY: 600
-                        },
-                        {
-                            "color": "yellow",
-                            positionX: 610,
-                            positionY: 605
-                        },
-                        {
-                            "color": "blue",
-                            positionX: 660,
-                            positionY: 610
-                        },
-                        {
-                            "color": "green",
-                            positionX: 710,
-                            positionY: 615
-                        },
+        },
+        {
+            "id": 4,
+            "index": "tilemap-level-4",
+            "dataFile": "assets/tilemaps/maps/sf-level-4.json",
+            "tilesetName": "sprite-level-4",
+            "timer": 100,
+            "keyParams":
+                [
+                    {
+                        "color": "green",
+                        positionX: 715,
+                        positionY: 462
+                    },
+                    {
+                        "color": "blue",
+                        positionX: 35,
+                        positionY: 562
+                    },
+                    {
+                        "color": "orange",
+                        positionX: 500,
+                        positionY: 550
+                    }
+                ],
+            "lockParams":
+                [
+                    {
+                        "color": "green",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "blue",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "orange",
+                        "action": "goToNextLevel"
+                    }
+                ]
+        },
+        {
+            "id": 5,
+            "index": 'tilemap-level-5',
+            "dataFile": "assets/tilemaps/maps/sf-level-5.json",
+            "tilesetName": "sprite-level-5",
+            "timer": 120,
+            "keyParams":
+                [
+                    {
+                        "color": "orange",
+                        positionX: 110,
+                        positionY: 500
+                    },
+                    {
+                        "color": "green",
+                        positionX: 455,
+                        positionY: 30
+                    }
+                ],
+            "lockParams":
+                [
+                    {
+                        "color": "orange",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "green",
+                        "action": "goToNextLevel"
+                    }
+                ]
+        },
+        {
+            "id": 6,
+            "index": "tilemap-level-6",
+            "dataFile": "assets/tilemaps/maps/sf-level-6.json",
+            "tilesetName": "sprite-level-6",
+            "timer": 100,
+            "nbEnemies": 3,
+            "keyParams":
+                [
+                    {
+                        "color": "orange",
+                        positionX: 35,
+                        positionY: 62
+                    },
+                    {
+                        "color": "blue",
+                        positionX: 350,
+                        positionY: 300
+                    },
+                    {
+                        "color": "green",
+                        positionX: 735,
+                        positionY: 362
+                    },
+                    {
+                        "color": "yellow",
+                        positionX: 560,
+                        positionY: 362
+                    }
+                ],
+            "lockParams":
+                [
+                    {
+                        "color": "green",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "blue",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "orange",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "yellow",
+                        "action": "goToNextLevel"
+                    }
+                ]
+        },
+        {
+            "id": 7,
+            "index": "tilemap-level-7",
+            "dataFile": "assets/tilemaps/maps/sf-level-7.json",
+            "tilesetName": "sprite-level-7",
+            "timer": 100,
+            "keyParams":
+                [
+                    {
+                        "color": "orange",
+                        positionX: 560,
+                        positionY: 600
+                    },
+                    {
+                        "color": "yellow",
+                        positionX: 610,
+                        positionY: 605
+                    },
+                    {
+                        "color": "blue",
+                        positionX: 660,
+                        positionY: 610
+                    },
+                    {
+                        "color": "green",
+                        positionX: 710,
+                        positionY: 615
+                    },
 
-                    ],
-                "lockParams":
-                    [
-                        {
-                            "color": "orange",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "yellow",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "blue",
-                            "action": "tileDisappear"
-                        },
-                        {
-                            "color": "green",
-                            "action": "goToNextLevel"
-                        }
-                    ]
-            }
-        ];
+                ],
+            "lockParams":
+                [
+                    {
+                        "color": "orange",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "yellow",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "blue",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "green",
+                        "action": "goToNextLevel"
+                    }
+                ]
+        }
+    ];
+
+};
+
+levelManagerState.prototype = {
+
+    preload: function() {
+
+
 
         this._getCurrentLevelParam();
         this.currentLevel = new Level(this.game, this.currentLevelParam);
