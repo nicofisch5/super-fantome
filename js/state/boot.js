@@ -1,49 +1,49 @@
 /**
  * State 0 - Boot
  *
- * @type {{preload: preload, create: create}}
+ * @type {{create: create}}
  */
 
-var bootState = {
+var bootState = function(game) {
 
-    preload: function() {
+    // Game environment
+    game.name = 'Super fantôme';
+    game.levelNumber = 1;
+    game.score = 0;
 
-    },
+    if (game.device.desktop) {
+        game.lives = 3;
+    } else {
+        game.lives = 4;
+    }
+
+};
+
+bootState.prototype = {
 
     create: function() {
 
-        // Game environment
-        this.game.name = 'Super fantôme';
-        this.game.levelNumber = 1;
-        this.game.score = 0;
-
-        if (game.device.desktop) {
-            this.game.lives = 3;
-        } else {
-            this.game.lives = 4;
-        }
-
         // If the device is not a desktop, so it's a mobile device
-        if (! this.game.device.desktop) {
+        if (! game.device.desktop) {
             // Set the type of scaling to 'show all'
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
             // Set the min and max width/height of the game
-            /*this.game.scale.minWidth = 250;
-            this.game.scale.minHeight = 170;
-            this.game.scale.maxWidth = 1000;
-            this.game.scale.maxHeight = 680;*/
+            /*game.scale.minWidth = 250;
+            game.scale.minHeight = 170;
+            game.scale.maxWidth = 1000;
+            game.scale.maxHeight = 680;*/
 
             // Center the game on the screen
-            this.game.scale.pageAlignHorizontally = true;
-            this.game.scale.pageAlignVertically = true;
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
 
             // Apply the scale changes
-            this.game.scale.setScreenSize(true);
+            game.scale.setScreenSize(true);
         }
 
         // When all assets are loaded, go to the 'menu' state
-        this.game.state.start('load');
+        game.state.start('load');
 
     }
 
