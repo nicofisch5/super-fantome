@@ -4,13 +4,17 @@
  * @type {{}}
  */
 
-var playState = {
+var playState = function(game) {
+
+};
+
+playState.prototype = {
 
     init: function(currentLevel) {
 
         this.level = currentLevel;
-        this.player = new Player(this.game);
-        this.enemy = new Enemy(this.game);
+        this.player = new Player(game);
+        this.enemy = new Enemy(game);
 
         this.infoSpace = {"x": 1100, "y": 50, "gap": 40};
 
@@ -18,12 +22,12 @@ var playState = {
 
     preload: function() {
 
-        this.game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
+        game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
 
         this.player.preload();
         this.enemy.preload();
 
-        this.game.load.image('pixel', 'assets/pixel.png');
+        game.load.image('pixel', 'assets/pixel.png');
 
     },
 
