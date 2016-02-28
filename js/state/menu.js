@@ -4,7 +4,11 @@
  * @type {{create: create, start: start}}
  */
 
-var menuState = {
+var menuState = function(game) {
+
+};
+
+menuState.prototype = {
 
     create: function() {
         // Defining variables
