@@ -43,7 +43,7 @@ bootState.prototype = {
         }
 
         // When all assets are loaded, go to the 'menu' state
-        game.state.start('load');
+        game.state.start('menu');
 
     }
 

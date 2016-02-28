@@ -18,6 +18,8 @@ var playState = {
 
     preload: function() {
 
+        this.game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
+
         this.player.preload();
         this.enemy.preload();
 
