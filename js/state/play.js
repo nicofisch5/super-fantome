@@ -4,9 +4,7 @@
  * @type {{}}
  */
 
-var playState = function(game) {
-
-};
+var playState = function(game) {};
 
 playState.prototype = {
 

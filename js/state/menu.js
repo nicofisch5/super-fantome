@@ -4,9 +4,7 @@
  * @type {{create: create, start: start}}
  */
 
-var menuState = function(game) {
-
-};
+var menuState = function(game) {};
 
 menuState.prototype = {
 
