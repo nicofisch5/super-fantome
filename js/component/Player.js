@@ -1,6 +1,5 @@
 Player = function(game) {
 
-    this.game = game;
     this.sprite = null;
     this.cursors = null;
     this.lastYPosition;
@@ -20,7 +19,7 @@ Player.prototype = {
          * 70 is height
          * the fifth element is how many frames
          */
-        this.game.load.spritesheet('player', 'assets/ghost_sprite_final.png', 92, 70);
+        game.load.spritesheet('player', 'assets/ghost_sprite_final.png', 92, 70);
 
     },
 
@@ -34,14 +33,14 @@ Player.prototype = {
          * Y position of the new sprite.
          * key This is the image or texture used by the Sprite during rendering
          */
-        //this.sprite = this.game.add.sprite(65, this.game.world.height - 180, 'player');
-        this.sprite = this.game.add.sprite(this.game.world.width - 75, 180, 'player');
+        //this.sprite = game.add.sprite(65, game.world.height - 180, 'player');
+        this.sprite = game.add.sprite(game.world.width - 75, 180, 'player', 1);
 
         // this.player size
         this.sprite.scale.setTo(0.38, 0.38);
 
         // We need to enable physics
-        this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+        game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
         // Player physics properties. Give the little guy a slight bounce.
         //this.sprite.body.bounce.y = 0.2;
@@ -50,14 +49,14 @@ Player.prototype = {
         this.sprite.body.collideWorldBounds = false;
 
         // Camera
-        this.game.camera.follow(this.sprite);
+        game.camera.follow(this.sprite);
 
         // Our two animations, walking left and right.
         this.sprite.animations.add('left', [1], 1, true);
-        this.sprite.animations.add('right', [2], 2, true);
+        this.sprite.animations.add('right', [0], 1, true);
 
         // Keyboard cursor
-        this.cursor = this.game.input.keyboard.createCursorKeys();
+        this.cursor = game.input.keyboard.createCursorKeys();
 
         /**
          * Checks if sprite is still within the world each frame
@@ -78,17 +77,17 @@ Player.prototype = {
         );*/
 
         // Player initial Y position, used for camera follow
-        this.lastYPosition = this.game.world.height - (this.game.camera.height / 2);
+        this.lastYPosition = game.world.height - (game.camera.height / 2);
     },
 
     update: function() {
 
         // If the input is pressed
-        if (! this.game.device.desktop && this.game.input.activePointer.isDown) {
+        if (! game.device.desktop && game.input.activePointer.isDown) {
             // Return the x position of the pointer
-            var pointerX = this.game.input.activePointer.x;
+            var pointerX = game.input.activePointer.x;
             // Return the y position of the pointer
-            var pointerY = this.game.input.activePointer.y;
+            var pointerY = game.input.activePointer.y;
 
             if (pointerX < this.sprite.x - this.pointerDelta) {
                 // Move the player to the left
@@ -189,7 +188,7 @@ Player.prototype = {
 
     render: function () {
 
-        this.game.debug.spriteCoords(this.sprite, 32, 500);
+        game.debug.spriteCoords(this.sprite, 32, 500);
 
     }
 
