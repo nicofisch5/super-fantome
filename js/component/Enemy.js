@@ -5,6 +5,7 @@ Enemy = function(game) {
     this.sprite = null;
     this.enemies = null;
     this.velocity = 50;
+    this.playerMargin = 80;
 
 };
 
@@ -43,8 +44,8 @@ Enemy.prototype = {
     _createEnemy: function () {
 
         // Random position
-        positionX = Math.floor(Math.random() * (gameWidth - gameInfoSpaceWidth));
-        positionY = Math.floor(Math.random() * (gameHeight));
+        positionX = Math.floor(Math.random() * (gameWidth - gameInfoSpaceWidth - this.playerMargin));
+        positionY = Math.floor(Math.random() * (gameHeight - this.playerMargin));
 
         positionX = (positionX < 80) ? 80 : positionX;
         positionX = (positionX > (gameWidth - 80)) ? gameWidth - 80 : positionX;
@@ -52,6 +53,7 @@ Enemy.prototype = {
         positionY = (positionY < 80) ? 80 : positionY;
         positionY = (positionY > (gameHeight - 80)) ? gameHeight - 80 : positionY;
 
+        console.log(positionX + "/" + positionY);
 
         //  Create a enemie inside of the 'enemies' group
         var enemy = this.enemies.create(positionX, positionY, 'enemy1');
