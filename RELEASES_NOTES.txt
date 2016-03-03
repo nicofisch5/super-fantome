@@ -1,47 +1,59 @@
-==== 0.4 ====
-Adaptation mobile/tablette
+==== 0.5 ====
+Refactoring
+Phaser 2.4.6
 
 === Evolutions ===
-Adaptation mobile/tablette
-Nombre d'ennemies comme paramètre des niveaux
-7 niveaux jouables
+Refactoring all states
 
 === Corrections ===
+Ghost frame offset
+
+
+
+==== 0.4 ====
+Adaptation smartphone/pad
+
+=== Evolutions ===
+Adaptation smartphone/pad
+Number of ennemies as level parameter
+7 levels
+
+=== Corrections ===
+N/A
 
 
 
 ==== 0.3 ====
-Temps, vies et score
+Time, mife and score
 
 === Evolutions ===
-Compte à rebours
-Notion de vies
+Countdown
+Lifes notion
 Score
-5 niveaux jouables
+5 levels
 
 === Corrections ===
-Correction erreurs sur tile lock
+Tile lock issue
 
 
 
 ==== 0.2 ====
-4 premiers niveaux jouables
+4 levels
 
 === Evolutions ===
-Refactorisation du code
-Ajout de 2 niveaux réalisés par Alice et Théo
-Ajout d'un compte à rebours
-Restriction à une seule clé à la fois
-Niveau avec multi-clés et multi-serrure
-Mort du fantôme lors de sa sortie hors des limites du niveaux
+Refactoring
+2 new levels created by Alice and Théo
+Ghost can hold only one key
+Level with multi-keys and multi-lock
+Ghost dead when out of bounds
 
 === Corrections ===
-Ancre des patates
-Orientation de l'angle du fantôme lors de son déplacement
+Potatoes anchor
+Ghost angle when motion
 
 
 ==== 0.1 ====
-2 premiers niveaux jouables
+2 levels
 
 === Evolutions ===
 N/A
