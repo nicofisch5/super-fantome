@@ -33,11 +33,6 @@ menuState.prototype = {
             var startText = '>>> Toucher l\'écran pour continuer <<<';
         }
 
-        //var styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
-        //var style = { font: "30px Sawasdee", fill: "#55ffff" };
-        //var x = game.world.width/2;
-        //var y = game.world.height/4;
-
         // Call the 'start' function when pressing the spacebar
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space_key.onDown.add(this.start, this);
