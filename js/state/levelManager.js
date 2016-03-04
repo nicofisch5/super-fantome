@@ -275,6 +275,36 @@ var levelManagerState = function(game) {
                         "action": "goToNextLevel"
                     }
                 ]
+        },
+        {
+            "id": 8,
+            "index": "tilemap-level-8",
+            "dataFile": "assets/tilemaps/maps/sf-level-8.json",
+            "tilesetName": "sprite-level-8",
+            "keyParams":
+                [
+                    {
+                        "color": "blue",
+                        positionX: 125,
+                        positionY: 110
+                    },
+                    {
+                        "color": "green",
+                        positionX: 100,
+                        positionY: 500
+                    }
+                ],
+            "lockParams":
+                [
+                    {
+                        "color": "blue",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "green",
+                        "action": "goToNextLevel"
+                    }
+                ]
         }
     ];
 
@@ -283,8 +313,6 @@ var levelManagerState = function(game) {
 levelManagerState.prototype = {
 
     preload: function() {
-
-
 
         this._getCurrentLevelParam();
         this.currentLevel = new Level(this.game, this.currentLevelParam);
