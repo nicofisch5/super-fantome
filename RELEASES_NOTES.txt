@@ -1,3 +1,13 @@
+==== 0.6 ====
+Release of key
+
+=== Evolutions ===
+Release of key
+
+=== Corrections ===
+
+
+
 ==== 0.5 ====
 Refactoring
 Phaser 2.4.6
