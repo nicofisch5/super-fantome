@@ -22,3 +22,4 @@ Simple ? A vous de voir ...
 - Amélioration menu
 - Passage d'un coté à l'autre de l'espace
 - Identifier les zones des cartes où les ennemies ne peuvent pas apparaître
+- Objets bonus et objets malus
