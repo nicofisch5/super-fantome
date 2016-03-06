@@ -15,11 +15,12 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
-- Intelligence déplacement patates
+- Amélioration de la fin d'un niveau
 - Fin du jeu
+- Objets bonus et objets malus
 - Ajout bonus
 - Pouvoir se libérer d'une clé
 - Amélioration menu
 - Passage d'un coté à l'autre de l'espace
 - Identifier les zones des cartes où les ennemies ne peuvent pas apparaître
-- Objets bonus et objets malus
+- Intelligence déplacement patates
