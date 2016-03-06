@@ -282,12 +282,24 @@ var levelManagerState = function(game) {
             "index": "tilemap-level-8",
             "dataFile": "assets/tilemaps/maps/sf-level-8.json",
             "tilesetName": "sprite-level-8",
+            "nbEnemies": 3,
+            "timer": 120,
             "keyParams":
                 [
                     {
+                        "color": "yellow",
+                        positionX: 35,
+                        positionY: 210
+                    },
+                    {
+                        "color": "orange",
+                        positionX: 975,
+                        positionY: 290
+                    },
+                    {
                         "color": "blue",
-                        positionX: 125,
-                        positionY: 110
+                        positionX: 455,
+                        positionY: 420
                     },
                     {
                         "color": "green",
@@ -297,6 +309,14 @@ var levelManagerState = function(game) {
                 ],
             "lockParams":
                 [
+                    {
+                        "color": "yellow",
+                        "action": "tileDisappear"
+                    },
+                    {
+                        "color": "orange",
+                        "action": "tileDisappear"
+                    },
                     {
                         "color": "blue",
                         "action": "tileDisappear"
