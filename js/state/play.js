@@ -94,8 +94,6 @@ playState.prototype = {
         //this.layer.enableBody = true;
         //this.layer.immovable = true;
 
-        console.log("update"+this.level.keysSprite.x+"/"+this.level.keysSprite.y);
-
     },
 
     _endGame: function () {
@@ -136,8 +134,6 @@ playState.prototype = {
      */
     _playerCatchKey: function (playerSprite, keysSprite) {
 
-        console.log("_playerCatchKey " + this.infoSpace.x +"/"+ this.infoSpace.y);
-
         if (true === this.player.setKey(keysSprite.creator)) {
             keysSprite.x = this.infoSpace.x;
             keysSprite.y = this.infoSpace.y;
@@ -161,31 +157,17 @@ playState.prototype = {
      */
     _playerReleaseKey: function () {
 
-        console.log("_playerReleaseKey " + this.level.keysSprite.x +"/"+ this.level.keysSprite.y);
+        var key = this.player.getKey();
 
-        this.level.keysSprite.x++;
-        this.level.keysSprite.y++;
-
-        //this.player.sprite
-        //this.level.keysSprite
-
-        if (this.player.getKey()) {
-            console.log('OK RELEASED');
+        if (key) {
+            key.initPosition();
 
             this.player.releaseKey();
-            //this.level.keysSprite.x = 500;
-            //this.level.keysSprite.y = 100;
-            //keySprite.updateCache();
-
-            /*game.add.tween(this.level.keysSprite.scale)
-                .to({x: 1.6, y: 1.6}, 250)
-                .to({x: 0.38, y: 0.38}, 150)
-                .start();*/
 
             this.game.score -= 10;
+            this.infoSpace.y -= this.infoSpace.gap;
 
             this.player.tweenPlayerKey();
-
         }
 
     },

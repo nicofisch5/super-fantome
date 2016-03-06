@@ -37,12 +37,17 @@ Key.prototype = {
 
         //this.sprite.immovable = true;
 
-        console.log("create " + this.sprite.x +"/"+ this.sprite.y);
-
         game.physics.arcade.enable(this.sprite);
 
     },
 
-    update: function() {}
+    update: function() {},
+
+    initPosition: function() {
+
+        this.sprite.x = this.params.positionX;
+        this.sprite.y = this.params.positionY;
+
+    }
 
 }

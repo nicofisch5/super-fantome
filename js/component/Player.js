@@ -159,9 +159,7 @@ Player.prototype = {
 
     releaseKey: function() {
 
-        if (this.getKey()) {
-            this.key = false;
-        }
+        this.key = false;
 
     },
 
