@@ -14,6 +14,7 @@ var levelManagerState = function(game) {
             "dataFile": "assets/tilemaps/maps/sf-level-1.json",
             "tilesetName": "sprite-level-1",
             "timer": 45,
+            "nbEnemies": -1,
             "keyParams":
             {
                 "color": "yellow",

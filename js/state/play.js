@@ -57,30 +57,30 @@ playState.prototype = {
         this.game.add.text(this.infoSpace.x, this.infoSpace.y, livesText, { font: "18px Sawasdee", fill: "#55ffff" });
         this.infoSpace.y += this.infoSpace.gap;
 
+        // Space bar
+        this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
     },
 
     update: function() {
-
-        // Collision between player and lock
-        /*this.level.locks.forEach(function (lock) {
-            this.level.tilemap.setTileIndexCallback(
-                lock.currentIndex, // indexes
-                this._playerTouchLock, // callback
-                this // callbackContext
-            );
-        }, this);*/
 
         // Collision between player and world
         game.physics.arcade.collide(this.player.sprite, this.level.layer, this._playerTouchLock, null, this);
 
         // Collision between enemies and world
-        game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer);
+        game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer, this._enemyTouchLock);
 
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
         game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this._endGame, null, this);
 
         // Collision between player and key
         game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
+
+        // Player release key
+        if (this.spaceKey.isDown) {
+            //this._playerReleaseKey(this.player.sprite, this.level.keysSprite);
+            this._playerReleaseKey();
+        }
 
         // Player out of bounds
         this.player.sprite.events.onOutOfBounds.add(this._endGame, this);
@@ -93,6 +93,8 @@ playState.prototype = {
 
         //this.layer.enableBody = true;
         //this.layer.immovable = true;
+
+        console.log("update"+this.level.keysSprite.x+"/"+this.level.keysSprite.y);
 
     },
 
@@ -134,18 +136,56 @@ playState.prototype = {
      */
     _playerCatchKey: function (playerSprite, keysSprite) {
 
+        console.log("_playerCatchKey " + this.infoSpace.x +"/"+ this.infoSpace.y);
+
         if (true === this.player.setKey(keysSprite.creator)) {
-            //keysSprite.kill();
             keysSprite.x = this.infoSpace.x;
             keysSprite.y = this.infoSpace.y;
+
             this.infoSpace.y += this.infoSpace.gap;
 
             this.game.score += 10;
 
-            this.game.add.tween(playerSprite.scale)
-                .to({x: 0.6, y: 0.6}, 50)
+            this.player.tweenPlayerKey();
+
+        }
+
+    },
+
+    /**
+     * Event when player release a key
+     *
+     * @param Sprite playerSprite
+     * @param Sprite keySprite
+     * @private
+     */
+    _playerReleaseKey: function () {
+
+        console.log("_playerReleaseKey " + this.level.keysSprite.x +"/"+ this.level.keysSprite.y);
+
+        this.level.keysSprite.x++;
+        this.level.keysSprite.y++;
+
+        //this.player.sprite
+        //this.level.keysSprite
+
+        if (this.player.getKey()) {
+            console.log('OK RELEASED');
+
+            this.player.releaseKey();
+            //this.level.keysSprite.x = 500;
+            //this.level.keysSprite.y = 100;
+            //keySprite.updateCache();
+
+            /*game.add.tween(this.level.keysSprite.scale)
+                .to({x: 1.6, y: 1.6}, 250)
                 .to({x: 0.38, y: 0.38}, 150)
-                .start();
+                .start();*/
+
+            this.game.score -= 10;
+
+            this.player.tweenPlayerKey();
+
         }
 
     },
@@ -181,6 +221,15 @@ playState.prototype = {
         }
 
     },
+
+    /**
+     * Event when enemy touch the world
+     *
+     * @param Sprite enemySprite
+     * @param Tile tile
+     * @private
+     */
+    _enemyTouchLock: function (enemySprite, levelTile) {},
 
     /**
      * Go to next level

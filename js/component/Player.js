@@ -55,7 +55,7 @@ Player.prototype = {
         this.sprite.animations.add('left', [1], 1, true);
         this.sprite.animations.add('right', [0], 1, true);
 
-        // Keyboard cursor
+        // Keyboard cursor + space bar
         this.cursor = game.input.keyboard.createCursorKeys();
 
         /**
@@ -146,12 +146,21 @@ Player.prototype = {
                     this.sprite.angle = 0;
                 }
             }
+
             // If no one is pressed
             else {
                 // Stop the player
                 this.stop();
                 this.sprite.angle = 0;
             }
+        }
+
+    },
+
+    releaseKey: function() {
+
+        if (this.getKey()) {
+            this.key = false;
         }
 
     },
@@ -183,6 +192,21 @@ Player.prototype = {
     getKey: function () {
 
         return this.key;
+
+    },
+
+    releaseKey: function() {
+
+        this.key = null;
+
+    },
+
+    tweenPlayerKey: function() {
+
+        game.add.tween(this.sprite.scale)
+            .to({x: 0.6, y: 0.6}, 50)
+            .to({x: 0.38, y: 0.38}, 150)
+            .start();
 
     },
 

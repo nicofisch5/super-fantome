@@ -53,8 +53,6 @@ Enemy.prototype = {
         positionY = (positionY < 80) ? 80 : positionY;
         positionY = (positionY > (gameHeight - 80)) ? gameHeight - 80 : positionY;
 
-        console.log(positionX + "/" + positionY);
-
         //  Create a enemie inside of the 'enemies' group
         var enemy = this.enemies.create(positionX, positionY, 'enemy1');
         enemy.scale.setTo(0.38, 0.38);

@@ -35,14 +35,14 @@ Key.prototype = {
             this.colors.indexOf(this.currentColor)
         );
 
-        this.sprite.immovable = true;
+        //this.sprite.immovable = true;
+
+        console.log("create " + this.sprite.x +"/"+ this.sprite.y);
 
         game.physics.arcade.enable(this.sprite);
 
     },
 
-    update: function() {
-
-    }
+    update: function() {}
 
 }
