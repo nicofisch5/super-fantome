@@ -78,7 +78,6 @@ playState.prototype = {
 
         // Player release key
         if (this.spaceKey.isDown) {
-            //this._playerReleaseKey(this.player.sprite, this.level.keysSprite);
             this._playerReleaseKey();
         }
 
@@ -91,11 +90,13 @@ playState.prototype = {
         this.countdownText.text = 'Temps ' + this.level.timer;
         this.scoreText.text = 'Score ' + this.game.score;
 
-        //this.layer.enableBody = true;
-        //this.layer.immovable = true;
-
     },
 
+    /**
+     * End of the level
+     *
+     * @private
+     */
     _endGame: function () {
 
         this._playerDie();
@@ -116,6 +117,11 @@ playState.prototype = {
 
     },
 
+    /**
+     * Event when player is dying
+     *
+     * @private
+     */
     _playerDie: function () {
 
         this.player.sprite.kill();
@@ -151,8 +157,6 @@ playState.prototype = {
     /**
      * Event when player release a key
      *
-     * @param Sprite playerSprite
-     * @param Sprite keySprite
      * @private
      */
     _playerReleaseKey: function () {
