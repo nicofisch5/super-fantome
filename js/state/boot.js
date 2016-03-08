@@ -39,7 +39,7 @@ bootState.prototype = {
             game.scale.pageAlignVertically = true;
 
             // Apply the scale changes
-            game.scale.setScreenSize(true);
+            game.scale.refresh();
         }
 
         // When all assets are loaded, go to the 'menu' state
