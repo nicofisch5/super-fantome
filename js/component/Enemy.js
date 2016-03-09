@@ -100,14 +100,21 @@ Enemy.prototype = {
 
     },
 
+    stop: function () {
+
+        this.enemies.setAll('body.velocity', 0);
+
+    },
+
     getGroup: function () {
 
         return this.enemies;
 
     },
 
-    endGame: function () {
+    endLevel: function () {
 
+        this.stop();
         this.enemies = null;
 
     }
