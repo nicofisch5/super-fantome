@@ -71,7 +71,7 @@ playState.prototype = {
         game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer, this._enemyTouchLock);
 
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
-        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this._endGame, null, this);
+        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this._endLevel, null, this);
 
         // Collision between player and key
         game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
@@ -82,7 +82,7 @@ playState.prototype = {
         }
 
         // Player out of bounds
-        this.player.sprite.events.onOutOfBounds.add(this._endGame, this);
+        this.player.sprite.events.onOutOfBounds.add(this._endLevel, this);
 
         this.player.update();
         this.enemy.update(this.player);
@@ -97,7 +97,7 @@ playState.prototype = {
      *
      * @private
      */
-    _endGame: function () {
+    _endLevel: function () {
 
         this._playerDie();
 
@@ -253,7 +253,7 @@ playState.prototype = {
         this.level.timer -= 1;
         if (this.level.timer == 0) {
             game.time.events.remove(this.countdown);
-            this._endGame();
+            this._endLevel();
         }
 
     },
