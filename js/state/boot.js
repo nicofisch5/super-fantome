@@ -8,14 +8,15 @@ var bootState = function(game) {
 
     // Game environment
     game.name = 'Super fantôme';
-    game.levelNumber = 1;
-    game.score = 0;
 
 };
 
 bootState.prototype = {
 
     create: function() {
+
+        game.levelNumber = 1;
+        game.score = 0;
 
         if (game.device.desktop) {
             game.lives = 3;
