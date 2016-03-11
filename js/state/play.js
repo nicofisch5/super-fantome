@@ -99,9 +99,8 @@ playState.prototype = {
      */
     _endLevel: function () {
 
+        this.enemy.endLevel();
         this._playerDie();
-
-        this.enemy.endGame();
 
         var goToState = 'levelManager';
         game.lives--;
