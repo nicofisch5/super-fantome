@@ -1,3 +1,24 @@
+==== 0.8 ====
+Enf of game
+
+=== Evolutions ===
+Enf of game
+Extras
+New image on menu
+
+=== Corrections ===
+
+
+
+==== 0.7 ====
+Enf of level
+
+=== Evolutions ===
+End of level
+
+=== Corrections ===
+
+
 ==== 0.6 ====
 Release of key
 
