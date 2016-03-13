@@ -6,6 +6,8 @@ Level = function(game, params) {
     this.layer;
     this.keys = new Array();
     this.keysSprite;
+    this.extras = new Array();
+    this.extrasSprite;
     this.locks = new Array();
     this.timer = 90;
     this.nbEnemies = 4;
@@ -28,12 +30,23 @@ Level.prototype = {
         if (isNaN(this.params.keyParams.length)) {
             this.params.keyParams = [this.params.keyParams];
         }
-
         this.params.keyParams.forEach(function (keyParam) {
             var key = new Key(this.game, keyParam);
             key.preload();
             this.keys.push(key);
         }, this);
+        console.log(this.keys);
+
+        // Extra
+        if (isNaN(this.params.extraParams.length)) {
+            this.params.extraParams = [this.params.extraParams];
+        }
+        this.params.extraParams.forEach(function (extraParam) {
+            var extra = new Extra(this.game, extraParam);
+            extra.preload();
+            this.extras.push(extra);
+        }, this);
+        console.log(this.extras);
 
         // Locks
         if (isNaN(this.params.lockParams.length)) {
@@ -92,6 +105,14 @@ Level.prototype = {
             key.create();
             key.sprite.creator = key;
             this.keysSprite.add(key.sprite);
+        }, this);
+
+        // Extra
+        this.extrasSprite = game.add.group();
+        this.extras.forEach(function (extra) {
+            extra.create();
+            extra.sprite.creator = extra;
+            this.extrasSprite.add(extra.sprite);
         }, this);
 
         // Lock

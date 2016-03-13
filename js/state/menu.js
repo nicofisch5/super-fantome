@@ -10,6 +10,7 @@ var menuState = function(game) {
     this.y;
     this.styleTitle;
     this.style;
+    this.font = 'Trebuchet MS';
 
 };
 
@@ -19,8 +20,8 @@ menuState.prototype = {
 
         this.x = game.world.width / 2;
         this.y = game.world.height / 4;
-        this.styleTitle = { font: "48px Sawasdee", fill: "#55ffff" };
-        this.style = { font: "30px Sawasdee", fill: "#55ffff" };
+        this.styleTitle = { font: "48px " + this.font, fill: "#55ffff" };
+        this.style = { font: "30px " + this.font, fill: "#55ffff" };
 
     },
 

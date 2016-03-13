@@ -4,7 +4,11 @@
  * @type {{}}
  */
 
-var playState = function(game) {};
+var playState = function(game) {
+
+    this.font = 'Trebuchet MS';
+
+};
 
 playState.prototype = {
 
@@ -43,18 +47,18 @@ playState.prototype = {
 
         // Lives
         this.scoreText = 'Score ' + this.game.score;
-        this.scoreText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.scoreText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.scoreText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.scoreText, { font: "18px " + this.font, fill: "#55ffff" });
         this.infoSpace.y += this.infoSpace.gap;
 
         // Timer
         this.countdownText = 'Temps ' + this.level.timer;
-        this.countdownText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.countdownText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.countdownText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.countdownText, { font: "18px " + this.font, fill: "#55ffff" });
         this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
         this.infoSpace.y += this.infoSpace.gap;
 
         // Lives
         var livesText = 'Vies ' + this.game.lives;
-        this.game.add.text(this.infoSpace.x, this.infoSpace.y, livesText, { font: "18px Sawasdee", fill: "#55ffff" });
+        this.game.add.text(this.infoSpace.x, this.infoSpace.y, livesText, { font: "18px " + this.font, fill: "#55ffff" });
         this.infoSpace.y += this.infoSpace.gap;
 
         // Space bar
