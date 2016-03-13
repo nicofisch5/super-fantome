@@ -5,6 +5,8 @@ Extra = function(game, params) {
     this.texture;
     this.sprite = null;
     this.params = params;
+    this.availableTypes = ["InvertedCursorKeys", "EnemyGoesFaster", "PlayerGoesSlowly", "EatEnemy", "EnemyGoesSlowly", "PlayerGoesFaster"];
+    this.type;
 
 };
 
@@ -28,6 +30,9 @@ Extra.prototype = {
         ];
 
         game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);
+
+        this.type = this.availableTypes[game.rnd.integerInRange(0, 5)];
+        console.log(this.type);
 
     },
 
