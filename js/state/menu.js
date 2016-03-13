@@ -56,16 +56,15 @@ menuState.prototype = {
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
 
+        // Ghost picture
         this.y += 40;
         game.add.sprite(this.x - 135, this.y, 'ghost', 1);
+        this.y += 182;
 
         // Game over
         if (game.gameOver === true) {
             this._gameOver();
         }
-
-        // If the user already played
-        //this._score();
 
         this._copyright();
 
@@ -84,7 +83,7 @@ menuState.prototype = {
         goText.align = 'center';
         goText.anchor.setTo(0.5, 0.5);
 
-        this.y += 75;
+        this.y += 30;
         scoreText = this.game.add.text(this.x, this.y, scoreText, this.style);
         scoreText.align = 'center';
         scoreText.anchor.setTo(0.5, 0.5);
