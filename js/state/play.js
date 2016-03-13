@@ -197,7 +197,7 @@ playState.prototype = {
     _playerCatchExtra: function (playerSprite, extraSprite) {
 
         this.currentExtra = extraSprite.creator;
-        this.currentExtra.startEffect(this.player);
+        this.currentExtra.startEffect(this.player, this.enemy);
 
         // Timer
         this.extraCountdownText = 'Extra ' + this.currentExtra.params.timer;
@@ -297,7 +297,7 @@ playState.prototype = {
         if (this.currentExtra.params.timer == 0) {
             // Stop effect
             game.time.events.remove(this.extraCountdown);
-            this.currentExtra.stopEffect(this.player);
+            this.currentExtra.stopEffect(this.player, this.enemy);
 
             // Erase text
             this.extraCountdownText.destroy();

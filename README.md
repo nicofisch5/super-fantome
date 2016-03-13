@@ -15,14 +15,7 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
-### Fin du jeu
-- State de fin du jeu
-
-### Objets bonus et objets malus
-
-### Ajout bonus
-- Apparition au départ ou durant le jeu ?
-- Position définie ou aléatoire ?
+### Nouveaux objets bonus et objets malus
 
 ### Amélioration menu
 

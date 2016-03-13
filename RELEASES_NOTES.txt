@@ -1,3 +1,12 @@
+==== 0.9 ====
+2 first extra
+
+=== Evolutions ===
+Extra InvertedCursorKeys
+Extra EnemiesGoFaster
+
+
+
 ==== 0.8 ====
 Enf of game
 
@@ -5,8 +14,6 @@ Enf of game
 Enf of game
 Extras
 New image on menu
-
-=== Corrections ===
 
 
 
@@ -16,16 +23,12 @@ Enf of level
 === Evolutions ===
 End of level
 
-=== Corrections ===
-
 
 ==== 0.6 ====
 Release of key
 
 === Evolutions ===
 Release of key
-
-=== Corrections ===
 
 
 

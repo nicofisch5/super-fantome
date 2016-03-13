@@ -4,7 +4,9 @@ Enemy = function(game) {
     this.image = 'assets/potatoe.png';
     this.sprite = null;
     this.enemies = null;
-    this.velocity = 50;
+    this.normalVelocity = 50;
+    this.fastVelocity = 110;
+    this.velocity = this.normalVelocity;
     this.playerMargin = 80;
 
 };
@@ -116,6 +118,26 @@ Enemy.prototype = {
 
         this.stop();
         this.enemies = null;
+
+    },
+
+    /**
+     * New velocity for enemies
+     *
+     */
+    startGoFaster: function() {
+
+        this.velocity = this.fastVelocity;
+
+    },
+
+    /**
+     * New velocity for enemies
+     *
+     */
+    stopGoFaster: function() {
+
+        this.velocity = this.normalVelocity;
 
     }
 
