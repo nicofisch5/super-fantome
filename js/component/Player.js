@@ -5,6 +5,7 @@ Player = function(game) {
     this.lastYPosition;
     this.velocity = 150;
     this.pointerDelta = 10;
+    this.direction = 1;
 
 };
 
@@ -92,11 +93,11 @@ Player.prototype = {
             if (pointerX < this.sprite.x - this.pointerDelta) {
                 // Move the player to the left
                 this.sprite.animations.play('left');
-                this.sprite.body.velocity.x = this.velocity * -1;
+                this.sprite.body.velocity.x = this.velocity * -1 * this.direction;
             } else if (pointerX > this.sprite.x + this.pointerDelta) {
                 // Move the player to the right
                 this.sprite.animations.play('right');
-                this.sprite.body.velocity.x = this.velocity;
+                this.sprite.body.velocity.x = this.velocity * this.direction;
             } else {
                 this.sprite.body.velocity.x = 0;
                 this.sprite.angle = 0;
@@ -104,11 +105,11 @@ Player.prototype = {
 
             if (pointerY < this.sprite.y - this.pointerDelta) {
                 // Move the player up
-                this.sprite.body.velocity.y = this.velocity * -1;
+                this.sprite.body.velocity.y = this.velocity * -1 * this.direction;
                 this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name  == 'right' ? 1 : -1);
             } else if (pointerY > this.sprite.y + this.pointerDelta) {
                 // Move the player down
-                this.sprite.body.velocity.y = this.velocity;
+                this.sprite.body.velocity.y = this.velocity * this.direction;
                 this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name == 'right' ? 1 : -1);
             } else {
                 this.sprite.body.velocity.y = 0;
@@ -121,26 +122,26 @@ Player.prototype = {
                 if (this.cursor.left.isDown) {
                     // Move the player to the left
                     this.sprite.animations.play('left');
-                    this.sprite.body.velocity.x = this.velocity * -1;
+                    this.sprite.body.velocity.x = this.velocity * -1 * this.direction;
                 }
                 // If the right arrow key is pressed
                 else if (this.cursor.right.isDown) {
                     // Move the player to the right
                     this.sprite.animations.play('right');
-                    this.sprite.body.velocity.x = this.velocity;
+                    this.sprite.body.velocity.x = this.velocity * this.direction;
                     //this.sprite.angle = 0;
                 }
 
                 // If the top arrow key is pressed
                 if (this.cursor.up.isDown) {
                     // Move the player up
-                    this.sprite.body.velocity.y = this.velocity * -1;
+                    this.sprite.body.velocity.y = this.velocity * -1 * this.direction;
                     this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name  == 'right' ? 1 : -1);
                 }
                 // If the bottom arrow key is pressed
                 else if (this.cursor.down.isDown) {
                     // Move the player down
-                    this.sprite.body.velocity.y = this.velocity;
+                    this.sprite.body.velocity.y = this.velocity * this.direction;
                     this.sprite.angle = this.sprite.body.velocity.y / 10 * (this.sprite.animations.currentAnim.name == 'right' ? 1 : -1);
                 } else {
                     this.sprite.angle = 0;
@@ -205,6 +206,18 @@ Player.prototype = {
             .to({x: 0.6, y: 0.6}, 50)
             .to({x: 0.38, y: 0.38}, 150)
             .start();
+
+    },
+
+    startInvertedCursorKeys: function() {
+
+        this.direction = -1;
+
+    },
+
+    stopInvertedCursorKeys: function() {
+
+        this.direction = 1;
 
     },
 

@@ -5,7 +5,8 @@ Extra = function(game, params) {
     this.texture;
     this.sprite = null;
     this.params = params;
-    this.availableTypes = ["InvertedCursorKeys", "EnemyGoesFaster", "PlayerGoesSlowly", "EatEnemy", "EnemyGoesSlowly", "PlayerGoesFaster"];
+    //this.availableTypes = ["InvertedCursorKeys", "EnemyGoesFaster", "PlayerGoesSlowly", "EatEnemy", "EnemyGoesSlowly", "PlayerGoesFaster"];
+    this.availableTypes = ["InvertedCursorKeys"];
     this.type;
 
 };
@@ -31,8 +32,7 @@ Extra.prototype = {
 
         game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);
 
-        this.type = this.availableTypes[game.rnd.integerInRange(0, 5)];
-        console.log(this.type);
+        this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
 
     },
 
@@ -42,6 +42,32 @@ Extra.prototype = {
 
         this.sprite = game.add.sprite(this.params.positionX, this.params.positionY, 'extra');
         game.physics.arcade.enable(this.sprite);
+
+    },
+
+    /**
+     * Start extra effect
+     *
+     * @param player
+     */
+    startEffect: function(player) {
+
+        if ("InvertedCursorKeys" == this.type) {
+            player.startInvertedCursorKeys();
+        }
+
+    },
+
+    /**
+     * Stop extra effect
+     *
+     * @param player
+     */
+    stopEffect: function(player) {
+
+        if ("InvertedCursorKeys" == this.type) {
+            player.stopInvertedCursorKeys();
+        }
 
     }
 

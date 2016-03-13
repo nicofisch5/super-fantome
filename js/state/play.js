@@ -7,6 +7,7 @@
 var playState = function(game) {
 
     this.font = 'Trebuchet MS';
+    this.currentExtra;
 
 };
 
@@ -80,6 +81,9 @@ playState.prototype = {
         // Collision between player and key
         game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
 
+        // Collision between player and extra
+        game.physics.arcade.overlap(this.player.sprite, this.level.extrasSprite, this._playerCatchExtra, null, this);
+
         // Player release key
         if (this.spaceKey.isDown) {
             this._playerReleaseKey();
@@ -93,6 +97,10 @@ playState.prototype = {
 
         this.countdownText.text = 'Temps ' + this.level.timer;
         this.scoreText.text = 'Score ' + this.game.score;
+
+        if (this.currentExtra) {
+            this.extraCountdownText.text = 'Extra ' + this.currentExtra.params.timer;
+        }
 
     },
 
@@ -180,6 +188,28 @@ playState.prototype = {
     },
 
     /**
+     * Event when player catch an extra
+     *
+     * @param Sprite playerSprite
+     * @param Sprite keysSprite
+     * @private
+     */
+    _playerCatchExtra: function (playerSprite, extraSprite) {
+
+        this.currentExtra = extraSprite.creator;
+        this.currentExtra.startEffect(this.player);
+
+        // Timer
+        this.extraCountdownText = 'Extra ' + this.currentExtra.params.timer;
+        this.extraCountdownText = game.add.text(this.infoSpace.x, this.infoSpace.y, this.extraCountdownText, { font: "18px " + this.font, fill: "#55ffff" });
+        this.extraCountdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateExtraTimer, this);
+        this.infoSpace.y += this.infoSpace.gap;
+
+        extraSprite.kill();
+
+    },
+
+    /**
      * Event when player touch a lock
      *
      * @param Sprite playerSprite
@@ -257,6 +287,21 @@ playState.prototype = {
         if (this.level.timer == 0) {
             game.time.events.remove(this.countdown);
             this._endLevel();
+        }
+
+    },
+
+    _updateExtraTimer: function () {
+
+        this.currentExtra.params.timer -= 1;
+        if (this.currentExtra.params.timer == 0) {
+            // Stop effect
+            game.time.events.remove(this.extraCountdown);
+            this.currentExtra.stopEffect(this.player);
+
+            // Erase text
+            this.extraCountdownText.destroy();
+            this.infoSpace.y -= this.infoSpace.gap;
         }
 
     },
