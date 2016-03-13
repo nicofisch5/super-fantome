@@ -19,9 +19,15 @@ menuState.prototype = {
     init: function() {
 
         this.x = game.world.width / 2;
-        this.y = game.world.height / 4;
+        this.y = game.world.height / 6;
         this.styleTitle = { font: "48px " + this.font, fill: "#55ffff" };
         this.style = { font: "30px " + this.font, fill: "#55ffff" };
+
+    },
+
+    preload: function() {
+
+        game.load.spritesheet('ghost', 'assets/ghost_intro.png', 300, 300);
 
     },
 
@@ -40,16 +46,18 @@ menuState.prototype = {
         game.input.onDown.add(this.start, this);
 
         // Name of the game
-        //this.game.add.sprite(x - 250, 0, 'menu');
         var title = this.game.add.text(this.x, this.y, game.name, this.styleTitle);
         title.align = 'center';
         title.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
-        this.y += 130;
+        this.y += 100;
         startText = this.game.add.text(this.x, this.y, startText, this.style);
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
+
+        this.y += 40;
+        game.add.sprite(this.x - 135, this.y, 'ghost', 1);
 
         // Game over
         if (game.gameOver === true) {
