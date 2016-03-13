@@ -13,13 +13,14 @@ var game = new Phaser.Game(
     'phaser-example'
 );
 
-game.version = '0.7-beta'
+game.version = '0.8-beta'
 
 /** Define all the states */
 game.state.add('boot', bootState);
 game.state.add('menu', menuState);
 game.state.add('levelManager', levelManagerState);
 game.state.add('play', playState);
+game.state.add('end', endState);
 
 // Start with the 'load' state
 game.state.start('boot');

@@ -18,13 +18,18 @@ var levelManagerState = function(game) {
             "keyParams":
             {
                 "color": "yellow",
-                positionX: 500,
-                positionY: 100
+                "positionX": 500,
+                "positionY": 100
             },
             "lockParams":
             {
                 "color": "yellow",
                 "action": "goToNextLevel"
+            },
+            "extraParams":
+            {
+                "positionX": 500,
+                "positionY": 500
             }
         },
         {
@@ -329,15 +334,22 @@ var levelManagerState = function(game) {
         }
     ];
 
+    this.font = 'Trebuchet MS';
+
 };
 
 levelManagerState.prototype = {
 
     preload: function() {
 
-        this._getCurrentLevelParam();
-        this.currentLevel = new Level(this.game, this.currentLevelParam);
-        this.currentLevel.preload();
+        // Check if no more level
+        if (game.levelNumber > this.params.length) {
+            game.state.start('end');
+        } else {
+            this._getCurrentLevelParam();
+            this.currentLevel = new Level(this.game, this.currentLevelParam);
+            this.currentLevel.preload();
+        }
 
     },
 
@@ -373,24 +385,24 @@ levelManagerState.prototype = {
         space_key.onDown.add(this.start, this);
         game.input.onDown.add(this.start, this);
 
-        levelText = this.game.add.text(x, y, levelText, { font: "48px Sawasdee", fill: "#55ffff" });
+        levelText = this.game.add.text(x, y, levelText, { font: "48px " + this.font, fill: "#55ffff" });
         levelText.align = 'center';
         levelText.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
         y += 130;
-        startText = this.game.add.text(x, y, startText, { font: "30px Sawasdee", fill: "#55ffff" });
+        startText = this.game.add.text(x, y, startText, { font: "30px " + this.font, fill: "#55ffff" });
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
 
         y += 100;
-        scoreText = this.game.add.text(x, y, scoreText, { font: "24px Sawasdee", fill: "#55ffff" });
+        scoreText = this.game.add.text(x, y, scoreText, { font: "24px " + this.font, fill: "#55ffff" });
         scoreText.align = 'center';
         scoreText.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
         y += 75;
-        livesText = this.game.add.text(x, y, livesText, { font: "24px Sawasdee", fill: "#55ffff" });
+        livesText = this.game.add.text(x, y, livesText, { font: "24px " + this.font, fill: "#55ffff" });
         livesText.align = 'center';
         livesText.anchor.setTo(0.5, 0.5);
 
