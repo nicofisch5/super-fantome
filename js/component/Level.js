@@ -35,7 +35,6 @@ Level.prototype = {
             key.preload();
             this.keys.push(key);
         }, this);
-        console.log(this.keys);
 
         // Extra
         if (isNaN(this.params.extraParams.length)) {
@@ -46,7 +45,6 @@ Level.prototype = {
             extra.preload();
             this.extras.push(extra);
         }, this);
-        console.log(this.extras);
 
         // Locks
         if (isNaN(this.params.lockParams.length)) {
