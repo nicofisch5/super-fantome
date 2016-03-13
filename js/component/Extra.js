@@ -6,7 +6,7 @@ Extra = function(game, params) {
     this.sprite = null;
     this.params = params;
     //this.availableTypes = ["InvertedCursorKeys", "EnemiesGoFaster", "PlayerGoesSlowly", "EatEnemy", "EnemiesGoSlowly", "PlayerGoesFaster"];
-    this.availableTypes = ["EnemiesGoFaster"];
+    this.availableTypes = ["InvertedCursorKeys", "EnemiesGoFaster"];
     this.type;
 
 };
