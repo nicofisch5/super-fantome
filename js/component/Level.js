@@ -37,14 +37,15 @@ Level.prototype = {
         }, this);
 
         // Extra
-        if (isNaN(this.params.extraParams.length)) {
+        if (this.params.extraParams) {
             this.params.extraParams = [this.params.extraParams];
+
+            this.params.extraParams.forEach(function (extraParam) {
+                var extra = new Extra(this.game, extraParam);
+                extra.preload();
+                this.extras.push(extra);
+            }, this);
         }
-        this.params.extraParams.forEach(function (extraParam) {
-            var extra = new Extra(this.game, extraParam);
-            extra.preload();
-            this.extras.push(extra);
-        }, this);
 
         // Locks
         if (isNaN(this.params.lockParams.length)) {
