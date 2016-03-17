@@ -82,7 +82,11 @@ playState.prototype = {
         game.physics.arcade.collide(this.enemy.getGroup(), this.enemy.getGroup(), this._enemyTouchEnemy, null, this);
 
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
-        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this._endLevel, null, this);
+        var action = this._endLevel;
+        if ('extra' == this.state) {
+            var action = this._playerEatEnemy;
+        }
+        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), action, null, this);
 
         // Collision between player and key
         game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
@@ -149,6 +153,20 @@ playState.prototype = {
         game.time.events.add(1500, function() {
             game.state.start(goToState);
         }, this);
+
+    },
+
+    /**
+     * Miam, player eat an enemy
+     *
+     * @param playerSprite
+     * @param enemySprite
+     * @private
+     */
+    _playerEatEnemy: function (playerSprite, enemySprite) {
+
+        this.player.tweenPlayerKey();
+        enemySprite.kill();
 
     },
 
@@ -220,7 +238,7 @@ playState.prototype = {
      */
     _playerCatchExtra: function (playerSprite, extraSprite) {
 
-        console.log(extraSprite);
+        this.state = 'extra';
         this.currentExtra = extraSprite.creator;
         this.currentExtra.startEffect(this.player, this.enemy);
 
@@ -321,6 +339,7 @@ playState.prototype = {
         this.currentExtra.params.timer -= 1;
         if (this.currentExtra.params.timer == 0) {
             // Stop effect
+            this.state = null;
             game.time.events.remove(this.extraCountdown);
             this.currentExtra.stopEffect(this.player, this.enemy);
 

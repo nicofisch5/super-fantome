@@ -5,8 +5,7 @@ Extra = function(game, params) {
     this.texture;
     this.sprite = null;
     this.params = params;
-    //this.availableTypes = ["InvertedCursorKeys", "EnemiesGoFaster", "PlayerGoesSlowly", "EatEnemy", "EnemiesGoSlowly", "PlayerGoesFaster"];
-    this.availableTypes = ["InvertedCursorKeys", "EnemiesGoFaster", "PlayerGoesSlowly", "EnemiesGoSlowly", "PlayerGoesFaster"];
+    this.availableTypes = ["InvertedCursorKeys", "EnemiesGoFaster", "PlayerGoesSlowly", "PlayerCanEatEnemy", "EnemiesGoSlowly", "PlayerGoesFaster"];
     this.type;
 
 };
@@ -61,6 +60,8 @@ Extra.prototype = {
             enemy.startGoSlowly();
         } else if ("PlayerGoesFaster" == this.type) {
             player.startGoFaster();
+        } else if ("PlayerCanEatEnemy" == this.type) {
+            enemy.startEscape();
         }
 
     },
@@ -82,6 +83,8 @@ Extra.prototype = {
             enemy.stopGoSlowly();
         } else if ("PlayerGoesFaster" == this.type) {
             player.stopGoFaster();
+        } else if ("PlayerCanEatEnemy" == this.type) {
+            enemy.stopEscape();
         }
 
     }
