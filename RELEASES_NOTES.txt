@@ -1,9 +1,10 @@
 ==== 0.10 ====
-6 extra
+5 extra
 
 === Evolutions ===
 Extra PlayerGoesSlowly
-
+Extra EnemiesGoSlowly
+Extra PlayerGoesFaster
 
 
 ==== 0.9 ====
