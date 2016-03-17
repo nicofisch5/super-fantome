@@ -8,6 +8,7 @@ var playState = function(game) {
 
     this.font = 'Trebuchet MS';
     this.currentExtra;
+    this.state;
 
 };
 
@@ -24,6 +25,8 @@ playState.prototype = {
     },
 
     preload: function() {
+
+        this.state = null;
 
         game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
 
@@ -110,6 +113,12 @@ playState.prototype = {
      * @private
      */
     _endLevel: function () {
+
+        if ('endLevel' == this.state) {
+            return;
+        }
+
+        this.state = 'endLevel';
 
         this.enemy.endLevel();
         this._playerDie();
