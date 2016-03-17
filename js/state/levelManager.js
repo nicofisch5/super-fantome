@@ -30,7 +30,7 @@ var levelManagerState = function(game) {
             {
                 "positionX": 500,
                 "positionY": 500,
-                "timer": 10
+                "timer": 8
             }
         },
         {
@@ -61,7 +61,13 @@ var levelManagerState = function(game) {
                         "color": "green",
                         "action": "goToNextLevel"
                     }
-                ]
+                ],
+            "extraParams":
+            {
+                "positionX": 555,
+                "positionY": 125,
+                "timer": 10
+            }
         },
         {
             "id": 3,
@@ -109,7 +115,13 @@ var levelManagerState = function(game) {
                         "color": "blue",
                         "action": "goToNextLevel"
                     }
-                ]
+                ],
+            "extraParams":
+            {
+                "positionX": 50,
+                "positionY": 50,
+                "timer": 10
+            }
 
         },
         {
