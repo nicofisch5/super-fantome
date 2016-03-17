@@ -78,6 +78,9 @@ playState.prototype = {
         // Collision between enemies and world
         game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer, this._enemyTouchLock);
 
+        // Collision between 2 enemies
+        game.physics.arcade.collide(this.enemy.getGroup(), this.enemy.getGroup(), this._enemyTouchEnemy, null, this);
+
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
         game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), this._endLevel, null, this);
 
@@ -104,6 +107,18 @@ playState.prototype = {
         if (this.currentExtra) {
             this.extraCountdownText.text = 'Extra ' + this.currentExtra.params.timer;
         }
+
+    },
+
+    /**
+     * When 2 enemies collides
+     *
+     * @param enemySprite1
+     * @param enemySprite2
+     */
+    _enemyTouchEnemy: function (enemySprite1, enemySprite2) {
+
+        // The simple presence of this function avoid enemies to be on the same place
 
     },
 
