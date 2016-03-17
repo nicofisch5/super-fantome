@@ -26,6 +26,18 @@ Level.prototype = {
             Phaser.Tilemap.TILED_JSON // The format of the map data. CSV or TILED_JSON
         );
 
+        // Extra
+        if (this.params.extraParams && isNaN(this.params.extraParams.length)) {
+            this.params.extraParams = [this.params.extraParams];
+        }
+        if (this.params.extraParams) {
+            this.params.extraParams.forEach(function (extraParam) {
+                var extra = new Extra(this.game, extraParam);
+                extra.preload();
+                this.extras.push(extra);
+            }, this);
+        }
+
         // Keys
         if (isNaN(this.params.keyParams.length)) {
             this.params.keyParams = [this.params.keyParams];
@@ -36,22 +48,10 @@ Level.prototype = {
             this.keys.push(key);
         }, this);
 
-        // Extra
-        if (this.params.extraParams) {
-            this.params.extraParams = [this.params.extraParams];
-
-            this.params.extraParams.forEach(function (extraParam) {
-                var extra = new Extra(this.game, extraParam);
-                extra.preload();
-                this.extras.push(extra);
-            }, this);
-        }
-
         // Locks
         if (isNaN(this.params.lockParams.length)) {
             this.params.lockParams = [this.params.lockParams];
         }
-
         this.params.lockParams.forEach(function (lockParam) {
             var lock = new Lock(this.game, lockParam);
             lock.preload();
@@ -99,7 +99,6 @@ Level.prototype = {
 
         // Key
         this.keysSprite = game.add.group();
-        //this.keysSprite.enableBody = true;
         this.keys.forEach(function (key) {
             key.create();
             key.sprite.creator = key;
