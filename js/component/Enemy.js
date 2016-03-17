@@ -122,8 +122,8 @@ Enemy.prototype = {
     },
 
     /**
-     * New velocity for enemies
-     *
+     * Enemies goes faster
+     * Launch by catching an extra
      */
     startGoFaster: function() {
 
@@ -132,8 +132,7 @@ Enemy.prototype = {
     },
 
     /**
-     * New velocity for enemies
-     *
+     * Enemies stop going faster
      */
     stopGoFaster: function() {
 

@@ -3,7 +3,9 @@ Player = function(game) {
     this.sprite = null;
     this.cursors = null;
     this.lastYPosition;
-    this.velocity = 150;
+    this.normalVelocity = 150;
+    this.slowVelocity = 100;
+    this.velocity = this.normalVelocity;
     this.pointerDelta = 10;
     this.direction = 1;
 
@@ -158,12 +160,18 @@ Player.prototype = {
 
     },
 
+    /**
+     * Release key
+     */
     releaseKey: function() {
 
         this.key = false;
 
     },
 
+    /**
+     * Stop motion
+     */
     stop: function () {
 
         this.sprite.body.velocity.x = 0;
@@ -218,6 +226,25 @@ Player.prototype = {
     stopInvertedCursorKeys: function() {
 
         this.direction = 1;
+
+    },
+
+    /**
+     * Player goes slowly
+     * Launch by catching an extra
+     */
+    startGoSlowly: function() {
+
+        this.velocity = this.slowVelocity;
+
+    },
+
+    /**
+     * Player stop going slowly
+     */
+    stopGoSlowly: function() {
+
+        this.velocity = this.normalVelocity;
 
     },
 
