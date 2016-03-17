@@ -5,6 +5,7 @@ Player = function(game) {
     this.lastYPosition;
     this.normalVelocity = 150;
     this.slowVelocity = 100;
+    this.fastVelocity = 200;
     this.velocity = this.normalVelocity;
     this.pointerDelta = 10;
     this.direction = 1;
@@ -230,6 +231,15 @@ Player.prototype = {
     },
 
     /**
+     * Normal velocity
+     */
+    setNormalVelocity: function() {
+
+        this.velocity = this.normalVelocity;
+
+    },
+
+    /**
      * Player goes slowly
      * Launch by catching an extra
      */
@@ -244,7 +254,26 @@ Player.prototype = {
      */
     stopGoSlowly: function() {
 
-        this.velocity = this.normalVelocity;
+        this.setNormalVelocity();
+
+    },
+
+    /**
+     * Player goes slowly
+     * Launch by catching an extra
+     */
+    startGoFaster: function() {
+
+        this.velocity = this.fastVelocity;
+
+    },
+
+    /**
+     * Player stop going slowly
+     */
+    stopGoFaster: function() {
+
+        this.setNormalVelocity();
 
     },
 

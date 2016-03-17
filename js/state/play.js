@@ -196,6 +196,7 @@ playState.prototype = {
      */
     _playerCatchExtra: function (playerSprite, extraSprite) {
 
+        console.log(extraSprite);
         this.currentExtra = extraSprite.creator;
         this.currentExtra.startEffect(this.player, this.enemy);
 

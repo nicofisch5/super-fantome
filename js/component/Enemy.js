@@ -5,6 +5,7 @@ Enemy = function(game) {
     this.sprite = null;
     this.enemies = null;
     this.normalVelocity = 50;
+    this.slowVelocity = 30;
     this.fastVelocity = 110;
     this.velocity = this.normalVelocity;
     this.playerMargin = 80;
@@ -46,8 +47,8 @@ Enemy.prototype = {
     _createEnemy: function () {
 
         // Random position
-        positionX = Math.floor(Math.random() * (gameWidth - gameInfoSpaceWidth - this.playerMargin));
-        positionY = Math.floor(Math.random() * (gameHeight - this.playerMargin));
+        var positionX = Math.floor(Math.random() * (gameWidth - gameInfoSpaceWidth - this.playerMargin));
+        var positionY = Math.floor(Math.random() * (gameHeight - this.playerMargin));
 
         positionX = (positionX < 80) ? 80 : positionX;
         positionX = (positionX > (gameWidth - 80)) ? gameWidth - 80 : positionX;
@@ -122,6 +123,15 @@ Enemy.prototype = {
     },
 
     /**
+     * Normal velocity
+     */
+    setNormalVelocity: function() {
+
+        this.velocity = this.normalVelocity;
+
+    },
+
+    /**
      * Enemies goes faster
      * Launch by catching an extra
      */
@@ -136,7 +146,26 @@ Enemy.prototype = {
      */
     stopGoFaster: function() {
 
-        this.velocity = this.normalVelocity;
+        this.setNormalVelocity();
+
+    },
+
+    /**
+     * Enemies goes faster
+     * Launch by catching an extra
+     */
+    startGoSlowly: function() {
+
+        this.velocity = this.slowVelocity;
+
+    },
+
+    /**
+     * Enemies stop going faster
+     */
+    stopGoSlowly: function() {
+
+        this.setNormalVelocity();
 
     }
 

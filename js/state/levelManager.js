@@ -30,7 +30,7 @@ var levelManagerState = function(game) {
             {
                 "positionX": 500,
                 "positionY": 500,
-                "timer": 10,
+                "timer": 10
             }
         },
         {

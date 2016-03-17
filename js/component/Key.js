@@ -20,7 +20,7 @@ Key.prototype = {
          * 17 is height
          * the fifth element is how many frames
          */
-        this.game.load.spritesheet('key', this.image, 35, 17);
+        game.load.spritesheet('key', this.image, 35, 17);
 
     },
 
@@ -28,7 +28,7 @@ Key.prototype = {
 
         this.currentColor = this.params.color;
 
-        this.sprite = this.game.add.sprite(
+        this.sprite = game.add.sprite(
             this.params.positionX,
             this.params.positionY,
             'key',
