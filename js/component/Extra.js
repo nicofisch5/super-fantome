@@ -6,7 +6,7 @@ Extra = function(game, params) {
     this.sprite = null;
     this.params = params;
     //this.availableTypes = ["InvertedCursorKeys", "EnemiesGoFaster", "PlayerGoesSlowly", "EatEnemy", "EnemiesGoSlowly", "PlayerGoesFaster"];
-    this.availableTypes = ["PlayerGoesSlowly"];
+    this.availableTypes = ["InvertedCursorKeys", "EnemiesGoFaster", "PlayerGoesSlowly", "EnemiesGoSlowly", "PlayerGoesFaster"];
     this.type;
 
 };
@@ -33,7 +33,6 @@ Extra.prototype = {
         game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);
 
         this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
-
     },
 
     init: function () {},
@@ -58,6 +57,10 @@ Extra.prototype = {
             enemy.startGoFaster();
         } else if ("PlayerGoesSlowly" == this.type) {
             player.startGoSlowly();
+        } else if ("EnemiesGoSlowly" == this.type) {
+            enemy.startGoSlowly();
+        } else if ("PlayerGoesFaster" == this.type) {
+            player.startGoFaster();
         }
 
     },
@@ -75,6 +78,10 @@ Extra.prototype = {
             enemy.stopGoFaster();
         } else if ("PlayerGoesSlowly" == this.type) {
             player.stopGoSlowly();
+        } else if ("EnemiesGoSlowly" == this.type) {
+            enemy.stopGoSlowly();
+        } else if ("PlayerGoesFaster" == this.type) {
+            player.stopGoFaster();
         }
 
     }
