@@ -167,6 +167,7 @@ playState.prototype = {
 
         this.player.tweenPlayerKey();
         enemySprite.kill();
+        this.game.score += 10;
 
     },
 
