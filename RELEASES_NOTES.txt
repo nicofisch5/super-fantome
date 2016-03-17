@@ -6,6 +6,10 @@ Extra PlayerGoesSlowly
 Extra EnemiesGoSlowly
 Extra PlayerGoesFaster
 
+=== Corrections ===
+Correction unlimited lives
+Correction end of Level when several potatoes are together
+
 
 ==== 0.9 ====
 2 first extra
