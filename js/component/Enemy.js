@@ -105,7 +105,9 @@ Enemy.prototype = {
 
     stop: function () {
 
-        this.enemies.setAll('body.velocity', 0);
+        if (this.enemies) {
+            this.enemies.setAll('body.velocity', 0);
+        }
 
     },
 
