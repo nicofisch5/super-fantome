@@ -83,8 +83,8 @@ playState.prototype = {
 
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
         var action = this._endLevel;
-        if ('extra' == this.state) {
-            var action = this._playerEatEnemy;
+        if ('extra' == this.state && 'PlayerCanEatEnemy' == this.currentExtra.type) {
+            action = this._playerEatEnemy;
         }
         game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), action, null, this);
 
