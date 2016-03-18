@@ -162,7 +162,13 @@ var levelManagerState = function(game) {
                         "color": "orange",
                         "action": "goToNextLevel"
                     }
-                ]
+                ],
+            "extraParams":
+            {
+                "positionX": 130,
+                "positionY": 605,
+                "timer": 10
+            }
         },
         {
             "id": 5,
@@ -193,7 +199,13 @@ var levelManagerState = function(game) {
                         "color": "green",
                         "action": "goToNextLevel"
                     }
-                ]
+                ],
+            "extraParams":
+            {
+                "positionX": 940,
+                "positionY": 420,
+                "timer": 10
+            }
         },
         {
             "id": 6,
@@ -243,7 +255,13 @@ var levelManagerState = function(game) {
                         "color": "yellow",
                         "action": "goToNextLevel"
                     }
-                ]
+                ],
+            "extraParams":
+            {
+                "positionX": 424,
+                "positionY": 450,
+                "timer": 10
+            }
         },
         {
             "id": 7,
@@ -293,7 +311,13 @@ var levelManagerState = function(game) {
                         "color": "green",
                         "action": "goToNextLevel"
                     }
-                ]
+                ],
+            "extraParams":
+            {
+                "positionX": 100,
+                "positionY": 100,
+                "timer": 10
+            }
         },
         {
             "id": 8,
@@ -343,7 +367,13 @@ var levelManagerState = function(game) {
                         "color": "green",
                         "action": "goToNextLevel"
                     }
-                ]
+                ],
+            "extraParams":
+            {
+                "positionX": 494,
+                "positionY": 312,
+                "timer": 10
+            }
         }
     ];
 
