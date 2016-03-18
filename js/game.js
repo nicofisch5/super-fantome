@@ -13,7 +13,7 @@ var game = new Phaser.Game(
     'phaser-example'
 );
 
-game.version = '0.11-beta'
+game.version = '1.0-RC1'
 
 /** Define all the states */
 game.state.add('boot', bootState);
