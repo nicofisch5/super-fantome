@@ -3,7 +3,7 @@
  */
 
 var gameInfoSpaceWidth = 180;
-var gameWidth = 70 * 15 + gameInfoSpaceWidth; // 1150
+var gameWidth = 70 * 15 + gameInfoSpaceWidth; // 1230
 var gameHeight = 70 * 10; // 700
 
 var game = new Phaser.Game(
@@ -22,5 +22,5 @@ game.state.add('levelManager', levelManagerState);
 game.state.add('play', playState);
 game.state.add('end', endState);
 
-// Start with the 'load' state
+// Start with the 'boot' state
 game.state.start('boot');
