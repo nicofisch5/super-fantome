@@ -78,12 +78,12 @@ menuState.prototype = {
         var goText = 'GAME OVER';
         var scoreText = 'Score : ' + game.finalScore;
 
-        this.y += 130;
+        this.y += 140;
         goText = this.game.add.text(this.x, this.y, goText, this.style);
         goText.align = 'center';
         goText.anchor.setTo(0.5, 0.5);
 
-        this.y += 30;
+        this.y += 35;
         scoreText = this.game.add.text(this.x, this.y, scoreText, this.style);
         scoreText.align = 'center';
         scoreText.anchor.setTo(0.5, 0.5);
