@@ -29,12 +29,6 @@ bootState.prototype = {
             // Set the type of scaling to 'show all'
             game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
-            // Set the min and max width/height of the game
-            /*game.scale.minWidth = 250;
-            game.scale.minHeight = 170;
-            game.scale.maxWidth = 1000;
-            game.scale.maxHeight = 680;*/
-
             // Center the game on the screen
             game.scale.pageAlignHorizontally = true;
             game.scale.pageAlignVertically = true;
