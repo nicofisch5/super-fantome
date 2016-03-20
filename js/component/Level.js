@@ -95,7 +95,7 @@ Level.prototype = {
         //this.layer.scale.setTo(0.5, 0.5);
 
         // This resizes the game world to match the layer dimensions
-        this.layer.resizeWorld();
+        //this.layer.resizeWorld();
 
         // Key
         this.keysSprite = game.add.group();
