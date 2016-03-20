@@ -8,6 +8,7 @@ var playState = function(game) {
 
     this.font = 'Trebuchet MS';
     this.currentExtra;
+    this.extraTimer;
     this.state;
 
 };
@@ -109,7 +110,7 @@ playState.prototype = {
         this.scoreText.text = 'Score ' + this.game.score;
 
         if (this.currentExtra) {
-            this.extraCountdownText.text = 'Extra ' + this.currentExtra.params.timer;
+            this.extraCountdownText.text = 'Extra ' + this.extraTimer;
         }
 
     },
@@ -136,6 +137,8 @@ playState.prototype = {
         if ('endLevel' == this.state) {
             return;
         }
+
+        this._stopExtraEffect();
 
         this.state = 'endLevel';
 
@@ -241,10 +244,11 @@ playState.prototype = {
 
         this.state = 'extra';
         this.currentExtra = extraSprite.creator;
+        this.extraTimer = this.currentExtra.params.timer
         this.currentExtra.startEffect(this.player, this.enemy);
 
         // Timer
-        this.extraCountdownText = 'Extra ' + this.currentExtra.params.timer;
+        this.extraCountdownText = 'Extra ' + this.extraTimer;
         this.extraCountdownText = game.add.text(this.infoSpace.x, this.infoSpace.y, this.extraCountdownText, { font: "18px " + this.font, fill: "#55ffff" });
         this.extraCountdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateExtraTimer, this);
         this.infoSpace.y += this.infoSpace.gap;
@@ -335,11 +339,29 @@ playState.prototype = {
 
     },
 
+    /**
+     * Update Extra timer
+     *
+     * @private
+     */
     _updateExtraTimer: function () {
 
-        this.currentExtra.params.timer -= 1;
-        if (this.currentExtra.params.timer == 0) {
+        this.extraTimer -= 1;
+        if (this.extraTimer <= 0) {
             // Stop effect
+            this._stopExtraEffect();
+        }
+
+    },
+
+    /**
+     * Stop Extra effect
+     *
+     * @private
+     */
+    _stopExtraEffect: function() {
+
+        if (null != this.state) {
             this.state = null;
             game.time.events.remove(this.extraCountdown);
             this.currentExtra.stopEffect(this.player, this.enemy);
@@ -348,13 +370,6 @@ playState.prototype = {
             this.extraCountdownText.destroy();
             this.infoSpace.y -= this.infoSpace.gap;
         }
-
-    },
-
-    render: function() {
-
-        /*game.debug.cameraInfo(game.camera, 32, 32);
-        this.player.render();*/
 
     }
 
