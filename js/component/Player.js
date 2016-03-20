@@ -38,7 +38,7 @@ Player.prototype = {
          * key This is the image or texture used by the Sprite during rendering
          */
         //this.sprite = game.add.sprite(65, game.world.height - 180, 'player');
-        this.sprite = game.add.sprite(game.world.width - 75, 180, 'player', 1);
+        this.sprite = game.add.sprite(game.world.width - 75 - gameInfoSpaceWidth, 180, 'player', 1);
 
         // this.player size
         this.sprite.scale.setTo(0.38, 0.38);
