@@ -15,8 +15,6 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
-### Nouveaux objets bonus et objets malus
-
 ### Amélioration menu
 
 ### Passage d'un coté à l'autre de l'espace

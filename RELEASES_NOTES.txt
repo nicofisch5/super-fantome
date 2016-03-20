@@ -1,3 +1,14 @@
+==== 1.0-RC2 ====
+Minor corrections
+
+=== Evolutions ===
+
+
+=== Corrections ===
+Correction extra timer conutdown
+
+
+
 ==== 1.0-RC1 ====
 Soon 1.0
 
