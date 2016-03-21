@@ -1,6 +1,5 @@
 Enemy = function(game) {
 
-    this.game = game;
     this.image = 'assets/potatoe.png';
     this.sprite = null;
     this.enemies = null;
@@ -17,23 +16,13 @@ Enemy.prototype = {
 
     preload: function () {
 
-        this.game.load.image('enemy1', this.image);
-
-    },
-
-    init: function () {
-
-        if (this.enemies == null) {
-            // Group of enemies
-            this.enemies = game.add.group();
-            this.enemies.enableBody = true;
-        }
+        game.load.image('enemy1', this.image);
 
     },
 
     create: function (nb) {
 
-        this.init();
+        this._createGroup();
 
         // Force to 1 if null
         nb = nb ? nb : 1;
@@ -41,6 +30,16 @@ Enemy.prototype = {
 
         for (var i = 1; i <= nb; i++) {
             this._createEnemy();
+        }
+
+    },
+
+    _createGroup: function () {
+
+        if (this.enemies == null) {
+            // Group of enemies
+            this.enemies = game.add.group();
+            this.enemies.enableBody = true;
         }
 
     },

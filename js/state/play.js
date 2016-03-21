@@ -29,13 +29,6 @@ playState.prototype = {
 
         this.state = null;
 
-        game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
-
-        this.player.preload();
-        this.enemy.preload();
-
-        game.load.image('pixel', 'assets/pixel.png');
-
     },
 
     create: function() {

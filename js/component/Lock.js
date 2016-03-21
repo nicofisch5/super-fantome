@@ -1,6 +1,5 @@
 Lock = function(game, params) {
 
-    this.game = game;
     this.params = params;
     this.colors = [
         {
@@ -28,9 +27,7 @@ Lock = function(game, params) {
 
 Lock.prototype = {
 
-    preload: function () {
-
-    },
+    preload: function () {},
 
     create: function () {
 
@@ -44,8 +41,6 @@ Lock.prototype = {
 
     },
 
-    update: function() {
-
-    }
+    update: function() {}
 
 }

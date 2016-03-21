@@ -68,18 +68,6 @@ Player.prototype = {
          */
         this.sprite.checkWorldBounds = true;;
 
-        // Pass to the other side
-        /*this.sprite.events.onOutOfBounds.add(
-            function(sprite) {
-                if (sprite.x < 0) {
-                    sprite.x = 470;
-                } else {
-                    sprite.x = 0;
-                }
-            },
-            this.sprite
-        );*/
-
         // Player initial Y position, used for camera follow
         this.lastYPosition = game.world.height - (game.camera.height / 2);
     },

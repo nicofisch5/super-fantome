@@ -1,6 +1,5 @@
 Level = function(game, params) {
 
-    this.game = game;
     this.params = params;
 
     this.layer;
@@ -19,7 +18,7 @@ Level.prototype = {
     preload: function () {
 
         // Tilemap for level
-        this.game.load.tilemap(
+        game.load.tilemap(
             this.params.index, // Unique asset index of the tilemap data
             this.params.dataFile, // The url of the map data file (csv/json)
             null, // Optional JSON data object, used for map data instead
@@ -32,8 +31,7 @@ Level.prototype = {
         }
         if (this.params.extraParams) {
             this.params.extraParams.forEach(function (extraParam) {
-                var extra = new Extra(this.game, extraParam);
-                extra.preload();
+                var extra = new Extra(game, extraParam);
                 this.extras.push(extra);
             }, this);
         }
@@ -43,8 +41,7 @@ Level.prototype = {
             this.params.keyParams = [this.params.keyParams];
         }
         this.params.keyParams.forEach(function (keyParam) {
-            var key = new Key(this.game, keyParam);
-            key.preload();
+            var key = new Key(game, keyParam);
             this.keys.push(key);
         }, this);
 
@@ -53,8 +50,7 @@ Level.prototype = {
             this.params.lockParams = [this.params.lockParams];
         }
         this.params.lockParams.forEach(function (lockParam) {
-            var lock = new Lock(this.game, lockParam);
-            lock.preload();
+            var lock = new Lock(game, lockParam);
             this.locks.push(lock);
         }, this);
 
@@ -67,7 +63,7 @@ Level.prototype = {
         if (typeof this.params.nbEnemies != 'undefined') {
             this.nbEnemies = this.params.nbEnemies;
         }
-        if (! this.game.device.desktop) {
+        if (! game.device.desktop) {
             this.nbEnemies--;
         }
 
@@ -76,7 +72,7 @@ Level.prototype = {
     create: function () {
 
         // New Phaser.Tilemap. Map populated with data from a Tiled JSON file
-        this.tilemap = this.game.add.tilemap(this.params.index);
+        this.tilemap = game.add.tilemap(this.params.index);
 
         // Tileset image
         this.tilemap.addTilesetImage(

@@ -12,6 +12,8 @@ Extra = function(game, params) {
 
 Extra.prototype = {
 
+    init: function () {},
+
     preload: function () {
 
         this.texture = [
@@ -30,14 +32,12 @@ Extra.prototype = {
         ];
 
         game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);
-
-        this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
     },
-
-    init: function () {},
 
     create: function () {
 
+        this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
+        
         this.sprite = game.add.sprite(this.params.positionX, this.params.positionY, 'extra');
         game.physics.arcade.enable(this.sprite);
 
