@@ -1,7 +1,7 @@
 Player = function(game) {
 
+    this.image = 'assets/ghost_sprite_final.png';
     this.sprite = null;
-    this.cursors = null;
     this.lastYPosition;
     this.normalVelocity = 150;
     this.slowVelocity = 100;
@@ -23,7 +23,7 @@ Player.prototype = {
          * 70 is height
          * the fifth element is how many frames
          */
-        game.load.spritesheet('player', 'assets/ghost_sprite_final.png', 92, 70);
+        game.load.spritesheet('player', this.image, 92, 70);
 
     },
 
@@ -139,7 +139,7 @@ Player.prototype = {
                 }
             }
 
-            // If no one is pressed
+            // If no key is pressed
             else {
                 // Stop the player
                 this.stop();
@@ -185,19 +185,30 @@ Player.prototype = {
 
     },
 
+    /**
+     * Get the key
+     *
+     * @returns {*|null|boolean}
+     */
     getKey: function () {
 
         return this.key;
 
     },
 
+    /**
+     * Release the key
+     */
     releaseKey: function() {
 
         this.key = null;
 
     },
 
-    tweenPlayerKey: function() {
+    /**
+     * Tween player
+     */
+    tweenPlayer: function() {
 
         game.add.tween(this.sprite.scale)
             .to({x: 0.6, y: 0.6}, 50)
@@ -206,12 +217,19 @@ Player.prototype = {
 
     },
 
+    /**
+     * Starting inverted cursor keys mode
+     * Launch by catching an extra
+     */
     startInvertedCursorKeys: function() {
 
         this.direction = -1;
 
     },
 
+    /**
+     * Stoping inverted cursor keys mode
+     */
     stopInvertedCursorKeys: function() {
 
         this.direction = 1;
@@ -262,12 +280,6 @@ Player.prototype = {
     stopGoFaster: function() {
 
         this.setNormalVelocity();
-
-    },
-
-    render: function () {
-
-        game.debug.spriteCoords(this.sprite, 32, 500);
 
     }
 

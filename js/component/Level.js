@@ -114,11 +114,6 @@ Level.prototype = {
             lock.create();
         });
 
-        // this.tilemap.setTileIndexCallback
-
-        // Add debug information
-        //this.layer.debug = true;
-
     }
 
 }

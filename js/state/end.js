@@ -26,6 +26,7 @@ endState.prototype = {
     },
 
     create: function() {
+
         var startText = '>>> Bravo vous avez terminé le jeu <<<';
 
         // Call the 'start' function when pressing the spacebar
@@ -49,6 +50,11 @@ endState.prototype = {
         game.stage.backgroundColor = '#222';
     },
 
+    /**
+     * Score of the player
+     *
+     * @private
+     */
     _score: function() {
 
         this.y += 100;
@@ -59,7 +65,9 @@ endState.prototype = {
 
     },
 
-    // Start the actual game
+    /**
+     * Restart the game
+     */
     restart: function() {
 
         this.game.state.start('boot', true, false);

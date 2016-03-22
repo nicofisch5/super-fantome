@@ -15,7 +15,11 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
+### Redéfinition de la classe Enemy
+
 ### Amélioration menu
+
+### Amélioration display temps/score
 
 ### Passage d'un coté à l'autre de l'espace
 

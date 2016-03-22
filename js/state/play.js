@@ -161,7 +161,7 @@ playState.prototype = {
      */
     _playerEatEnemy: function (playerSprite, enemySprite) {
 
-        this.player.tweenPlayerKey();
+        this.player.tweenPlayer();
         enemySprite.kill();
         this.game.score += 10;
 
@@ -198,7 +198,7 @@ playState.prototype = {
 
             this.game.score += 10;
 
-            this.player.tweenPlayerKey();
+            this.player.tweenPlayer();
 
         }
 
@@ -221,7 +221,7 @@ playState.prototype = {
             this.game.score -= 10;
             this.infoSpace.y -= this.infoSpace.gap;
 
-            this.player.tweenPlayerKey();
+            this.player.tweenPlayer();
         }
 
     },

@@ -47,6 +47,7 @@ Extra.prototype = {
      * Start extra effect
      *
      * @param player
+     * @param enemy
      */
     startEffect: function(player, enemy) {
 
@@ -70,6 +71,7 @@ Extra.prototype = {
      * Stop extra effect
      *
      * @param player
+     * @param enemy
      */
     stopEffect: function(player, enemy) {
 

@@ -1,6 +1,5 @@
 Key = function(game, params) {
 
-    this.game = game;
     this.image = 'assets/key_sprite.png';
     this.sprite = null;
     this.params = params;

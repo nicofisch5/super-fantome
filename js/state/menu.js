@@ -71,6 +71,11 @@ menuState.prototype = {
         game.stage.backgroundColor = '#222';
     },
 
+    /**
+     * Game over
+     *
+     * @private
+     */
     _gameOver: function() {
 
         game.gameOver = false;
@@ -90,33 +95,22 @@ menuState.prototype = {
 
     },
 
-    _score: function() {
-        /*if (score > 0) {
-         // Display its score
-         var score_label = this.game.add.text(x, y+80, "Your Score: " + score, style);
-         score_label.anchor.setTo(0.5, 0.5);
-
-         // Highscore
-         if (score > highscore) {
-         highscore = score;
-         var congrats_label = this.game.add.text(x, y+160, "Congratulations, you've got new highscore!", style);
-         congrats_label.anchor.setTo(0.5, 0.5);
-         }
-
-         var highscore_label = this.game.add.text(x, y+120, "Highscore: " + highscore, style);
-         highscore_label.anchor.setTo(0.5, 0.5);
-         }*/
-    },
-
+    /**
+     * Copyright at the bottom
+     *
+     * @private
+     */
     _copyright: function() {
 
-        var copyright = 'v' + game.version + ' - @nicofisch5 / @pouscaille - phaser.io';
+        var copyright = 'v' + game.version + ' - @nicofisch5 / @theofisch - phaser.io';
         copyright = this.game.add.text(this.x, game.world.height-25, copyright, { font: "16px Arial", fill: "#888" });
         copyright.anchor.setTo(0.5, 0.5);
 
     },
 
-    // Start the actual game
+    /**
+     * Start the actual game
+     */
     start: function() {
 
         this.game.state.start('levelManager', true, false);
