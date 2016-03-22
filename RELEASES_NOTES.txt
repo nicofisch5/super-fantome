@@ -1,3 +1,14 @@
+==== 1.0-RC3 ====
+Refactoring
+
+=== Evolutions ===
+Refeactoring
+
+=== Corrections ===
+Correction use of preload and create functions
+
+
+
 ==== 1.0-RC2 ====
 Minor corrections
 
