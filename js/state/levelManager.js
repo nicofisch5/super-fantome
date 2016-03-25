@@ -9,6 +9,7 @@ var levelManagerState = function(game) {
 
     this.params;
     this.font = 'Trebuchet MS';
+    this.color = '#a3daea';
 
 };
 
@@ -50,6 +51,9 @@ levelManagerState.prototype = {
             var startText = '>>> Toucher l\'écran pour démarrer <<<';
         }
 
+        // Phaser logo
+        game.add.sprite(30, 30, 'phaser', 1);
+
         var levelText = 'Niveau ' + game.levelNumber;
         var scoreText = 'Score : ' + game.score;
         var livesText = 'Vies : ' + game.lives;
@@ -61,26 +65,29 @@ levelManagerState.prototype = {
         space_key.onDown.add(this.start, this);
         game.input.onDown.add(this.start, this);
 
-        levelText = this.game.add.text(x, y, levelText, { font: "48px " + this.font, fill: "#55ffff" });
+        levelText = this.game.add.text(x, y, levelText, { font: "48px " + this.font, fill: this.color });
         levelText.align = 'center';
         levelText.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
         y += 130;
-        startText = this.game.add.text(x, y, startText, { font: "30px " + this.font, fill: "#55ffff" });
+        startText = this.game.add.text(x, y, startText, { font: "30px " + this.font, fill: this.color });
         startText.align = 'center';
         startText.anchor.setTo(0.5, 0.5);
 
         y += 100;
-        scoreText = this.game.add.text(x, y, scoreText, { font: "24px " + this.font, fill: "#55ffff" });
+        scoreText = this.game.add.text(x, y, scoreText, { font: "24px " + this.font, fill: this.color });
         scoreText.align = 'center';
         scoreText.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
         y += 75;
-        livesText = this.game.add.text(x, y, livesText, { font: "24px " + this.font, fill: "#55ffff" });
+        livesText = this.game.add.text(x, y, livesText, { font: "24px " + this.font, fill: this.color });
         livesText.align = 'center';
         livesText.anchor.setTo(0.5, 0.5);
+
+        // Ghost picture
+        game.add.sprite(game.world.width - 250, game.world.height - 200, 'ghost', 1).scale.setTo(0.50, 0.50);
 
     },
 

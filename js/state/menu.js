@@ -11,6 +11,7 @@ var menuState = function(game) {
     this.styleTitle;
     this.style;
     this.font = 'Trebuchet MS';
+    this.color = '#a3daea';
 
 };
 
@@ -20,14 +21,15 @@ menuState.prototype = {
 
         this.x = game.world.width / 2;
         this.y = game.world.height / 6;
-        this.styleTitle = { font: "48px " + this.font, fill: "#55ffff" };
-        this.style = { font: "30px " + this.font, fill: "#55ffff" };
+        this.styleTitle = { font: "48px " + this.font, fill: this.color };
+        this.style = { font: "30px " + this.font, fill: this.color };
 
     },
 
     preload: function() {
 
         game.load.spritesheet('ghost', 'assets/ghost_intro.png', 300, 300);
+        game.load.spritesheet('phaser', 'assets/phaser_logo.png');
 
     },
 
@@ -39,6 +41,9 @@ menuState.prototype = {
         else {
             var startText = '>>> Toucher l\'écran pour continuer <<<';
         }
+
+        // Phaser logo
+        game.add.sprite(30, 30, 'phaser', 1);
 
         // Call the 'start' function when pressing the spacebar
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -58,7 +63,7 @@ menuState.prototype = {
 
         // Ghost picture
         this.y += 40;
-        game.add.sprite(this.x - 135, this.y, 'ghost', 1);
+        game.add.sprite(this.x - 175, this.y, 'ghost', 1);
         this.y += 182;
 
         // Game over
