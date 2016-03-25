@@ -21,7 +21,7 @@ playState.prototype = {
         this.level = currentLevel;
         this.numberOflevels = numberOflevels;
         this.player = new Player(game);
-        this.enemy = new Enemy(game);
+        this.enemyGroup = new EnemyGroup(game, this.player, this.level.nbEnemies);
 
         this.infoSpace = {"x": 1100, "y": 50, "gap": 40};
 
@@ -37,7 +37,6 @@ playState.prototype = {
 
         this.level.create();
         this.player.create();
-        this.enemy.create(this.level.nbEnemies);
 
         this.emitter = this.game.add.emitter(0, 0, 15);
         this.emitter.makeParticles('pixel');
@@ -103,17 +102,17 @@ playState.prototype = {
         game.physics.arcade.collide(this.player.sprite, this.level.layer, this._playerTouchLock, null, this);
 
         // Collision between enemies and world
-        game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer, this._enemyTouchLock);
+        game.physics.arcade.collide(this.enemyGroup, this.level.layer, this._enemyTouchLock);
 
         // Collision between 2 enemies
-        game.physics.arcade.collide(this.enemy.getGroup(), this.enemy.getGroup(), this._enemyTouchEnemy, null, this);
+        game.physics.arcade.collide(this.enemyGroup, this.enemyGroup, this._enemyTouchEnemy, null, this);
 
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
         var action = this._endLevel;
         if ('extra' == this.state && 'PlayerCanEatEnemy' == this.currentExtra.type) {
             action = this._playerEatEnemy;
         }
-        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), action, null, this);
+        game.physics.arcade.overlap(this.player.sprite, this.enemyGroup, action, null, this);
 
         // Collision between player and key
         game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
@@ -130,7 +129,7 @@ playState.prototype = {
         this.player.sprite.events.onOutOfBounds.add(this._endLevel, this);
 
         this.player.update();
-        this.enemy.update(this.player);
+        //this.enemyGroup.update(this.player);
 
         this.countdownText.text = this.level.timer;
         this.scoreText.text = 'Score ' + this.game.score;
@@ -168,7 +167,7 @@ playState.prototype = {
 
         this.state = 'endLevel';
 
-        this.enemy.endLevel();
+        this.enemyGroup.endLevel();
         this._playerDie();
 
         var goToState = 'levelManager';
@@ -271,7 +270,7 @@ playState.prototype = {
         this.state = 'extra';
         this.currentExtra = extraSprite.creator;
         this.extraTimer = this.currentExtra.params.timer
-        this.currentExtra.startEffect(this.player, this.enemy);
+        this.currentExtra.startEffect(this.player, this.enemyGroup);
 
         // Timer
         var extraSpriteHUD = game.add.sprite(this.infoSpace.x, this.infoSpace.y, 'extra', 1);
@@ -393,7 +392,7 @@ playState.prototype = {
         if (null != this.state) {
             this.state = null;
             game.time.events.remove(this.extraCountdown);
-            this.currentExtra.stopEffect(this.player, this.enemy);
+            this.currentExtra.stopEffect(this.player, this.enemyGroup);
 
             // Erase text
             this.extraCountdownText.destroy();
