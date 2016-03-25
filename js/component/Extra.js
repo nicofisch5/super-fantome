@@ -33,22 +33,22 @@ Extra.prototype = {
      * Start extra effect
      *
      * @param player
-     * @param enemy
+     * @param enemyGroup
      */
-    startEffect: function(player, enemy) {
+    startEffect: function(player, enemyGroup) {
 
         if ("InvertedCursorKeys" == this.type) {
             player.startInvertedCursorKeys();
         } else if ("EnemiesGoFaster" == this.type) {
-            enemy.startGoFaster();
+            enemyGroup.startGoFaster();
         } else if ("PlayerGoesSlowly" == this.type) {
             player.startGoSlowly();
         } else if ("EnemiesGoSlowly" == this.type) {
-            enemy.startGoSlowly();
+            enemyGroup.startGoSlowly();
         } else if ("PlayerGoesFaster" == this.type) {
             player.startGoFaster();
         } else if ("PlayerCanEatEnemy" == this.type) {
-            enemy.startEscape();
+            enemyGroup.startEscape();
         }
 
     },
@@ -57,22 +57,22 @@ Extra.prototype = {
      * Stop extra effect
      *
      * @param player
-     * @param enemy
+     * @param enemyGroup
      */
-    stopEffect: function(player, enemy) {
+    stopEffect: function(player, enemyGroup) {
 
         if ("InvertedCursorKeys" == this.type) {
             player.stopInvertedCursorKeys();
         } else if ("EnemiesGoFaster" == this.type) {
-            enemy.stopGoFaster();
+            enemyGroup.stopGoFaster();
         } else if ("PlayerGoesSlowly" == this.type) {
             player.stopGoSlowly();
         } else if ("EnemiesGoSlowly" == this.type) {
-            enemy.stopGoSlowly();
+            enemyGroup.stopGoSlowly();
         } else if ("PlayerGoesFaster" == this.type) {
             player.stopGoFaster();
         } else if ("PlayerCanEatEnemy" == this.type) {
-            enemy.stopEscape();
+            enemyGroup.stopEscape();
         }
 
     }
