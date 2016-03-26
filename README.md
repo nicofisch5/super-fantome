@@ -15,14 +15,14 @@ Super fantôme ne peut prendre qu'une clé à la fois.
 Simple ? A vous de voir ...
 
 ## Fonctionnalités à venir
-### Redéfinition de la classe Enemy
+### v1.X
+Redéfinition de la classe Enemy
+Amélioration menu
+Amélioration display temps/score
 
-### Amélioration menu
-
-### Amélioration display temps/score
-
-### Passage d'un coté à l'autre de l'espace
-
-### Identifier les zones des cartes où les ennemies ne peuvent pas apparaître
-
-### Intelligence déplacement patates
+### v2.X
+Passage d'un coté à l'autre de l'espace
+Identifier les zones des cartes où les ennemies ne peuvent pas apparaître
+Intelligence déplacement patates
+Notion de "world" au dessus des "levels"
+Finir les worlds avec un Boss
