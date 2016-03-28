@@ -36,10 +36,10 @@ menuState.prototype = {
     create: function() {
         // Store the relevant text based on the device used
         if (game.device.desktop) {
-            var startText = '>>> Espace pour continuer <<<';
+            var startText = '>>> Space bar to continue <<<';
         }
         else {
-            var startText = '>>> Toucher l\'écran pour continuer <<<';
+            var startText = '>>> Touch screen to continue <<<';
         }
 
         // Phaser logo

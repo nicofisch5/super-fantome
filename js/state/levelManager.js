@@ -45,10 +45,10 @@ levelManagerState.prototype = {
 
         // Store the relevant text based on the device used
         if (game.device.desktop) {
-            var startText = '>>> Espace pour démarrer <<<';
+            var startText = '>>> Space bar to start <<<';
         }
         else {
-            var startText = '>>> Toucher l\'écran pour démarrer <<<';
+            var startText = '>>> Touch screen to start <<<';
         }
 
         // Phaser logo
