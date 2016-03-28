@@ -10,10 +10,10 @@ var game = new Phaser.Game(
     gameWidth,
     gameHeight,
     Phaser.CANVAS,
-    'phaser-example'
+    'super-fantome'
 );
 
-game.version = '1.0-RC4'
+game.version = '1.0-RC6'
 
 /** Define all the states */
 game.state.add('boot', bootState);
