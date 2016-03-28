@@ -32,7 +32,6 @@ Level.prototype = {
         if (this.params.extraParams) {
             this.params.extraParams.forEach(function (extraParam) {
                 var extra = new Extra(game, extraParam);
-                extra.preload();
                 this.extras.push(extra);
             }, this);
         }

@@ -1,7 +1,6 @@
 Extra = function(game, params) {
 
-    this.pixelWidth = 2;
-    this.pixelHeight = 2;
+    this.image = 'assets/gift_final.png';
     this.texture;
     this.sprite = null;
     this.params = params;
@@ -16,30 +15,17 @@ Extra.prototype = {
 
     preload: function () {
 
-        this.texture = [
-            '.....828.....',
-            '....72227....',
-            '....82228....',
-            '...7222227...',
-            '2222222222222',
-            '8222222222228',
-            '.72222222227.',
-            '..787777787..',
-            '..877777778..',
-            '.78778887787.',
-            '.27887.78872.',
-            '.787.....787.'
-        ];
+        game.load.spritesheet('extra', this.image);
 
-        game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);
     },
 
     create: function () {
 
-        this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
-        
         this.sprite = game.add.sprite(this.params.positionX, this.params.positionY, 'extra');
+        this.sprite.scale.setTo(0.38, 0.38);
         game.physics.arcade.enable(this.sprite);
+
+        this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
 
     },
 

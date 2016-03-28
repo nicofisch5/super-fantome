@@ -15,6 +15,7 @@ bootState.prototype = {
 
     preload: function() {
 
+        new Extra().preload();
         new Player().preload();
         new Enemy().preload();
         new Key().preload();
