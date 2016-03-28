@@ -16,7 +16,7 @@ Extra.prototype = {
 
     preload: function () {
 
-        this.texture = [
+        /*this.texture = [
             '.....828.....',
             '....72227....',
             '....82228....',
@@ -31,7 +31,7 @@ Extra.prototype = {
             '.787.....787.'
         ];
 
-        game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);
+        game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);*/
     },
 
     create: function () {

@@ -15,7 +15,22 @@ bootState.prototype = {
 
     preload: function() {
 
-        new Extra().preload();
+        this.texture = [
+            '.....828.....',
+            '....72227....',
+            '....82228....',
+            '...7222227...',
+            '2222222222222',
+            '8222222222228',
+            '.72222222227.',
+            '..787777787..',
+            '..877777778..',
+            '.78778887787.',
+            '.27887.78872.',
+            '.787.....787.'
+        ];
+
+        game.create.texture('extra', this.texture, this.pixelWidth, this.pixelHeight);
         new Player().preload();
         new Enemy().preload();
         new Key().preload();
