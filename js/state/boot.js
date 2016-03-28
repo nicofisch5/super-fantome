@@ -15,14 +15,14 @@ bootState.prototype = {
 
     preload: function() {
 
-        game.load.json('level', 'assets/level.json');
-        game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
-        game.load.image('pixel', 'assets/pixel.png'); // Particles
-
+        new Extra().preload();
         new Player().preload();
         new Enemy().preload();
         new Key().preload();
-        new Extra().preload();
+
+        game.load.json('level', 'assets/level.json');
+        game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
+        game.load.image('pixel', 'assets/pixel.png'); // Particles
 
     },
 
