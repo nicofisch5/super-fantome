@@ -22,7 +22,7 @@ For smartphone / pad :
 The gift visible on each level is an extra which gives you bonus or malus.
 You can only hold one key at a time.
 
-## Fonctionnalités à venir
+## Futures features
 ### v1.X
 Refactoring of Enemy class
 Spooky music
