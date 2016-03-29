@@ -69,6 +69,9 @@ playState.prototype = {
         // Space bar
         this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+        var world1Sound = game.add.audio('world1');
+        world1Sound.play();
+
     },
 
     update: function() {
