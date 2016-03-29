@@ -1,28 +1,39 @@
 # super-fantome
 Super fantôme  
-Jeu basé sur la librairie JS phaser (v2.4.6)
+HTML5 game based on JS phaser library (v2.4.6)
 
-## Architecture du projet
-Répertoire js/vendors/phaser : librairie phaser  
-Répertoire js/component : classes principales  
-Répertoire js/state : state (phase de jeu phaser)  
-Répertoire assets : images et tiles
+## Project architecture
+js/vendors/phaser : phaser library
+js/component : main classes  
+js/state : state (phaser game step)  
+assets : images and tiles
 
-## Principe du jeu
-Vous dirigez un fantôme du nom de super-fantôme.  
-Vous devez récupérer une clé de couleur puis l'insérer dans une serrure, sans vous faire attraper par les patates.  
-Super fantôme ne peut prendre qu'une clé à la fois.  
-Simple ? A vous de voir ...
+## Game object
+You control a ghost, the goal is to find the lock that opens the end of the level. You have to find keys to open locks.
+The potatoes are your enemies.
+
+For desktop :
+    - 4 arrows keys to move
+    - space bar to release a key
+
+For smartphone / pad :
+    - touch the screen in the direction you want the ghost move
+
+The gift visible on each level is an extra which gives you bonus or malus.
+You can only hold one key at a time.
 
 ## Fonctionnalités à venir
 ### v1.X
-Redéfinition de la classe Enemy
-Amélioration menu
-Amélioration display temps/score
+Refactoring of Enemy class
+Spooky music
+Increase display time/score
+Possibility to release key on smartphone/pad
 
 ### v2.X
-Passage d'un coté à l'autre de l'espace
-Identifier les zones des cartes où les ennemies ne peuvent pas apparaître
-Intelligence déplacement patates
-Notion de "world" au dessus des "levels"
-Finir les worlds avec un Boss
+"World" entity above "levels"
+Boss at the end of each world
+Map areas where enemies can't appear
+Intelligence of enemies motion 
+
+### vX.X
+Way from one side to another site of the map
