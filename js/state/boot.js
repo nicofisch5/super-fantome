@@ -25,6 +25,9 @@ bootState.prototype = {
         game.load.image('pixel', 'assets/pixel.png'); // Particles
         game.load.image('clock', 'assets/clock.png');
 
+        // Sound
+        game.load.audio('world1', 'assets/audio/world1.mp3');
+
     },
 
     create: function() {
@@ -52,6 +55,12 @@ bootState.prototype = {
         }
 
         // When all assets are loaded, go to the 'menu' state
+        game.sound.setDecodedCallback([ world1 ], this.goToMenu(), this);
+
+    }
+
+    goToMenu: function() {
+
         game.state.start('menu');
 
     }
