@@ -25,6 +25,7 @@ You can only hold one key at a time.
 ## Futures features
 ### v1.X
 Refactoring of Enemy class
+Gap between player and enemies at the beginning of the level
 Spooky music
 Increase display time/score
 Possibility to release key on smartphone/pad
