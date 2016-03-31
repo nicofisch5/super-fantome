@@ -11,6 +11,7 @@ var playState = function(game) {
     this.currentExtra;
     this.extraTimer;
     this.state;
+    this.backgroundSound;
 
 };
 
@@ -69,8 +70,8 @@ playState.prototype = {
         // Space bar
         this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-        var world1Sound = game.add.audio('world1');
-        world1Sound.play();
+        this.backgroundSound = game.add.audio('background');
+        this.backgroundSound.play();
 
     },
 
@@ -147,6 +148,8 @@ playState.prototype = {
 
         this.enemy.endLevel();
         this._playerDie();
+
+        this.backgroundSound.stop();
 
         var goToState = 'levelManager';
         game.lives--;

@@ -24,9 +24,6 @@ bootState.prototype = {
         game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
         game.load.image('pixel', 'assets/pixel.png'); // Particles
 
-        // Sound
-        game.load.audio('world1', 'assets/audio/world1.mp3');
-
     },
 
     create: function() {
@@ -52,13 +49,6 @@ bootState.prototype = {
             // Apply the scale changes
             game.scale.refresh();
         }
-
-        // When all assets are loaded, go to the 'menu' state
-        game.sound.setDecodedCallback([ world1 ], this.goToMenu(), this);
-
-    }
-
-    goToMenu: function() {
 
         game.state.start('menu');
 

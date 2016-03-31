@@ -28,8 +28,8 @@ menuState.prototype = {
 
     preload: function() {
 
-        game.load.spritesheet('ghost', 'assets/ghost_intro.png', 300, 300);
-        game.load.spritesheet('phaser', 'assets/phaser_logo.png');
+        game.load.spritesheet('ghost', 'assets/ghost_intro.png', 350, 275);
+        game.load.spritesheet('phaser', 'assets/phaser_logo.png', 240, 200);
 
     },
 
