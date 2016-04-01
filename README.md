@@ -29,6 +29,7 @@ Gap between player and enemies at the beginning of the level
 Spooky music  
 
 ### v1.X
+Refactoring HUD  
 Add sounds when:
 - player dies
 - player catchs a key
