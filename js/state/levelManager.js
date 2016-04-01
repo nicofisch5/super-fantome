@@ -54,7 +54,7 @@ levelManagerState.prototype = {
         // Phaser logo
         game.add.sprite(30, 30, 'phaser', 1);
 
-        var levelText = 'Niveau ' + game.levelNumber;
+        var levelText = 'Level ' + game.levelNumber;
         var scoreText = 'Score : ' + game.score;
         var livesText = 'Lifes : ' + game.lives;
         var x = game.world.width/2;
@@ -96,7 +96,7 @@ levelManagerState.prototype = {
      */
     start: function() {
 
-        this.game.state.start('play', true, false, this.currentLevel);
+        this.game.state.start('play', true, false, this.currentLevel, this.params.length);
 
     }
 

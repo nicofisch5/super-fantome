@@ -16,9 +16,10 @@ var playState = function(game) {
 
 playState.prototype = {
 
-    init: function(currentLevel) {
+    init: function(currentLevel, numberOflevels) {
 
         this.level = currentLevel;
+        this.numberOflevels = numberOflevels;
         this.player = new Player(game);
         this.enemy = new Enemy(game);
 
@@ -44,7 +45,12 @@ playState.prototype = {
         this.emitter.setXSpeed(-150, 150);
         this.emitter.gravity = 0;
 
-        // Lives
+        // Level
+        this.levelText = 'Level ' + game.levelNumber + '/' + this.numberOflevels;
+        this.levelText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.levelText, { font: "18px " + this.font, fill: this.color });
+        this.infoSpace.y += this.infoSpace.gap;
+        
+        // Score
         this.scoreText = 'Score ' + this.game.score;
         this.scoreText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.scoreText, { font: "18px " + this.font, fill: this.color });
         this.infoSpace.y += this.infoSpace.gap;
