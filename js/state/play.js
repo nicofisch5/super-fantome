@@ -37,6 +37,7 @@ playState.prototype = {
 
         this.level.create();
         this.player.create();
+        this.enemyGroup.createEnemy();
 
         this.emitter = this.game.add.emitter(0, 0, 15);
         this.emitter.makeParticles('pixel');
