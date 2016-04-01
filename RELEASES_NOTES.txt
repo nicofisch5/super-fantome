@@ -3,6 +3,41 @@ Release v1.0
 
 
 
+==== 1.0-RC7 ====
+
+=== Evolutions ===
+English translation (il y a 25 minutes)       <Nicolas Fischer>
+
+
+
+==== 1.0-RC6 ====
+
+=== Evolutions ===
+README in english
+Text in english
+Links at the bottom
+
+
+
+==== 1.0-RC5 ====
+
+=== Evolutions ===
+Replace extra texture by a real image
+
+=== Corrections ===
+Move call to Extra preload
+
+
+
+==== 1.0-RC4 ====
+
+=== Evolutions ===
+New favicon
+Add phaser logo
+Authorized ghost picture
+
+
+
 ==== 1.0-RC3 ====
 Refactoring
 
