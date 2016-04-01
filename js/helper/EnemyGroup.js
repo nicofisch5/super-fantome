@@ -49,8 +49,7 @@ EnemyGroup.prototype.createEnemy = function (nb) {
 
 EnemyGroup.prototype._getRandomPosition = function () {
 
-    var positionX
-    var positionY
+    var positionX, positionY;
 
     // Random position X
     while (
