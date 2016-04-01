@@ -34,14 +34,6 @@ menuState.prototype = {
     },
 
     create: function() {
-        // Store the relevant text based on the device used
-        if (game.device.desktop) {
-            var startText = '>>> Space bar to continue <<<';
-        }
-        else {
-            var startText = '>>> Touch screen to continue <<<';
-        }
-
         // Phaser logo
         game.add.sprite(30, 30, 'phaser', 1);
 
@@ -56,6 +48,18 @@ menuState.prototype = {
         title.anchor.setTo(0.5, 0.5);
 
         // Adding a text centered on the screen
+        var stepLabel = 'continue';
+        if (game.gameOver === true) {
+            stepLabel = 'restart';
+        }
+        // Store the relevant text based on the device used
+        if (game.device.desktop) {
+            var startText = '>>> Space bar to ' + stepLabel + ' <<<';
+        }
+        else {
+            var startText = '>>> Touch screen to ' + stepLabel + ' <<<';
+        }
+        
         this.y += 100;
         startText = this.game.add.text(this.x, this.y, startText, this.style);
         startText.align = 'center';
