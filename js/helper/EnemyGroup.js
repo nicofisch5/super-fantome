@@ -12,15 +12,7 @@ EnemyGroup = function (game, player, nb) {
 
 };
 
-EnemyGroup.prototype = Object.create(Phaser.Group.prototype, {
-
-    /*say2: {
-        value: function () {
-            console.log("Hello 2");
-        }
-    }*/
-
-});
+EnemyGroup.prototype = Object.create(Phaser.Group.prototype, {});
 EnemyGroup.prototype.constructor = EnemyGroup;
 
 /**
