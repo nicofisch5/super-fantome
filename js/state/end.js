@@ -27,7 +27,7 @@ endState.prototype = {
 
     create: function() {
 
-        var startText = '>>> Bravo vous avez terminé le jeu <<<';
+        var startText = '>>> Congratulations you have finished the game <<<';
 
         // Call the 'start' function when pressing the spacebar
         var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
