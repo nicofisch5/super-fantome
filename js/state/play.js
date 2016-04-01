@@ -50,13 +50,13 @@ playState.prototype = {
         this.infoSpace.y += this.infoSpace.gap;
 
         // Timer
-        this.countdownText = 'Temps ' + this.level.timer;
+        this.countdownText = 'Time ' + this.level.timer;
         this.countdownText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.countdownText, { font: "18px " + this.font, fill: this.color });
         this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
         this.infoSpace.y += this.infoSpace.gap;
 
         // Lives
-        var livesText = 'Vies ' + this.game.lives;
+        var livesText = 'Lifes ' + this.game.lives;
         this.game.add.text(this.infoSpace.x, this.infoSpace.y, livesText, { font: "18px " + this.font, fill: this.color });
         this.infoSpace.y += this.infoSpace.gap;
 
@@ -100,7 +100,7 @@ playState.prototype = {
         this.player.update();
         this.enemy.update(this.player);
 
-        this.countdownText.text = 'Temps ' + this.level.timer;
+        this.countdownText.text = 'Time ' + this.level.timer;
         this.scoreText.text = 'Score ' + this.game.score;
 
         if (this.currentExtra) {

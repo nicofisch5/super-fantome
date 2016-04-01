@@ -56,7 +56,7 @@ levelManagerState.prototype = {
 
         var levelText = 'Niveau ' + game.levelNumber;
         var scoreText = 'Score : ' + game.score;
-        var livesText = 'Vies : ' + game.lives;
+        var livesText = 'Lifes : ' + game.lives;
         var x = game.world.width/2;
         var y = game.world.height/4;
 
