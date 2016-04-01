@@ -62,15 +62,28 @@ playState.prototype = {
         this.infoSpace.y += this.infoSpace.gap;
 
         // Lives
-        var livesText = 'Lifes ' + this.game.lives;
-        this.game.add.text(this.infoSpace.x, this.infoSpace.y, livesText, { font: "18px " + this.font, fill: this.color });
-        this.infoSpace.y += this.infoSpace.gap;
+        this._displayLives();
 
         // Space bar
         this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
     },
 
+    /**
+     * Set lives HUD
+     *
+     */
+    _displayLives: function() {
+
+        var playerSpriteForLive = game.add.sprite(this.infoSpace.x, this.infoSpace.y, 'player', 1);
+        playerSpriteForLive.scale.setTo(0.28, 0.28);
+
+        var livesText = ' x ' + this.game.lives;
+        this.game.add.text(this.infoSpace.x + 30, this.infoSpace.y, livesText, { font: "18px " + this.font, fill: this.color });
+        this.infoSpace.y += this.infoSpace.gap;
+
+    },
+    
     update: function() {
 
         // Collision between player and world
