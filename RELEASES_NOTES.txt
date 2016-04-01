@@ -6,7 +6,7 @@ Release v1.0
 ==== 1.0-RC7 ====
 
 === Evolutions ===
-English translation (il y a 25 minutes)       <Nicolas Fischer>
+English translation
 
 
 
