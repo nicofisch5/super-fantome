@@ -23,11 +23,12 @@ The gift visible on each level is an extra which gives you bonus or malus.
 You can only hold one key at a time.
 
 ## Futures features
-### v1.X
+### v1.1
 Refactoring of Enemy class  
 Gap between player and enemies at the beginning of the level  
 Spooky music  
 
+### v1.X
 Add sounds when:
 - player dies
 - player catchs a key
