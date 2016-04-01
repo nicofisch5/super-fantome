@@ -6,7 +6,7 @@ EnemyGroup = function (game, player, nb) {
 
     this.enableBody = true;
     this.areaMargin = 80;
-    this.playerMargin = 70;
+    this.playerMargin = 80;
     this.nb = nb;
     this.playerMargins;
 
@@ -57,7 +57,7 @@ EnemyGroup.prototype._getRandomPosition = function () {
             || (positionX > this.playerMargins.left && positionX < this.playerMargins.right) // Margin with player
             || (positionX < this.areaMargin || positionX > (gameWidth - this.areaMargin)) // Margin with area
         ) {
-        positionX = Math.floor(Math.random() * (gameWidth - gameInfoSpaceWidth));
+        positionX = Math.floor(Math.random() * (gameWidth - (gameInfoSpaceWidth + 10)));
     }
 
     // Random position Y
