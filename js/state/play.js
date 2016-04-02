@@ -56,10 +56,7 @@ playState.prototype = {
         this.infoSpace.y += this.infoSpace.gap;
 
         // Timer
-        this.countdownText = 'Time ' + this.level.timer;
-        this.countdownText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.countdownText, { font: "18px " + this.font, fill: this.color });
-        this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
-        this.infoSpace.y += this.infoSpace.gap;
+        this._displayTimer();
 
         // Lives
         this._displayLives();
@@ -70,7 +67,23 @@ playState.prototype = {
     },
 
     /**
-     * Set lives HUD
+     * Lives HUD
+     *
+     */
+    _displayTimer: function() {
+
+        var timerSprite = game.add.sprite(this.infoSpace.x, this.infoSpace.y, 'clock', 1);
+        timerSprite.scale.setTo(0.18, 0.18);
+        
+        this.countdownText = this.level.timer;
+        this.countdownText = this.game.add.text(this.infoSpace.x + 38, this.infoSpace.y, this.countdownText, { font: "18px " + this.font, fill: this.color });
+        this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
+        this.infoSpace.y += this.infoSpace.gap;
+        
+    },
+
+    /**
+     * Lives HUD
      *
      */
     _displayLives: function() {
@@ -119,7 +132,7 @@ playState.prototype = {
         this.player.update();
         this.enemy.update(this.player);
 
-        this.countdownText.text = 'Time ' + this.level.timer;
+        this.countdownText.text = this.level.timer;
         this.scoreText.text = 'Score ' + this.game.score;
 
         if (this.currentExtra) {

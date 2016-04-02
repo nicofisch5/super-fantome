@@ -23,6 +23,7 @@ bootState.prototype = {
         game.load.json('level', 'assets/level.json');
         game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
         game.load.image('pixel', 'assets/pixel.png'); // Particles
+        game.load.image('clock', 'assets/clock.png');
 
     },
 
