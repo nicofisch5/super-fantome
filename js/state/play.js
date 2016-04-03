@@ -12,6 +12,7 @@ var playState = function(game) {
     this.extraTimer;
     this.state;
     this.backgroundSound;
+    this.endSound;
 
 };
 
@@ -72,6 +73,7 @@ playState.prototype = {
 
         this.backgroundSound = game.add.audio('background');
         this.backgroundSound.play();
+        this.endSound = game.add.audio('end');
 
     },
 
@@ -319,6 +321,7 @@ playState.prototype = {
     _goToNextLevel: function () {
 
         this.backgroundSound.stop();
+        this.endSound.play();
         
         this.game.score += this.level.timer;
 

@@ -11,6 +11,7 @@ var levelManagerState = function(game) {
     this.font = 'Trebuchet MS';
     this.color = '#a3daea';
     this.backgroundSound = 'assets/audio/world1.mp3';
+    this.endSound = 'assets/audio/end.mp3';
 
 };
 
@@ -31,6 +32,7 @@ levelManagerState.prototype = {
 
         // Sound
         game.load.audio('background', this.backgroundSound);
+        game.load.audio('end', this.endSound);
 
     },
 
