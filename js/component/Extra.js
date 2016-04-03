@@ -1,6 +1,8 @@
 Extra = function(game, params) {
 
     this.image = 'assets/gift_final.png';
+    this.soundFilename = 'assets/audio/extra.mp3';
+    this.sound;
     this.texture;
     this.sprite = null;
     this.params = params;
@@ -16,6 +18,7 @@ Extra.prototype = {
     preload: function () {
 
         game.load.spritesheet('extra', this.image);
+        game.load.audio('extraSound', this.soundFilename);
 
     },
 
@@ -26,6 +29,8 @@ Extra.prototype = {
         game.physics.arcade.enable(this.sprite);
 
         this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
+
+        this.sound = game.add.audio('extraSound');
 
     },
 
@@ -74,6 +79,15 @@ Extra.prototype = {
         } else if ("PlayerCanEatEnemy" == this.type) {
             enemy.stopEscape();
         }
+
+    },
+
+    /**
+     * Play sound
+     */
+    playSound: function() {
+
+        this.sound.play();
 
     }
 
