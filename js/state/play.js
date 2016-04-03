@@ -136,7 +136,7 @@ playState.prototype = {
         this.scoreText.text = 'Score ' + this.game.score;
 
         if (this.currentExtra) {
-            this.extraCountdownText.text = 'Extra ' + this.extraTimer;
+            this.extraCountdownText.text = this.extraTimer;
         }
 
     },
@@ -274,8 +274,11 @@ playState.prototype = {
         this.currentExtra.startEffect(this.player, this.enemy);
 
         // Timer
-        this.extraCountdownText = 'Extra ' + this.extraTimer;
-        this.extraCountdownText = game.add.text(this.infoSpace.x, this.infoSpace.y, this.extraCountdownText, { font: "18px " + this.font, fill: this.color });
+        var extraSpriteHUD = game.add.sprite(this.infoSpace.x, this.infoSpace.y, 'extra', 1);
+        extraSpriteHUD.scale.setTo(0.33, 0.33);
+        
+        this.extraCountdownText = this.extraTimer;
+        this.extraCountdownText = game.add.text(this.infoSpace.x + 38, this.infoSpace.y, this.extraCountdownText, { font: "18px " + this.font, fill: this.color });
         this.extraCountdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateExtraTimer, this);
         this.infoSpace.y += this.infoSpace.gap;
 
