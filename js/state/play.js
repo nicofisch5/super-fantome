@@ -218,6 +218,8 @@ playState.prototype = {
         this.emitter.y = this.player.sprite.y;
         this.emitter.start(true, 600, null, 15);
 
+        this.player.playSound();
+
     },
 
     /**
@@ -345,6 +347,8 @@ playState.prototype = {
      */
     _goToNextLevel: function () {
 
+        this.backgroundSound.stop();
+        
         this.game.score += this.level.timer;
 
         this.game.levelNumber++;

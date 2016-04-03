@@ -1,6 +1,8 @@
 Player = function(game) {
 
     this.image = 'assets/ghost_sprite_final.png';
+    this.soundFilename = 'assets/audio/explosion.mp3';
+    this.sound;
     this.sprite = null;
     this.lastYPosition;
     this.normalVelocity = 150;
@@ -24,6 +26,8 @@ Player.prototype = {
          * the fifth element is how many frames
          */
         game.load.spritesheet('player', this.image, 92, 70);
+
+        game.load.audio('explosionSound', this.soundFilename);
 
     },
 
@@ -70,6 +74,9 @@ Player.prototype = {
 
         // Player initial Y position, used for camera follow
         this.lastYPosition = game.world.height - (game.camera.height / 2);
+
+        this.sound = game.add.audio('explosionSound');
+
     },
 
     update: function() {
@@ -280,6 +287,15 @@ Player.prototype = {
     stopGoFaster: function() {
 
         this.setNormalVelocity();
+
+    },
+
+    /**
+     * Play sound
+     */
+    playSound: function() {
+
+        this.sound.play();
 
     }
 
