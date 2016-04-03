@@ -53,6 +53,9 @@ Key.prototype = {
 
     },
 
+    /**
+     * Play sound
+     */
     playSound: function() {
 
         this.sound.play();

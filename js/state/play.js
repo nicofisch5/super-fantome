@@ -236,6 +236,8 @@ playState.prototype = {
             this.infoSpace.y -= this.infoSpace.gap;
 
             this.player.tweenPlayer();
+
+            key.playSound();
         }
 
     },
@@ -260,6 +262,8 @@ playState.prototype = {
         this.extraCountdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateExtraTimer, this);
         this.infoSpace.y += this.infoSpace.gap;
 
+        extraSprite.creator.playSound();
+        
         extraSprite.kill();
 
     },
