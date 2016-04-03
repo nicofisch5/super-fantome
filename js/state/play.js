@@ -203,6 +203,8 @@ playState.prototype = {
     _playerEatEnemy: function (playerSprite, enemySprite) {
 
         this.player.tweenPlayer();
+        this.player.playEatSound();
+        
         enemySprite.kill();
         this.game.score += 10;
 
@@ -220,7 +222,7 @@ playState.prototype = {
         this.emitter.y = this.player.sprite.y;
         this.emitter.start(true, 600, null, 15);
 
-        this.player.playSound();
+        this.player.playExplosionSound();
 
     },
 
@@ -367,6 +369,7 @@ playState.prototype = {
      */
     _tileDisappear: function (tile) {
 
+        this.endSound.play();
         this.level.tilemap.removeTile(tile.x, tile.y);
 
     },
