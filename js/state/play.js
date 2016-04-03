@@ -212,6 +212,7 @@ playState.prototype = {
             this.game.score += 10;
 
             this.player.tweenPlayer();
+            keysSprite.creator.playSound();
 
         }
 
