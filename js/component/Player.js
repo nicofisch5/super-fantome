@@ -1,8 +1,11 @@
 Player = function(game) {
 
     this.image = 'assets/ghost_sprite_final.png';
-    this.soundFilename = 'assets/audio/explosion.mp3';
-    this.sound;
+    this.soundFilename = {
+        "explosion": 'assets/audio/explosion.mp3',
+        "eat": 'assets/audio/eat.mp3'
+    };
+    this.sound = {};
     this.sprite = null;
     this.lastYPosition;
     this.normalVelocity = 150;
@@ -27,7 +30,8 @@ Player.prototype = {
          */
         game.load.spritesheet('player', this.image, 92, 70);
 
-        game.load.audio('explosionSound', this.soundFilename);
+        game.load.audio('explosionSound', this.soundFilename.explosion);
+        game.load.audio('eatSound', this.soundFilename.eat);
 
     },
 
@@ -75,7 +79,8 @@ Player.prototype = {
         // Player initial Y position, used for camera follow
         this.lastYPosition = game.world.height - (game.camera.height / 2);
 
-        this.sound = game.add.audio('explosionSound');
+        this.sound.explosion = game.add.audio('explosionSound');
+        this.sound.eat = game.add.audio('eatSound');
 
     },
 
@@ -291,11 +296,20 @@ Player.prototype = {
     },
 
     /**
-     * Play sound
+     * Play explosion sound
      */
-    playSound: function() {
+    playExplosionSound: function() {
 
-        this.sound.play();
+        this.sound.explosion.play();
+
+    },
+
+    /**
+     * Play eat sound
+     */
+    playEatSound: function() {
+
+        this.sound.eat.play();
 
     }
 
