@@ -24,26 +24,31 @@ You can only hold one key at a time.
 
 ## Futures features
 ### v1.1
-Refactoring of Enemy class  
-Gap between player and enemies at the beginning of the level  
-Spooky music  
-
-### v1.X
-Refactoring HUD  
-Add sounds when:
+Refactoring Enemy class  
+Gap between player and enemies at the beginning of the level    
+Spooky background music  
+Sounds when:
 - player dies
 - player catchs a key
 - player opens a lock
-- game over
+- player finishes a level
+- player catches an extra
+- player eats a enemy
 
-Increase display time/score  
+### v1.X
+Refactoring HUD  
+Increase display time/score    
 Possibility to release key on smartphone/pad
+Release key when diagonally and let go of 1 key
+Add sounds when:
+- game over
 
 ### v2.X
 "World" entity above "levels"  
 Boss at the end of each world  
 Map areas where enemies can't appear  
 Intelligence of enemies motion
+Distance going right (1) and up (1) = sqrt(2)  / So your diagonal movement at the moment is 1.41 times faster than horizontal/vertical movement.
 
 ### vX.X
 Way from one side to another site of the map
