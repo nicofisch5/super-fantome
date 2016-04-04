@@ -50,7 +50,6 @@ bootState.prototype = {
             game.scale.refresh();
         }
 
-        // When all assets are loaded, go to the 'menu' state
         game.state.start('menu');
 
     }

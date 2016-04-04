@@ -10,6 +10,8 @@ var levelManagerState = function(game) {
     this.params;
     this.font = 'Trebuchet MS';
     this.color = '#a3daea';
+    this.backgroundSound = 'assets/audio/world1.mp3';
+    this.endSound = 'assets/audio/end.mp3';
 
 };
 
@@ -27,6 +29,10 @@ levelManagerState.prototype = {
             this.currentLevel = new Level(this.game, this.currentLevelParam);
             this.currentLevel.preload();
         }
+
+        // Sound
+        game.load.audio('background', this.backgroundSound);
+        game.load.audio('end', this.endSound);
 
     },
 

@@ -11,6 +11,8 @@ var playState = function(game) {
     this.currentExtra;
     this.extraTimer;
     this.state;
+    this.backgroundSound;
+    this.endSound;
 
 };
 
@@ -68,6 +70,10 @@ playState.prototype = {
 
         // Space bar
         this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+        this.backgroundSound = game.add.audio('background');
+        this.backgroundSound.play();
+        this.endSound = game.add.audio('end');
 
     },
 
@@ -145,6 +151,8 @@ playState.prototype = {
         this.enemyGroup.endLevel();
         this._playerDie();
 
+        this.backgroundSound.stop();
+
         var goToState = 'levelManager';
         game.lives--;
         if (game.lives == 0) {
@@ -169,6 +177,8 @@ playState.prototype = {
     _playerEatEnemy: function (playerSprite, enemySprite) {
 
         this.player.tweenPlayer();
+        this.player.playEatSound();
+        
         enemySprite.kill();
         this.game.score += 10;
 
@@ -185,6 +195,8 @@ playState.prototype = {
         this.emitter.x = this.player.sprite.x;
         this.emitter.y = this.player.sprite.y;
         this.emitter.start(true, 600, null, 15);
+
+        this.player.playExplosionSound();
 
     },
 
@@ -206,6 +218,7 @@ playState.prototype = {
             this.game.score += 10;
 
             this.player.tweenPlayer();
+            keysSprite.creator.playSound();
 
         }
 
@@ -229,6 +242,8 @@ playState.prototype = {
             this.infoSpace.y -= this.infoSpace.gap;
 
             this.player.tweenPlayer();
+
+            key.playSound();
         }
 
     },
@@ -253,6 +268,8 @@ playState.prototype = {
         this.extraCountdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateExtraTimer, this);
         this.infoSpace.y += this.infoSpace.gap;
 
+        extraSprite.creator.playSound();
+        
         extraSprite.kill();
 
     },
@@ -305,6 +322,9 @@ playState.prototype = {
      */
     _goToNextLevel: function () {
 
+        this.backgroundSound.stop();
+        this.endSound.play();
+        
         this.game.score += this.level.timer;
 
         this.game.levelNumber++;
@@ -320,6 +340,7 @@ playState.prototype = {
      */
     _tileDisappear: function (tile) {
 
+        this.endSound.play();
         this.level.tilemap.removeTile(tile.x, tile.y);
 
     },
