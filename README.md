@@ -23,29 +23,26 @@ The gift visible on each level is an extra which gives you bonus or malus.
 You can only hold one key at a time.
 
 ## Futures features
-### v1.1
-Refactoring Enemy class  
-Gap between player and enemies at the beginning of the level    
-Spooky background music  
-Sounds when:
-- player dies
-- player catchs a key
-- player opens a lock
-- player finishes a level
-- player catches an extra
-- player eats a enemy
-
-### v1.X
+### v1.2
+Enemy change color when can be eaten
+Better classification of assets  
 Refactoring HUD  
-Increase display time/score    
-Possibility to release key on smartphone/pad
+Increase display time/score  
+Possibility to release key on smartphone/pad  
+
+### v1.3
 Release key when diagonally and let go of 1 key
 Add sounds when:
 - game over
 
 ### v2.X
 "World" entity above "levels"  
-Boss at the end of each world  
+Boss at the end of each world
+Boss for world1:
+- Big potatoe that shoots fries
+- Player has to avoid fries
+- Fries bounces to big potato
+- If a fri hurts big potato, it damages it 
 Map areas where enemies can't appear  
 Intelligence of enemies motion
 Distance going right (1) and up (1) = sqrt(2)  / So your diagonal movement at the moment is 1.41 times faster than horizontal/vertical movement.
