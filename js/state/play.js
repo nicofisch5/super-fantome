@@ -11,6 +11,8 @@ var playState = function(game) {
     this.currentExtra;
     this.extraTimer;
     this.state;
+    this.backgroundSound;
+    this.endSound;
 
 };
 
@@ -21,7 +23,7 @@ playState.prototype = {
         this.level = currentLevel;
         this.numberOflevels = numberOflevels;
         this.player = new Player(game);
-        this.enemy = new Enemy(game);
+        this.enemyGroup = new EnemyGroup(game, this.player, this.level.nbEnemies);
 
         this.infoSpace = {"x": 1100, "y": 50, "gap": 40};
 
@@ -37,7 +39,7 @@ playState.prototype = {
 
         this.level.create();
         this.player.create();
-        this.enemy.create(this.level.nbEnemies);
+        this.enemyGroup.createEnemy();
 
         this.emitter = this.game.add.emitter(0, 0, 15);
         this.emitter.makeParticles('pixel');
@@ -69,6 +71,10 @@ playState.prototype = {
         // Space bar
         this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+        this.backgroundSound = game.add.audio('background');
+        this.backgroundSound.play();
+        this.endSound = game.add.audio('end');
+
     },
 
     update: function() {
@@ -77,17 +83,17 @@ playState.prototype = {
         game.physics.arcade.collide(this.player.sprite, this.level.layer, this._playerTouchLock, null, this);
 
         // Collision between enemies and world
-        game.physics.arcade.collide(this.enemy.getGroup(), this.level.layer, this._enemyTouchLock);
+        game.physics.arcade.collide(this.enemyGroup, this.level.layer, this._enemyTouchLock);
 
         // Collision between 2 enemies
-        game.physics.arcade.collide(this.enemy.getGroup(), this.enemy.getGroup(), this._enemyTouchEnemy, null, this);
+        game.physics.arcade.collide(this.enemyGroup, this.enemyGroup, this._enemyTouchEnemy, null, this);
 
         // Collision between player and enemies - call the kill function when the player and an enemy overlap
         var action = this._endLevel;
         if ('extra' == this.state && 'PlayerCanEatEnemy' == this.currentExtra.type) {
             action = this._playerEatEnemy;
         }
-        game.physics.arcade.overlap(this.player.sprite, this.enemy.getGroup(), action, null, this);
+        game.physics.arcade.overlap(this.player.sprite, this.enemyGroup, action, null, this);
 
         // Collision between player and key
         game.physics.arcade.overlap(this.player.sprite, this.level.keysSprite, this._playerCatchKey, null, this);
@@ -104,7 +110,7 @@ playState.prototype = {
         this.player.sprite.events.onOutOfBounds.add(this._endLevel, this);
 
         this.player.update();
-        this.enemy.update(this.player);
+        //this.enemyGroup.update(this.player);
 
         this.countdownText.text = 'Time ' + this.level.timer;
         this.scoreText.text = 'Score ' + this.game.score;
@@ -142,8 +148,10 @@ playState.prototype = {
 
         this.state = 'endLevel';
 
-        this.enemy.endLevel();
+        this.enemyGroup.endLevel();
         this._playerDie();
+
+        this.backgroundSound.stop();
 
         var goToState = 'levelManager';
         game.lives--;
@@ -169,6 +177,8 @@ playState.prototype = {
     _playerEatEnemy: function (playerSprite, enemySprite) {
 
         this.player.tweenPlayer();
+        this.player.playEatSound();
+        
         enemySprite.kill();
         this.game.score += 10;
 
@@ -185,6 +195,8 @@ playState.prototype = {
         this.emitter.x = this.player.sprite.x;
         this.emitter.y = this.player.sprite.y;
         this.emitter.start(true, 600, null, 15);
+
+        this.player.playExplosionSound();
 
     },
 
@@ -206,6 +218,7 @@ playState.prototype = {
             this.game.score += 10;
 
             this.player.tweenPlayer();
+            keysSprite.creator.playSound();
 
         }
 
@@ -229,6 +242,8 @@ playState.prototype = {
             this.infoSpace.y -= this.infoSpace.gap;
 
             this.player.tweenPlayer();
+
+            key.playSound();
         }
 
     },
@@ -245,7 +260,7 @@ playState.prototype = {
         this.state = 'extra';
         this.currentExtra = extraSprite.creator;
         this.extraTimer = this.currentExtra.params.timer
-        this.currentExtra.startEffect(this.player, this.enemy);
+        this.currentExtra.startEffect(this.player, this.enemyGroup);
 
         // Timer
         this.extraCountdownText = 'Extra ' + this.extraTimer;
@@ -253,6 +268,8 @@ playState.prototype = {
         this.extraCountdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateExtraTimer, this);
         this.infoSpace.y += this.infoSpace.gap;
 
+        extraSprite.creator.playSound();
+        
         extraSprite.kill();
 
     },
@@ -305,6 +322,9 @@ playState.prototype = {
      */
     _goToNextLevel: function () {
 
+        this.backgroundSound.stop();
+        this.endSound.play();
+        
         this.game.score += this.level.timer;
 
         this.game.levelNumber++;
@@ -320,6 +340,7 @@ playState.prototype = {
      */
     _tileDisappear: function (tile) {
 
+        this.endSound.play();
         this.level.tilemap.removeTile(tile.x, tile.y);
 
     },
@@ -364,7 +385,7 @@ playState.prototype = {
         if (null != this.state) {
             this.state = null;
             game.time.events.remove(this.extraCountdown);
-            this.currentExtra.stopEffect(this.player, this.enemy);
+            this.currentExtra.stopEffect(this.player, this.enemyGroup);
 
             // Erase text
             this.extraCountdownText.destroy();

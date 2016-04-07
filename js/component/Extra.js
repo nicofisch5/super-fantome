@@ -1,6 +1,8 @@
 Extra = function(game, params) {
 
     this.image = 'assets/gift_final.png';
+    this.soundFilename = 'assets/audio/extra.mp3';
+    this.sound;
     this.texture;
     this.sprite = null;
     this.params = params;
@@ -16,6 +18,7 @@ Extra.prototype = {
     preload: function () {
 
         game.load.spritesheet('extra', this.image);
+        game.load.audio('extraSound', this.soundFilename);
 
     },
 
@@ -27,28 +30,30 @@ Extra.prototype = {
 
         this.type = this.availableTypes[game.rnd.integerInRange(0, this.availableTypes.length - 1)];
 
+        this.sound = game.add.audio('extraSound');
+
     },
 
     /**
      * Start extra effect
      *
      * @param player
-     * @param enemy
+     * @param enemyGroup
      */
-    startEffect: function(player, enemy) {
+    startEffect: function(player, enemyGroup) {
 
         if ("InvertedCursorKeys" == this.type) {
             player.startInvertedCursorKeys();
         } else if ("EnemiesGoFaster" == this.type) {
-            enemy.startGoFaster();
+            enemyGroup.startGoFaster();
         } else if ("PlayerGoesSlowly" == this.type) {
             player.startGoSlowly();
         } else if ("EnemiesGoSlowly" == this.type) {
-            enemy.startGoSlowly();
+            enemyGroup.startGoSlowly();
         } else if ("PlayerGoesFaster" == this.type) {
             player.startGoFaster();
         } else if ("PlayerCanEatEnemy" == this.type) {
-            enemy.startEscape();
+            enemyGroup.startEscape();
         }
 
     },
@@ -57,23 +62,32 @@ Extra.prototype = {
      * Stop extra effect
      *
      * @param player
-     * @param enemy
+     * @param enemyGroup
      */
-    stopEffect: function(player, enemy) {
+    stopEffect: function(player, enemyGroup) {
 
         if ("InvertedCursorKeys" == this.type) {
             player.stopInvertedCursorKeys();
         } else if ("EnemiesGoFaster" == this.type) {
-            enemy.stopGoFaster();
+            enemyGroup.stopGoFaster();
         } else if ("PlayerGoesSlowly" == this.type) {
             player.stopGoSlowly();
         } else if ("EnemiesGoSlowly" == this.type) {
-            enemy.stopGoSlowly();
+            enemyGroup.stopGoSlowly();
         } else if ("PlayerGoesFaster" == this.type) {
             player.stopGoFaster();
         } else if ("PlayerCanEatEnemy" == this.type) {
-            enemy.stopEscape();
+            enemyGroup.stopEscape();
         }
+
+    },
+
+    /**
+     * Play sound
+     */
+    playSound: function() {
+
+        this.sound.play();
 
     }
 

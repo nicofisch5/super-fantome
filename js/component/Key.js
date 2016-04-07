@@ -1,6 +1,8 @@
 Key = function(game, params) {
 
     this.image = 'assets/key_sprite.png';
+    this.soundFilename = 'assets/audio/key.mp3';
+    this.sound;
     this.sprite = null;
     this.params = params;
     this.colors = ["yellow", "orange", "blue", "green"];
@@ -21,6 +23,8 @@ Key.prototype = {
          */
         game.load.spritesheet('key', this.image, 35, 17);
 
+        game.load.audio('keySound', this.soundFilename);
+
     },
 
     create: function () {
@@ -34,9 +38,9 @@ Key.prototype = {
             this.colors.indexOf(this.currentColor)
         );
 
-        //this.sprite.immovable = true;
-
         game.physics.arcade.enable(this.sprite);
+        
+        this.sound = game.add.audio('keySound');
 
     },
 
@@ -47,6 +51,15 @@ Key.prototype = {
         this.sprite.x = this.params.positionX;
         this.sprite.y = this.params.positionY;
 
+    },
+
+    /**
+     * Play sound
+     */
+    playSound: function() {
+
+        this.sound.play();
+        
     }
 
 }

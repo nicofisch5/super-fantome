@@ -1,3 +1,19 @@
+==== 1.1 ====
+
+=== Evolutions ===
+Refactoring Enemy class  
+Gap between player and enemies at the beginning of the level    
+  Spooky background music  
+  Sounds when:
+- player dies
+- player catchs a key
+- player opens a lock
+- player finishes a level
+- player catches an extra
+- player eats a enemy
+
+
+
 ==== 1.0 ====
 Release v1.0
 
