@@ -24,13 +24,14 @@ You can only hold one key at a time.
 
 ## Futures features
 ### v1.2
-Enemy change color when can be eaten
+Enemy changes color when can be eaten
 Better classification of assets  
 Refactoring HUD  
 Increase display time/score  
 Possibility to release key on smartphone/pad  
 
 ### v1.3
+Information on the type of extra catched by player  
 Release key when diagonally and let go of 1 key
 Add sounds when:
 - game over
