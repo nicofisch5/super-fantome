@@ -23,13 +23,8 @@ The gift visible on each level is an extra which gives you bonus or malus.
 You can only hold one key at a time.
 
 ## Futures features
-### v1.2
-Enemy changes color when can be eaten  
-Better classification of assets  
-Refactoring HUD  
-Increase display time/score  
-
 ### v1.3
+Enemy changes color when can be eaten
 Possibility to release key on smartphone/pad  
 Information on the type of extra catched by player  
 Release key when diagonally and let go of 1 key
