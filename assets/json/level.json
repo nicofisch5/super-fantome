@@ -262,7 +262,7 @@
     "index": "tilemap-level-7",
     "dataFile": "assets/tilemaps/maps/sf-level-7.json",
     "tilesetName": "sprite-level-7",
-    "timer": 100,
+    "timer": 140,
     "keyParams":
     [
       {
