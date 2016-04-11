@@ -1,6 +1,6 @@
 Player = function(game) {
 
-    this.image = 'assets/ghost_sprite_final.png';
+    this.image = 'assets/img/ghost_sprite_final.png';
     this.soundFilename = {
         "explosion": 'assets/audio/explosion.mp3',
         "eat": 'assets/audio/eat.mp3'

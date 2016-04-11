@@ -1,6 +1,6 @@
 Enemy = function(game) {
 
-    this.image = 'assets/potatoe.png';
+    this.image = 'assets/img/potatoe.png';
     this.sprite = null;
     this.normalVelocity = 50;
     this.slowVelocity = 30;

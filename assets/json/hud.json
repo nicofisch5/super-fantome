@@ -45,7 +45,7 @@
       {
         "image":
         {
-          "path": "assets/clock.png",
+          "path": "assets/img/clock.png",
           "scale": 0.18
         }
       }
@@ -57,7 +57,7 @@
       {
         "image":
         {
-          "path": "assets/ghost_sprite_final.png",
+          "path": "assets/img/ghost_sprite_final.png",
           "scale": 0.28,
           "sprite": 1,
           "width": 92,
@@ -72,7 +72,7 @@
       {
         "image":
         {
-          "path": "assets/gift_final.png",
+          "path": "assets/img/gift_final.png",
           "scale": 0.33
         }
       }

@@ -19,7 +19,7 @@ bootState.prototype = {
         game.load.json('hud', 'assets/json/hud.json');
         
         game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
-        game.load.image('pixel', 'assets/pixel.png'); // Particles
+        game.load.image('pixel', 'assets/img/pixel.png'); // Particles
 
     },
 

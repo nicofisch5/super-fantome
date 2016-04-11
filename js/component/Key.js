@@ -1,6 +1,6 @@
 Key = function(game, params) {
 
-    this.image = 'assets/key_sprite.png';
+    this.image = 'assets/img/key_sprite.png';
     this.soundFilename = 'assets/audio/key.mp3';
     this.sound;
     this.sprite = null;
