@@ -6,13 +6,12 @@
 
 var playState = function(game) {
 
-    this.font = 'Trebuchet MS';
-    this.color = '#a3daea';
     this.currentExtra;
     this.extraTimer;
     this.state;
     this.backgroundSound;
     this.endSound;
+    this.hud;
 
 };
 
@@ -21,11 +20,12 @@ playState.prototype = {
     init: function(currentLevel, numberOflevels) {
 
         this.level = currentLevel;
-        this.numberOflevels = numberOflevels;
         this.player = new Player(game);
         this.enemyGroup = new EnemyGroup(game, this.player, this.level.nbEnemies);
 
         this.infoSpace = {"x": 1100, "y": 50, "gap": 40};
+
+        this.hud = new HUD(game, this.infoSpace, numberOflevels);
 
     },
 
@@ -40,6 +40,7 @@ playState.prototype = {
         this.level.create();
         this.player.create();
         this.enemyGroup.createEnemy();
+        this.hud.create();
 
         this.emitter = this.game.add.emitter(0, 0, 15);
         this.emitter.makeParticles('pixel');
@@ -47,27 +48,8 @@ playState.prototype = {
         this.emitter.setXSpeed(-150, 150);
         this.emitter.gravity = 0;
 
-        // Level
-        this.levelText = 'Level ' + game.levelNumber + '/' + this.numberOflevels;
-        this.levelText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.levelText, { font: "18px " + this.font, fill: this.color });
-        this.infoSpace.y += this.infoSpace.gap;
-        
-        // Score
-        this.scoreText = 'Score ' + this.game.score;
-        this.scoreText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.scoreText, { font: "18px " + this.font, fill: this.color });
-        this.infoSpace.y += this.infoSpace.gap;
-
-        // Timer
-        this.countdownText = 'Time ' + this.level.timer;
-        this.countdownText = this.game.add.text(this.infoSpace.x, this.infoSpace.y, this.countdownText, { font: "18px " + this.font, fill: this.color });
         this.countdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateTimer, this);
-        this.infoSpace.y += this.infoSpace.gap;
-
-        // Lives
-        var livesText = 'Lifes ' + this.game.lives;
-        this.game.add.text(this.infoSpace.x, this.infoSpace.y, livesText, { font: "18px " + this.font, fill: this.color });
-        this.infoSpace.y += this.infoSpace.gap;
-
+        
         // Space bar
         this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -76,7 +58,7 @@ playState.prototype = {
         this.endSound = game.add.audio('end');
 
     },
-
+    
     update: function() {
 
         // Collision between player and world
@@ -112,12 +94,14 @@ playState.prototype = {
         this.player.update();
         //this.enemyGroup.update(this.player);
 
-        this.countdownText.text = 'Time ' + this.level.timer;
-        this.scoreText.text = 'Score ' + this.game.score;
-
-        if (this.currentExtra) {
-            this.extraCountdownText.text = 'Extra ' + this.extraTimer;
-        }
+        this.hud.update(
+            this.level.timer,
+            this.extraTimer
+        );
+        
+        /*if (this.currentExtra) {
+            this.extraCountdownText.text = this.extraTimer;
+        }*/
 
     },
 
@@ -210,15 +194,17 @@ playState.prototype = {
     _playerCatchKey: function (playerSprite, keysSprite) {
 
         if (true === this.player.setKey(keysSprite.creator)) {
-            keysSprite.x = this.infoSpace.x;
+            /*keysSprite.x = this.infoSpace.x;
             keysSprite.y = this.infoSpace.y;
 
-            this.infoSpace.y += this.infoSpace.gap;
+            this.infoSpace.y += this.infoSpace.gap;*/
 
             this.game.score += 10;
 
             this.player.tweenPlayer();
             keysSprite.creator.playSound();
+
+            this.hud.addStaticLine(keysSprite);
 
         }
 
@@ -239,11 +225,13 @@ playState.prototype = {
             this.player.releaseKey();
 
             this.game.score -= 10;
-            this.infoSpace.y -= this.infoSpace.gap;
+/*            this.infoSpace.y -= this.infoSpace.gap;*/
 
             this.player.tweenPlayer();
 
             key.playSound();
+
+            this.hud.removeStaticLine(key.sprite);
         }
 
     },
@@ -263,10 +251,13 @@ playState.prototype = {
         this.currentExtra.startEffect(this.player, this.enemyGroup);
 
         // Timer
-        this.extraCountdownText = 'Extra ' + this.extraTimer;
-        this.extraCountdownText = game.add.text(this.infoSpace.x, this.infoSpace.y, this.extraCountdownText, { font: "18px " + this.font, fill: this.color });
+        /*var extraSpriteHUD = game.add.sprite(this.infoSpace.x, this.infoSpace.y, 'extra', 1);
+        extraSpriteHUD.scale.setTo(0.33, 0.33);*/
+        
+        /*this.extraCountdownText = this.extraTimer;
+        this.extraCountdownText = game.add.text(this.infoSpace.x + 38, this.infoSpace.y, this.extraCountdownText, { font: "18px " + this.font, fill: this.color });*/
         this.extraCountdown = game.time.events.loop(Phaser.Timer.SECOND, this._updateExtraTimer, this);
-        this.infoSpace.y += this.infoSpace.gap;
+        //this.infoSpace.y += this.infoSpace.gap;
 
         extraSprite.creator.playSound();
         
@@ -387,9 +378,11 @@ playState.prototype = {
             game.time.events.remove(this.extraCountdown);
             this.currentExtra.stopEffect(this.player, this.enemyGroup);
 
+            this.extraTimer = '';
+
             // Erase text
-            this.extraCountdownText.destroy();
-            this.infoSpace.y -= this.infoSpace.gap;
+            //this.extraCountdownText.destroy();
+            //this.infoSpace.y -= this.infoSpace.gap;
         }
 
     }

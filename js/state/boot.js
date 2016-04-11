@@ -15,14 +15,11 @@ bootState.prototype = {
 
     preload: function() {
 
-        new Extra().preload();
-        new Player().preload();
-        new Enemy().preload();
-        new Key().preload();
-
-        game.load.json('level', 'assets/level.json');
+        game.load.json('level', 'assets/json/level.json');
+        game.load.json('hud', 'assets/json/hud.json');
+        
         game.load.image('tiles', 'assets/tilemaps/tiles/tiles_spritesheet_small.png');
-        game.load.image('pixel', 'assets/pixel.png'); // Particles
+        game.load.image('pixel', 'assets/img/pixel.png'); // Particles
 
     },
 
@@ -50,7 +47,7 @@ bootState.prototype = {
             game.scale.refresh();
         }
 
-        game.state.start('menu');
+        game.state.start('preloader');
 
     }
 

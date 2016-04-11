@@ -1,0 +1,81 @@
+{
+  "infoSpace":
+  {
+    "main":
+    {
+      "x": 1100,
+      "y": 50,
+      "gap": 40
+    },
+    "sub":
+    {
+      "x": 1100,
+      "y": 260,
+      "gap": 40
+    }
+  },
+  "font":
+  {
+    "family": "Trebuchet MS",
+    "color": "#a3daea",
+    "size": "18px"
+  },
+  "elements":
+  {
+    "level":
+    {
+      "type": "text_text",
+      "properties":
+      {
+        "text": "Level"
+      }
+    },
+    "score":
+    {
+      "type": "text_text",
+      "properties":
+      {
+        "text": "Score"
+      }
+    },
+    "time":
+    {
+      "type": "image_text",
+      "properties":
+      {
+        "image":
+        {
+          "path": "assets/img/clock.png",
+          "scale": 0.18
+        }
+      }
+    },
+    "lives":
+    {
+      "type": "image_text",
+      "properties":
+      {
+        "image":
+        {
+          "path": "assets/img/ghost_sprite_final.png",
+          "scale": 0.28,
+          "sprite": 1,
+          "width": 92,
+          "height": 70
+        }
+      }
+    },
+    "extra":
+    {
+      "type": "image_text",
+      "properties":
+      {
+        "image":
+        {
+          "path": "assets/img/gift_final.png",
+          "scale": 0.33
+        }
+      }
+    }
+  }
+}

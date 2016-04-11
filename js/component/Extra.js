@@ -1,6 +1,6 @@
 Extra = function(game, params) {
 
-    this.image = 'assets/gift_final.png';
+    this.image = 'assets/img/gift_final.png';
     this.soundFilename = 'assets/audio/extra.mp3';
     this.sound;
     this.texture;

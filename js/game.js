@@ -13,10 +13,11 @@ var game = new Phaser.Game(
     'super-fantome'
 );
 
-game.version = '1.1';
+game.version = '1.2';
 
 /** Define all the states */
 game.state.add('boot', bootState);
+game.state.add('preloader', preloaderState);
 game.state.add('menu', menuState);
 game.state.add('levelManager', levelManagerState);
 game.state.add('play', playState);

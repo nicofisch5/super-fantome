@@ -29,6 +29,7 @@
     "index": "tilemap-level-2",
     "dataFile": "assets/tilemaps/maps/sf-level-2.json",
     "tilesetName": "sprite-level-2",
+    "nbEnemies": 4,
     "keyParams":
     [
       {
@@ -65,6 +66,7 @@
     "index": "tilemap-level-3",
     "dataFile": "assets/tilemaps/maps/sf-level-3.json",
     "tilesetName": "sprite-level-3",
+    "nbEnemies": 3,
     "keyParams":
     [
       {
@@ -121,6 +123,7 @@
     "dataFile": "assets/tilemaps/maps/sf-level-4.json",
     "tilesetName": "sprite-level-4",
     "timer": 100,
+    "nbEnemies": 3,
     "keyParams":
     [
       {
@@ -259,7 +262,7 @@
     "index": "tilemap-level-7",
     "dataFile": "assets/tilemaps/maps/sf-level-7.json",
     "tilesetName": "sprite-level-7",
-    "timer": 100,
+    "timer": 140,
     "keyParams":
     [
       {
