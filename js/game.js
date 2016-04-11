@@ -13,7 +13,7 @@ var game = new Phaser.Game(
     'super-fantome'
 );
 
-game.version = '1.2-beta1';
+game.version = '1.2';
 
 /** Define all the states */
 game.state.add('boot', bootState);
