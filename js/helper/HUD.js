@@ -18,6 +18,10 @@ HUD = function(game, infoSpace, numberOflevels) {
 
 HUD.prototype = {
 
+    /**
+     * Preload
+     * Assets used by HUD
+     */
     preload: function () {
 
         var params = game.cache.getJSON('hud');
@@ -35,6 +39,10 @@ HUD.prototype = {
 
     },
 
+    /**
+     * Create
+     * Instantiate renderer objects
+     */
     create: function () {
 
         this.params = game.cache.getJSON('hud');
@@ -52,6 +60,13 @@ HUD.prototype = {
 
     },
 
+    /**
+     * Prepare datas to display
+     * 
+     * @param int levelTimer
+     * @param int  extraTimer
+     * @private
+     */
     _prepareStats: function (levelTimer, extraTimer) {
 
         levelTimer = levelTimer ? levelTimer : '';
@@ -67,6 +82,11 @@ HUD.prototype = {
         
     },
 
+    /**
+     * Manage first display
+     *
+     * @private
+     */
     _firstDisplay: function () {
 
         for (var eltName in this.objectGroup) {
@@ -81,6 +101,10 @@ HUD.prototype = {
 
     },
 
+    /**
+     * Update
+     * Renderer modification
+     */
     update: function (levelTimer, extraTimer) {
 
         this._prepareStats(levelTimer, extraTimer);
@@ -93,6 +117,11 @@ HUD.prototype = {
         
     },
 
+    /**
+     * Allow state to add custom HUD line
+     * 
+     * @param object
+     */
     addStaticLine: function (object) {
         
         if (object instanceof Phaser.Sprite) {
@@ -104,6 +133,11 @@ HUD.prototype = {
         
     },
 
+    /**
+     * Remove custom HUD line
+     *
+     * @param object
+     */
     removeStaticLine: function (object) {
 
         if (object instanceof Phaser.Sprite) {

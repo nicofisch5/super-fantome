@@ -10,8 +10,14 @@ HUDImageText = function(name, properties) {
 
 HUDImageText.prototype = {
 
+    /**
+     * Preload, called by HUD helper
+     */
     preload: function () {},
 
+    /**
+     * Create, called by HUD helper
+     */
     create: function (font, infoSpace, text) {
 
         var sprite = this.params.image.sprite ? this.params.image.sprite : 0;
@@ -28,6 +34,9 @@ HUDImageText.prototype = {
 
     },
 
+    /**
+     * Update, called by HUD helper
+     */
     update: function (text) {
 
         text = undefined === text ? '' : text;

@@ -8,8 +8,14 @@ HUDTextText = function(name, properties) {
 
 HUDTextText.prototype = {
 
+    /**
+     * Preload, called by HUD helper
+     */
     preload: function () {},
 
+    /**
+     * Create, called by HUD helper
+     */
     create: function (font, infoSpace, text) {
 
         this.display = game.add.text(
@@ -21,6 +27,9 @@ HUDTextText.prototype = {
         
     },
 
+    /**
+     * Update, called by HUD helper
+     */
     update: function (text) {
 
         this.display.text = undefined == text ? '' : text;
