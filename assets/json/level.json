@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "index": "tilemap-level-1",
-    "dataFile": "assets/tilemaps/maps/sf-level-1.json",
+    "index": "tilemap-world-1-level-1",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-1.json",
     "tilesetName": "sprite-level-1",
     "timer": 45,
     "nbEnemies": 4,
@@ -26,8 +26,8 @@
   },
   {
     "id": 2,
-    "index": "tilemap-level-2",
-    "dataFile": "assets/tilemaps/maps/sf-level-2.json",
+    "index": "tilemap-world-1-level-2",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-2.json",
     "tilesetName": "sprite-level-2",
     "nbEnemies": 4,
     "keyParams":
@@ -63,8 +63,8 @@
   },
   {
     "id": 3,
-    "index": "tilemap-level-3",
-    "dataFile": "assets/tilemaps/maps/sf-level-3.json",
+    "index": "tilemap-world-1-level-3",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-3.json",
     "tilesetName": "sprite-level-3",
     "nbEnemies": 3,
     "keyParams":
@@ -119,8 +119,8 @@
   },
   {
     "id": 4,
-    "index": "tilemap-level-4",
-    "dataFile": "assets/tilemaps/maps/sf-level-4.json",
+    "index": "tilemap-world-1-level-4",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-4.json",
     "tilesetName": "sprite-level-4",
     "timer": 100,
     "nbEnemies": 3,
@@ -166,8 +166,8 @@
   },
   {
     "id": 5,
-    "index": "tilemap-level-5",
-    "dataFile": "assets/tilemaps/maps/sf-level-5.json",
+    "index": "tilemap-world-1-level-5",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-5.json",
     "tilesetName": "sprite-level-5",
     "timer": 120,
     "keyParams":
@@ -203,8 +203,8 @@
   },
   {
     "id": 6,
-    "index": "tilemap-level-6",
-    "dataFile": "assets/tilemaps/maps/sf-level-6.json",
+    "index": "tilemap-world-1-level-6",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-6.json",
     "tilesetName": "sprite-level-6",
     "timer": 100,
     "nbEnemies": 3,
@@ -259,8 +259,8 @@
   },
   {
     "id": 7,
-    "index": "tilemap-level-7",
-    "dataFile": "assets/tilemaps/maps/sf-level-7.json",
+    "index": "tilemap-world-1-level-7",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-7.json",
     "tilesetName": "sprite-level-7",
     "timer": 140,
     "keyParams":
@@ -315,8 +315,8 @@
   },
   {
     "id": 8,
-    "index": "tilemap-level-8",
-    "dataFile": "assets/tilemaps/maps/sf-level-8.json",
+    "index": "tilemap-world-1-level-8",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-8.json",
     "tilesetName": "sprite-level-8",
     "nbEnemies": 3,
     "timer": 120,
@@ -368,5 +368,32 @@
       "positionY": 312,
       "timer": 10
     }
+  },
+  {
+    "id": 9,
+    "type": "boss",
+    "index": "tilemap-world-1-level-boss",
+    "dataFile": "assets/tilemaps/maps/world-1/sf-level-boss.json",
+    "tilesetName": "sprite-level-boss",
+    "timer": 200,
+    "lockParams":
+    [
+      {
+        "color": "yellow",
+        "action": "tileDisappear"
+      },
+      {
+        "color": "orange",
+        "action": "tileDisappear"
+      },
+      {
+        "color": "blue",
+        "action": "tileDisappear"
+      },
+      {
+        "color": "green",
+        "action": "goToNextLevel"
+      }
+    ]
   }
-  ]
+]
