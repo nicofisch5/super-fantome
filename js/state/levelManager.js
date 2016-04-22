@@ -24,9 +24,11 @@ levelManagerState.prototype = {
         // Check if no more level
         if (game.levelNumber > this.params.length) {
             game.state.start('end');
+            // @todo Go to next world
         } else {
             this._getCurrentLevelParam();
-            this.currentLevel = new Level(this.game, this.currentLevelParam);
+            var levelFactory = new LevelFactory();
+            this.currentLevel = levelFactory.getObject(game, this.currentLevelParam);
             this.currentLevel.preload();
         }
 

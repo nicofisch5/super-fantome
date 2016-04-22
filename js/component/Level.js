@@ -9,7 +9,6 @@ Level = function(game, params) {
     this.extrasSprite;
     this.locks = new Array();
     this.timer = 90;
-    this.nbEnemies = 4;
 
 };
 
@@ -18,14 +17,49 @@ Level.prototype = {
     preload: function () {
 
         // Tilemap for level
+        this._preloadTilemap();
+
+        // Extra
+        this._preloadExtra();
+
+        // Keys
+        this._preloadKeys();
+
+        // Locks
+        this._preloadLocks();
+
+        // Timer
+        this._setTimer();
+
+        // Number of enemies
+        this._setEnemies();
+
+    },
+
+    /**
+     * Preload tilemap
+     *
+     * @private
+     */
+    _preloadTilemap: function() {
+
         game.load.tilemap(
             this.params.index, // Unique asset index of the tilemap data
             this.params.dataFile, // The url of the map data file (csv/json)
             null, // Optional JSON data object, used for map data instead
             Phaser.Tilemap.TILED_JSON // The format of the map data. CSV or TILED_JSON
         );
+        
+    },
+    
+    /**
+     * Preload Extra
+     * 
+     * @private
+     */
+    _preloadExtra: function() {
 
-        // Extra
+        
         if (this.params.extraParams && isNaN(this.params.extraParams.length)) {
             this.params.extraParams = [this.params.extraParams];
         }
@@ -35,8 +69,16 @@ Level.prototype = {
                 this.extras.push(extra);
             }, this);
         }
+        
+    },
 
-        // Keys
+    /**
+     * Preload Keys
+     *
+     * @private
+     */
+    _preloadKeys: function() {
+
         if (isNaN(this.params.keyParams.length)) {
             this.params.keyParams = [this.params.keyParams];
         }
@@ -44,8 +86,16 @@ Level.prototype = {
             var key = new Key(game, keyParam);
             this.keys.push(key);
         }, this);
+        
+    },
 
-        // Locks
+    /**
+     * Preload Locks
+     *
+     * @private
+     */
+    _preloadLocks: function() {
+
         if (isNaN(this.params.lockParams.length)) {
             this.params.lockParams = [this.params.lockParams];
         }
@@ -53,23 +103,59 @@ Level.prototype = {
             var lock = new Lock(game, lockParam);
             this.locks.push(lock);
         }, this);
+        
+    },
+    /**
+     * Set level timer
+     *
+     * @private
+     */
+    _setTimer: function() {
 
-        // Timer
         if (typeof this.params.timer != 'undefined') {
             this.timer = this.params.timer;
         }
+        
+    },
 
-        // Number of enemies
+    /**
+     * Set number of enemies
+     *
+     * @private
+     */
+    _setEnemies: function() {
+
         if (typeof this.params.nbEnemies != 'undefined') {
             this.nbEnemies = this.params.nbEnemies;
         }
         if (! game.device.desktop) {
             this.nbEnemies--;
         }
-
+        
     },
 
     create: function () {
+
+        // Tilemap
+        this._createTilemap();
+
+        // Key
+        this._createKeys();
+
+        // Extra
+        this._createExtra();
+
+        // Lock
+        this._createLocks();
+
+    },
+
+    /**
+     * Create tilemap
+     *
+     * @private
+     */
+    _createTilemap: function() {
 
         // New Phaser.Tilemap. Map populated with data from a Tiled JSON file
         this.tilemap = game.add.tilemap(this.params.index);
@@ -86,22 +172,32 @@ Level.prototype = {
         // New TilemapLayer. It is a set of map data combined with a Tileset in order to render that data to the game.
         // A Layer is effectively like a Phaser.Sprite, so is added to the display list.
         this.layer = this.tilemap.createLayer('level-' + this.params.id);
+        
+    },
 
-        // Scale x 2
-        //this.layer.scale.setTo(0.5, 0.5);
+    /**
+     * Create Keys
+     * 
+     * @private
+     */
+    _createKeys: function() {
 
-        // This resizes the game world to match the layer dimensions
-        //this.layer.resizeWorld();
-
-        // Key
         this.keysSprite = game.add.group();
         this.keys.forEach(function (key) {
             key.create();
             key.sprite.creator = key;
             this.keysSprite.add(key.sprite);
         }, this);
+        
+    },
 
-        // Extra
+    /**
+     * Create Extra
+     *
+     * @private
+     */
+    _createExtra: function() {
+
         this.extrasSprite = game.add.group();
         this.extras.forEach(function (extra) {
             extra.create();
@@ -109,11 +205,19 @@ Level.prototype = {
             this.extrasSprite.add(extra.sprite);
         }, this);
 
-        // Lock
+    },
+
+    /**
+     * Create Locks
+     *
+     * @private
+     */
+    _createLocks: function() {
+
         this.locks.forEach(function (lock) {
             lock.create();
         });
 
-    }
+    },
 
 }
