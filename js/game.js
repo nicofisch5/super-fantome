@@ -20,7 +20,8 @@ game.state.add('boot', bootState);
 game.state.add('preloader', preloaderState);
 game.state.add('menu', menuState);
 game.state.add('levelManager', levelManagerState);
-game.state.add('play', playState);
+game.state.add('playClassic', playStateClassic);
+game.state.add('playBoss', playStateBoss);
 game.state.add('end', endState);
 
 // Start with the 'boot' state

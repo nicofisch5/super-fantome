@@ -104,7 +104,8 @@ levelManagerState.prototype = {
      */
     start: function() {
 
-        this.game.state.start('play', true, false, this.currentLevel, this.params.length);
+        var playState = new PlayStateFactory();
+        this.game.state.start(playState.getState(this.params), true, false, this.currentLevel, this.params.length);
 
     }
 
