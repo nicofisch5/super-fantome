@@ -25,7 +25,8 @@ bootState.prototype = {
 
     create: function() {
 
-        game.levelNumber = 1;
+        game.worldNumber = 1;
+        game.levelNumber = 8;
         game.score = 0;
 
         if (game.device.desktop) {

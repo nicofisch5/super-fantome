@@ -24,6 +24,7 @@ You can only hold one key at a time.
 
 ## Futures features
 ### v1.3
+Bug HUD extra visible in next level
 Enemy changes color when can be eaten
 Possibility to release key on smartphone/pad  
 Information on the type of extra catched by player  

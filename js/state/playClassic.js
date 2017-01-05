@@ -7,11 +7,6 @@ playStateClassic = function(game, params) {
 playStateClassic.prototype = Object.create(playState.prototype, {});
 playStateClassic.prototype.constructor = playStateClassic;
 
-/**
- * Create group of enemies
- *
- * @param nb
- */
-/*playStateClassic.prototype.createEnemy = function (nb) {
-    
-};*/
+playStateClassic.prototype.init = function(currentLevel, numberOflevels) {
+    playState.prototype.init.call(this, currentLevel, numberOflevels);
+};
