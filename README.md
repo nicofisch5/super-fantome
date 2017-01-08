@@ -1,6 +1,6 @@
 # super-fantome
 Super fantôme  
-HTML5 game based on JS phaser library (v2.4.6)
+HTML5 game based on JS phaser library (v2.6.2)
 
 ## Project architecture
 js/vendors/phaser : phaser library  
